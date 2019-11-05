@@ -2,5 +2,5 @@
 layout: default
 ---
 
-# Hello world
-Hello world
+* [about]({% link about.md %})
+* [blog]({% link blog/index.html %})
