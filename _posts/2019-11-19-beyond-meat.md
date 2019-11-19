@@ -3,6 +3,7 @@ layout: post
 title: "Beyond Meat"
 author: Michał Szczepanik
 date: 2019-11-19 21:15:00 +1
+tags: ['food']
 ---
 
 Today I finally got to try the Beyond Meat burger at [Krowarzywa](https://krowarzywa.pl/). This was the second plant-based meat replacement I tried (after the Impossible Burger), but the first one I could get in Poland, which feels good. It was great.
