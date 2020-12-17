@@ -3,9 +3,10 @@ layout: post
 title: Docker pruning
 author: Michał Szczepanik
 tags: ['software', 'tips & tricks']
+date: 2020-12-17 14:00
 ---
 
-Sometimes (especially after I have been messing around with many different containers) I get the „No space left on device” error when doing even simplest tasks (e.g. running heudiconv or trying to build a new image).
+Sometimes (especially after messing around with several different images) I get the „No space left on device” error when doing even the simplest of tasks (e.g. running a small container or trying to build a new one).
 This issue _may_ be MacOS-specific.
 Finding a clear answer wasn’t straightforward, so below I summarise what I learned.
 
@@ -20,16 +21,16 @@ Different things are written there, and not always cleaned, causing it to grow i
 Docker is conservative when it comes to removing things.
 If it gets filled to the brim, your containers can’t work properly.
 
-For a solution, read  [Docker docs: Prune unused Docker objects](https://docs.docker.com/config/pruning/).
-You can clean up some space by running:
+For a solution (and different levels of cleanup), read  [Docker docs: Prune unused Docker objects](https://docs.docker.com/config/pruning/).
+In short, you can clean up some space by running:
 ```
 docker system prune
 ```
-or, more likely (a thorough version - remember that it will destroy data stored in containers!):
+or, more likely using a thorough version (warning: it will destroy data stored in containers):
 ```
 docker system prune --images
 ```
 
 Alternatively, the _burnt ground_ strategy would be to remove the Docker.qcow2 file altogether (as it will rebuild next time docker is used), but it seems unnecessary.
 
-Text initially published on my lab's forum, now nonexistent.
+Text initially published on my lab's forum, which has been closed.
