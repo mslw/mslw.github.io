@@ -5,9 +5,9 @@ author: Michał Szczepanik
 tags: ['software', 'python', 'tips & tricks']
 ---
 
-There are several ways of installing and managing python on macOS, and pyenv is one of them. Below I explain why I was avoiding it for a long time and why I gave in. Following is a short reference with how I currently set things up and some most useful commands.
+There are several ways of installing and managing python on macOS, and in this post I am taking a closer look at pyenv. The post is divided into two segments. In the first (which I called "life story" during writing) I explain why I was avoiding pyenv for a long time and what caused me to give in. The second is technical and aims to provide a short reference for creating and using my current setup.
 
-Before I start: there are, naturally, many blog posts about using pyenv. However, most of what I found didn't cover my use case entirely, so here is a compilation of things I wish I knew earlier.
+There are, obviously, many blog posts about using pyenv. However, most of what I found didn't cover my use case entirely, so here is a compilation of things I wish I knew earlier.
 
 ## Part 1: what I used before
 
@@ -25,7 +25,39 @@ So from time to time I had a bad day, because an update broke my python. In most
 
 However, some changes are game breaking. As of today, atlasreader does does not work on python above 3.7 (I think due to changes in packages on which it depends, but I didn't investigate). This is how I ended with python 3.9 and needing 3.7.
 
+## Part 3: assumptions
+
+The recommendations below will be most useful for people who, like me:
+1. work on several (potentially drawn-out) projects simultaneously
+2. rely on some standalone python programs, which may not always be quickly brought up to date
+and for these reasons need both several versions of python and several sets of python packages (virtual environments) built for a given python version.
+
+To this end, pyenv provides a unified, high-level interface for simple installation and swiapping out both python versions and specific virtual environments.
+
+## The technicalities
+
+### Installation - pyenv
+
+Installation is straightforward using homebrew.
+
+Prior to installing pyenv, I removed the homebrew-installed python (and a tangle of dependencies), which seems superfluous: the pyenv-installed python lives entirely separately from the homebrew-installed one.
+
+Next, I installed pyenv-virtualenv.
+
+### Installation - tying loose ends
+
+Notes on making pyenv play nicely with homebrew (comment on how the separateness has its downsides).
+
+### Installation - putting things onto pyenv
 
 
+### Usage: jupyter
 
+Pyenv or not, the right way for working with virtual environments is to install jupyter lab only once, under your primary python version, and then only install _kernels_ for each environment you want to use with jupyter:
 
+* Activate virtualenv
+* Install ipykernel package inside
+* Register a kernel: `ipykernel install -user -name=<my_env_name>` (disp. name?)
+* Deactivate
+
+If no longer needed: `jupyter kernelspec uninstall`
