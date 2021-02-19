@@ -38,18 +38,38 @@ To this end, pyenv provides a unified, high-level interface for simple installat
 
 ### Installation - pyenv
 
-Installation is straightforward using homebrew.
+Installation is straightforward using homebrew. Pre- and post-installation steps are listed in [pyenv's readme](https://github.com/pyenv/pyenv#homebrew-on-macos) on github. What you need to do is install some dependencies first (see the readme), then `brew install pyenv` and then edit the `.zshrc` (or equivalent) file by adding:
 
-Prior to installing pyenv, I removed the homebrew-installed python (and a tangle of dependencies), which seems superfluous: the pyenv-installed python lives entirely separately from the homebrew-installed one.
+```zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+```
 
-Next, I installed pyenv-virtualenv.
+Prior to installing pyenv, I removed the homebrew-installed python (disassembling a tangle of dependencies one by one), which seems superfluous: the pyenv-installed python lives entirely separately from the homebrew-installed one.
+
+After pyenv, I installed [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv), a pyenv plugin which provides features to manage virtualenvs, with `brew install pyenv-virtualenv`. It suggests making another addition to `.zshrc` (to enable auto-activation of environments), but I skipped that.
 
 ### Installation - tying loose ends
 
-Notes on making pyenv play nicely with homebrew (comment on how the separateness has its downsides).
+Unfortunately, pyenv does not mix smoothly with homebrew. According to recommendations [here](https://raycent.medium.com/managing-python-on-macos-the-clean-way-7673cab874f6), the best way to deal with it is by adding an alias for homebrew to `.zshrc`. I did it next to pyenv init (added after installing pyenv):
+
+```zsh
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+fi
+```
+
+As a result, homebrew will act as if pyenv wasn't there, and use the homebrew-installed python as a dependency for everything else. While this means having two separate python ecosystems, seamless operation far outweighs the redundancy.
 
 ### Installation - putting things onto pyenv
 
+What I think is a reasonable way to proceed is:
+* install the latest python version and make it global
+* install other versions (needed for virtualenvs or standalone programs)
+* install jupyter lab under global
+* for each project that uses jupyter, install an ipykernel (see below)
 
 ### Usage: jupyter
 
@@ -61,3 +81,8 @@ Pyenv or not, the right way for working with virtual environments is to install 
 * Deactivate
 
 If no longer needed: `jupyter kernelspec uninstall`
+
+### Usage: pyenv commands
+
+`pyenv shell x.y.z` to use python x.y.z in the current shell
+`pyenv whence someexecutable` to see which environment has someexecutable (lile atlasreader)
