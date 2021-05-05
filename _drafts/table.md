@@ -22,7 +22,7 @@ sub-02         12  write
 sub-03         33  read
 ```
 
-We also have a set of intermediate files (first level output), which we organised (according to our whim, rather than a standard) in the following way:
+We also have a set of intermediate files (first level output), which we organised in the following way (this time according to our whim, rather than any standard):
 
 ```
 /work/sub-01/task-motor/con_0001.nii
@@ -47,23 +47,50 @@ group2 = {
 
 # Solution
 
-Let's start by rading the participant file:
+Let's start by reading the participant file:
 
 ```matlab
 participants = readtable('/path/to/participants.tsv', ...
 	'FileType', 'text', 'Delimiter', '\t', 'TextType', 'string')
 ```
 
-Unfortunately, `readtable` knows `.txt`, `.dat` or `.csv` extensions, but not `.tsv`, so we have to specify both `FileType` and `Delimiter` (either `\t` or `tab` will work) in addition to the file name. Additionally, we use `TextType` to import text data as string arrays, rather than character vectors.
+Unfortunately, `readtable` knows `.txt`, `.dat` or `.csv` extensions, but not `.tsv`, so we have to specify both `FileType` and `Delimiter` (either `\t` or `tab` will work) in addition to the file name. Additionally, we use `TextType` to import text data as string arrays, rather than character vectors. This produces the following:
+
+```
+participants =
+
+  3×3 table
+
+    participant_id    age     group 
+    ______________    ___    _______
+
+       "sub-01"       34     "read" 
+       "sub-02"       12     "write"
+       "sub-03"       33     "read" 
+
+```
 
 Next, let's add another column with paths to the con files:
 
 ```matlab
 participants.con_files = fullfile(...
-	"work", participants.participant_id, "task-motor", "con_0001.nii")
+	"/work", participants.participant_id, "task-motor", "con_0001.nii")
 ```
 
-The `fullfile` function joins its arguments by adding a path separator (`/` or `\`, depending on system). Now, `particiants.participant_id` is a text array (with as many rows as there are subjects), and consequently the output will be a text array of the same shape. Adding a column is as simple as using a dot notation with a new name. Convenient.
+The `fullfile` function joins its arguments by adding a path separator (`/` or `\`, depending on system). One of the inputs we gave, `particiants.participant_id` is a text array (with as many rows as there are subjects), and consequently the output will be a text array of the same shape. Adding a column is as simple as using a dot notation with a new name. Convenient. This is what the table looks as a result:
+
+```
+participants =
+
+  3×4 table
+
+    participant_id    age     group                   con_files               
+    ______________    ___    _______    ______________________________________
+
+       "sub-01"       34     "read"     "/work/sub-01/task-motor/con_0001.nii"
+       "sub-02"       12     "write"    "/work/sub-02/task-motor/con_0001.nii"
+       "sub-03"       33     "read"     "/work/sub-03/task-motor/con_0001.nii"
+```
 
 We can next filter the table for each group in turn.
 
@@ -72,18 +99,51 @@ read_con = participants{participants.group == "read", 'con_files'}
 write_con = participants{participants.group == "write", 'con_files'}
 ```
 
-Here, we used brace indexing to get a subset of rows (since the group column is a string array, we could use `==` to obtain a logical array of a matching shape) and a single column (by giving its name). In a typical matlab fashion, using round brackets would keep the type of the indexed object and return a table with selected rows and columns, while the curly brackets above return column content[^1] (in this case, a string array).
+Here, we used brace indexing to get a subset of rows (since the group column is a string array, we could use `==` to obtain a logical array of a matching shape) and a single column (by giving its name). In a typical matlab fashion, using round brackets would keep the type of the indexed object and return a table with selected rows and columns, while the curly brackets above return column content[^1] (in this case, a string array). This produces:
 
-Finally, since SPM batch requires cellstrings rather than string arrays, we can do:
+```
+read_con = 
 
-```matlab
-group1 = # code to change to cellstr
-group2 = # code to change to cellstr
+  2×1 string array
+
+    "/work/sub-01/task-motor/con_0001.nii"
+    "/work/sub-03/task-motor/con_0001.nii"
+
+
+write_con = 
+
+    "/work/sub-02/task-motor/con_0001.nii"
 ```
 
-TODO:
-- finish
-- check if examples 'compile'
-- add a note on using compose
+Finally, since SPM batch requires cellstrings rather than string arrays, we can do a simple conversion:
+
+```matlab
+group1 = cellstr(read_con)
+group2 = cellstr(write_con)
+```
+
+```
+group1 =
+
+  2×1 cell array
+
+    {'/work/sub-01/task-motor/con_0001.nii'}
+    {'/work/sub-03/task-motor/con_0001.nii'}
+
+
+group2 =
+
+  1×1 cell array
+
+    {'/work/sub-02/task-motor/con_0001.nii'}
+```
+
+# Further comments
+
+Naturally, the example above was fairly basic, and there is more that can be done with strings and tables. Here are some things that I found particularly useful. 
+
+You can join string arrays using `+` (eg. `"sub-" + participants.participant_id` if the "sub-" prefix was missing). If you are a fan of `sprintf`, you can use [compose](https://www.mathworks.com/help/matlab/ref/compose.html) as its "vectorised" alternative (eg. `compose("sub-%s", participants.participant_id)`). Should you wish to replace part of the string, you can use things like `replace(participants.participant_id, "sub-", "subject-"`.
+
+For tables, in addition to the regular `size` function there are intuitive `height` and `width` functions. If you have another table (perhaps with behavioural scores) with the same participant IDs but different ordering, you can join them using [join](https://www.mathworks.com/help/matlab/ref/table.join.html). And finally, if you need to sort a table first by one column, and then (breaking ties) by another, you can do so using [sortrows](https://www.mathworks.com/help/matlab/ref/double.sortrows.html), as in `sortrows(participants, {'group', 'age'})` (which also allows you to specify ascending or descending order independently).
 
 [^1]: Strictly speaking, curly brackets return an array concatenated from the content of selected rows and columns.  a single-column example I prefer thinking of it simply as column content. You can read more about table indexing in the docs: [Access Data in Tables](https://www.mathworks.com/help/matlab/matlab_prog/access-data-in-a-table.html)
