@@ -1,13 +1,3 @@
-_site
-vendor
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-
-# Ruby environment
-/.bundle/
-Gemfile.lock
-
 # emacs
 *~
 \#*\#
