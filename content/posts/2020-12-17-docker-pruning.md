@@ -3,7 +3,7 @@ layout: post
 title: Docker pruning
 author: Michał Szczepanik
 tags: ['software', 'tips & tricks']
-date: 2020-12-17 14:00
+date: 2020-12-17T14:00:00+01:00
 ---
 
 Sometimes (especially after messing around with several different images) I get the „No space left on device” error when doing even the simplest of tasks (e.g. running a small container or trying to build a new one).

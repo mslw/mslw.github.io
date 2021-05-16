@@ -2,7 +2,7 @@
 layout: post
 title: "Beyond Meat"
 author: Michał Szczepanik
-date: 2019-11-19 21:15:00 +1
+date: 2019-11-19
 tags: ['food']
 ---
 

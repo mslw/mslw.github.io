@@ -3,7 +3,7 @@ layout: post
 title: Working with Siemens physio (.puls) files
 author: Michał Szczepanik
 tags: ['python', 'neuroscience', 'tips & tricks']
-date: 2020-12-17 16:25
+date: 2020-12-17T16:25:00+01:00
 ---
 
 Siemens Physiological Monitoring Unit uses its own format for data storage. Conveniently, it produces text files with a fairly simple representation, which should be easy to parse. I only worked with pulse oximetry, but similar rules should hold for other physio data. This is a compilation of external sources, own experiences and code snippets.

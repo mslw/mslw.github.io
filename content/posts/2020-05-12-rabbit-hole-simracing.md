@@ -3,7 +3,7 @@ layout: post
 title: "A new rabbit hole: sim racing"
 author: Michał Szczepanik
 tags: ['gaming']
-date: 2020-05-12 15:30
+date: 2020-05-12
 ---
 
 Due to the COVID-19 pandemic and related cancellation of F1 season, sim racing has been receiving a lot of attention, and after a while I gave in and bought a wheel for my PC. In this post I summarise my initial impressions from Raceroom.

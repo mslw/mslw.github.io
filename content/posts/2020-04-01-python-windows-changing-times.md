@@ -3,7 +3,7 @@ layout: post
 title: "Python, Windows, and how times are changing"
 author: Michał Szczepanik
 tags: ['python']
-date: 2020-04-01 21:30
+date: 2020-04-01
 ---
 
 I started using Python in 2011, as part of my BSc curriculum in neuroinformatics (the introductory course was part of the first semester IIRC). The Faculty was running Fedora on all computers, and so was I on my personal laptop. Back then, the advice to people who worked on Windows was to try and avoid that, because things with Python and Windows were complicated.

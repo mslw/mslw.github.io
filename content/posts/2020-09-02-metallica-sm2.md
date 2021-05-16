@@ -3,7 +3,7 @@ layout: post
 title: "Now listening: Metallica - S&M2"
 author: Michał Szczepanik
 tags: ['music']
-date: 2020-09-02 23:30
+date: 2020-09-02
 ---
 
 About a week ago, Metallica released the _S&M2_ album, a recording of their live performance with the San Francisco Symphony Orchestra from September 2019 (and a follow-up on a similar collaboration from twenty years prior, April 1999). In my opinion, the first metal musician was Wagner, so Metallica recording with a symphony orchestra should make perfect sense, yet I was never very fond of the 99 edition. The new one, though, made a huge impression: I was listening to Spotify at work and had to take a short break to focus on the music.

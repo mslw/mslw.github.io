@@ -3,7 +3,7 @@ layout: post
 title: "Star Wars Jedi: Fallen Order game review"
 author: Michał Szczepanik
 tags: ['gaming']
-date: 2020-06-09 23:00
+date: 2020-06-09
 ---
 
 Recently, I completed the latest Star Wars game. I had a good time, but was left wanting more. Here's my thoughts.

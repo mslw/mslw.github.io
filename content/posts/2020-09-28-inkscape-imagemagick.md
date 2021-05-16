@@ -3,6 +3,7 @@ layout: post
 title: "Inkscape + ImageMagick: a powerful combination"
 author: Michał Szczepanik
 tags: ['software', 'tips & tricks']
+date: 2020-09-28
 ---
 
 I can't recommend Inkscape enough, either for assembling figures or for building posters. However, Inkscape on its own does not export to tiff. Luckily, this can be accomplished with ImageMagick. Here's a short recipe, and a sort of laudation for both programs.

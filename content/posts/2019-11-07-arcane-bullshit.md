@@ -2,7 +2,7 @@
 layout: post
 title: "Dealing with arcane bullshit"
 author: Michał Szczepanik
-date: 2019-11-07 22:30:00 +1
+date: 2019-11-07T22:30:00+01:00
 ---
 
 Being a young scientist, at times I find myself having to deal with some programing related arcane bullshit. This post is something I wanted to write about for a while.

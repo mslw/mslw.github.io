@@ -3,7 +3,7 @@ layout: post
 title: Giving in to pyenv
 author: Michał Szczepanik
 tags: ['software', 'python', 'tips & tricks']
-date: 2021-03-19 17:30
+date: 2021-03-19
 ---
 
 There are several ways of installing and managing python on macOS, and in this post I am taking a closer look at pyenv. The write-up is divided into two segments. In the first (which I called "life story" during writing) I explain why I was avoiding pyenv for a long time and what caused me to give in. The second is technical and provides a short reference for creating and using my current setup.

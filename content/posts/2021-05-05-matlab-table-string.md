@@ -3,7 +3,7 @@ layout: post
 title: Matlab table & string
 author: Michał Szczepanik
 tags: ["software", "tips & tricks", "matlab"]
-date: 2021-05-05 19:50
+date: 2021-05-05
 ---
 
 In this post I am taking a closer look at tables and strings in matlab.
