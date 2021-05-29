@@ -56,14 +56,15 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
 
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
-  # [[params.social]]
-  #   name = "twitter"
-  #   url = "https://twitter.com/"
-
-
+  
   [[params.social]]
     name = "github"
     url = "https://github.com/mslw"
+
+  [[params.social]]
+    name = "orcid"
+    url = "https://orcid.org/0000-0002-4028-2087"
+
 
 [menu]
 
