@@ -8,15 +8,15 @@ Visual presentation of brain results should be clear for the viewer, but the exa
 
 In the latter case (widespread activation of multiple brain regions), I have grown to prefer a montage of slices, accompanied by a glass-brain showing selected cuts.
 
-Below I will show such an example using the plotting sub-module from nilearn. Combining several plots efficiently wasn't difficult to figure out based on nilearn's documentation, but it required a little bit of hackery. Also, I didn't find examples which cover it directly, so here's hoping that I can fill a gap (and encourage you to use nilearn's plotting functions a bit more).
+Below I will show such an example using the plotting sub-module from nilearn. Combining several plots efficiently wasn't difficult to figure out based on nilearn's documentation, but it required a tiny bit of hackery. Also, I didn't find examples which cover it directly, so here's hoping that I can fill a gap (and encourage you to use nilearn's plotting functions a bit more).
 
-The goal is to make a figure with a single block of code, without a need of editing (such as merging or scaling) in external programs. This time, any changes you make between the initial and final version (e.g. changing slice coordinates) will be simple to make and won't consume much time.
+The goal is to make a figure with a single block of code, without a need of editing (such as merging or scaling) in external programs. This way, any changes you make between the initial and final version (e.g. changing slice coordinates) will be simple to make and won't consume much time.
 
 * Nilearn plotting: basic elements
 
-  For fMRI activations, nilearn provides the ~plot_stat_map~ function. By default, it plots 3 cuts (axial, coronal, and saggital); several other display modes can be used. When a single direction of cuts is used, slices are arranged in a single row; for my desired view I will be aiming for two such rows.
+  For fMRI activations, nilearn provides the ~plot_stat_map~ function ([[https://nilearn.github.io/modules/generated/nilearn.plotting.plot_stat_map.html][docs]]). By default, it plots 3 cuts (axial, coronal, and saggital); several other display modes can be used. When a single direction of cuts is used, multiple slices are arranged in one row; for my desired view I will be aiming for two such rows.
 
-  The glass brain can be plotted with the ~plot_glass_brain~ function. Conveniently, the plot coordinates behave as intended, so when used alone it can be combined with ~axhline~ from pyplot without any hassle.
+  The glass brain can be plotted with the ~plot_glass_brain~ function ([[https://nilearn.github.io/modules/generated/nilearn.plotting.plot_glass_brain.html][docs]]). Conveniently, the plot coordinates behave as intended, so the basic version can be combined with ~axhline~ from pyplot without any hassle.
 
   Crucially, both functions accept this optional parameter (from the docs):
   #+BEGIN_QUOTE
@@ -26,7 +26,7 @@ The goal is to make a figure with a single block of code, without a need of edit
   #+END_quote
 
 * Building the figure, beginning to end
-
+  
   These are the packages which I'll be using. 
 
   #+BEGIN_SRC python
@@ -36,33 +36,48 @@ The goal is to make a figure with a single block of code, without a need of edit
     import numpy as np                    # for working with image data
     import seaborn as sns                 # nice colormaps
   #+END_SRC
+
+** Data loading and preparation
   
-  When choosing the data used for plotting, I will follow examples from nilearn and use the "neurovault motor task" from ~nilearn.datasets~. When working with my own data, I would just load my own statistical map. Since usually I am interested only in the positive contrast values, I will also clip the negative values from the image (for this particular contrast, /left vs right button press/, this hardly makes any sense, but it would be desired in many cases). This is also a simple way to guarantee that nilearn will include just the positive values on the colorbars.
+  When choosing the data used for plotting, I will follow examples from nilearn and use the "neurovault motor task" from ~nilearn.datasets~ (when working with my own data, I would just load my own statistical map).
 
   #+BEGIN_SRC python
     motor_images = datasets.fetch_neurovault_motor_task()
     img_path = motor_images.images[0] # or use path to own data
     orig_img = image.load_img(img_path)
+  #+END_SRC
+
+  Since usually I am interested only in the positive contrast values, I will also clip the negative values from the image (for this particular contrast, /left vs right button press/, this hardly makes any sense, but it would be desired in many cases). This is also a simple way to guarantee that nilearn will include just the positive values on the colorbars.
+  
+  #+BEGIN_SRC python 
     stat_map = image.new_img_like(orig_img, np.clip(orig_img.get_fdata(), 0, None))
   #+END_SRC
+
+** Some more preparation: colormap & font
+  
+    Before starting with the actual figure, let's prepare a colormap that is different from the default. I like the /icefire/ palette from seaborn - it is perceptually uniform, and I think it looks better than nilearn's default /cold_hot/ (you can read more in the [[http://seaborn.pydata.org/tutorial/color_palettes.html][Choosing color palettes]] seaborn tutorial).
     
-  At this point, it is good to start thinking about the figure as an empty canvas, which we are going to fill with the brain images. Having to specify the figure size in inches rather than may seem counterintuitive when we are looking at a computer screen, but choosing the right size will guarantee that the output will look good in print (e.g. text size settings will match those on the page).
+  #+BEGIN_SRC python
+  my_cm = sns.color_palette("icefire", as_cmap = True)
+  #+END_SRC
 
-  A4 paper is 210 × 297 mm or 8.3 × 11.7 in. For a full width figure, Elsevier [[https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing][recommends]] going with 190 mm (7.48 in) and elife [[https://reviewer.elifesciences.org/author-guide/revised][recommends]] 200 mm (7.87 in). Both recommend using a resolution of at least 300 dpi (so a full width column by Elsevier standards will end up 2244 pixels wide).
+  What's more, while ~plot_stat_map~ always uses /cold_hot/ as default, ~plot_glass_brain~ has defaults depending on the background: /cold_hot/ if black, /cold_white_hot/ otherwise. While there is a logic to that, especially when the glass brain is on its own (high values are bright on black background and dark on white), if I kept the default colormaps and a white background for both plot types, I would end up with two distinct color schemes within the figure. When specifying a colormap explicitly, I can keep a single color bar (value ranges should match too).
 
-  For this example, I am choosing full page width. For height, I am going to use a bit less than a third of the page. Within this space, I want to include two rows, each with three brain slices (they will come out quite large - six slices per row should be perfectly legible), and place a single glass brain on the side. Don't be afraid to use a pen and (gridded) paper when planning your figure.
-
-  For lettering, font size 8 should be fine. I will use the ~matplotlib.rc~ convenience function to set font size; other parameters, including font family can also be changed in this call (see [[https://matplotlib.org/stable/tutorials/introductory/customizing.html][Customizing Matplotlib]] for details). Strangely enough, this will affect the colorbars, but not the labels next to slices; those will be changed separately.
+  I will also specify font size using the ~matplotlib.rc~ convenience function (which can also be used to set other parameters, eg. font family, by specifying more keyword arguments; see [[https://matplotlib.org/stable/tutorials/introductory/customizing.html][Customizing Matplotlib]] for details).
 
   #+BEGIN_SRC python
     rc('font', size=8)
   #+END_SRC
 
-  I also want to use the /icefire/ palette from seaborn - it is perceptually uniform, and I think it looks better than nilearn's default /cold_hot/ (you can read more in the [[http://seaborn.pydata.org/tutorial/color_palettes.html][Choosing color palettes]] seaborn tutorial). What's more, although ~plot_stat_map~ always uses /cold_hot/ as default, ~plot_glass_brain~ has defaults depending on the background: /cold_hot/ if black, /cold_white_hot/ otherwise. While there is a logic to that with the glass brains alone (high values are bright on black background and dark on white), keeping defaults for both plots (and a white background) would leave me with two distinct color mappings within the figure. When specifying a colormap explicitly, I can keep a single color bar.
+  Size 8 should be fine. Strangely enough, this will affect the colorbars, but not the labels next to slices; those will be changed separately.
 
-  #+BEGIN_SRC python
-  my_cm = sns.color_palette("icefire", as_cmap = True)
-  #+END_SRC
+** Creating an empty figure
+    
+  At this point, it is good to start thinking about the figure as an empty canvas, which we are going to fill with the brain images. Having to specify the figure size in inches rather than pixels may seem counterintuitive when we are looking at a computer screen, but choosing the right size will guarantee that the output will look good in print (e.g. text size settings will match those on the page).
+
+  A4 paper is 210 × 297 mm or 8.3 × 11.7 in. For a full width figure, Elsevier [[https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing][recommends]] going with 190 mm (7.48 in) and elife [[https://reviewer.elifesciences.org/author-guide/revised][recommends]] 200 mm (7.87 in). Both recommend using a resolution of at least 300 dpi (so a full width column by Elsevier standards will end up 2244 pixels wide).
+
+  For this example, I am choosing full page width. For height, I am going to use a bit less than a third of the page. Within this space, I want to include two rows, each with three brain slices (they will come out quite large - six slices per row should be perfectly legible), and place a single glass brain on the side. Don't be afraid to use a pen and (gridded) paper when planning your figure.
 
   Having made the decision, I can create the figure with the specified size:
 
@@ -70,14 +85,9 @@ The goal is to make a figure with a single block of code, without a need of edit
   fig = plt.figure(figsize = 7.87, 3.5)
   #+END_SRC
 
-  Let's say that I want to use the following t threshold and the given cut coordinates:
-
-  #+BEGIN_SRC python
-  my_threshold = 3.21
-  my_cuts = [-16, -8, 0, 8, 16, 32]
-  #+END_SRC python
-
-  Let's start with the lower part of the picture, showing three axial slices. I am setting ~annotate = False~ (meaning no labels with position and left / right); because I can't control the font size here, I will add them separately in a next call. I am drawing onto the figure created previously. The ~axes~ variable is specified as ~(xmin, ymin, width, height)~ in the figure space (1 = entire width / height), allowing us to do this independently from the actual size in inches. For this part, I want to start in the lower left corner (0, 0), use three-quarters of the width (0.75) and almost half the height (0.48; using this rather than 0.5 helps avoid overcrowding). I am explicit with the colormap I use, and I don't want the colorbar here; I will put one next to the glass brain.
+** Plotting: stat map
+  
+  It's time to start the actual plotting. Let's start with the lower part of the picture, showing three axial slices (explanations below).
 
   #+BEGIN_SRC python
   sm2 = plotting.plot_stat_map(
@@ -95,6 +105,8 @@ The goal is to make a figure with a single block of code, without a need of edit
   sm2.annotate(left_right=False, positions=True, size=8)
   #+END_SRC python
 
+  The first four arguments are self-explanatory. I am setting ~annotate = False~ (meaning no labels with position and left / right) because this function has no controls for annotation font size (and it doesn't follow the general rc setting); instead I add annotations afterwards. With ~figure = fig~, I am telling the function drawing onto the figure created previously. The ~axes = (xmin, ymin, width, height)~ is specified in the figure space (1 = entire width / height), allowing us to do this independently from the actual size in inches. For this part, I want to start in the lower left corner (0, 0), use three-quarters of the width (0.75) and almost half the height (0.48, because using all 0.5 made things look overcrowded). I am explicit with the ~cmap~ I use, and I don't want to show the ~colorbar~ here; I will put one next to the glass brain.
+  
   The same goes for the upper part of the figure, although this time I am starting a tiny bit above the midline with ~axes = (0, 0, 0.51, 0.48),~:
 
   #+BEGIN_SRC python
@@ -113,6 +125,8 @@ The goal is to make a figure with a single block of code, without a need of edit
   sm2.annotate(left_right=False, positions=True, size=8)
   #+END_SRC python
 
+** Plotting: glass brain
+  
   Now comes the time for the glass brain. Since I used axial slices before, I will mark them on the sagittal view (~display_mode=x~). I will put in on the right hand side, centered vertically (proportions are slightly different than for stat map, and 0.2 width seemed to fit very well) with ~axes=(0.8, 0.26, 0.2, 0.48)~. Again, I am explicit with ~cmap~, but this time I also want ~colorbar=True~.
 
   #+BEGIN_SRC python
@@ -137,11 +151,12 @@ The goal is to make a figure with a single block of code, without a need of edit
     color = 'gray')
   #+END_SRC python
 
+** Saving
+  
   And finally comes the last part: saving. We can do this with one siple call. We can specify the file format by setting either png or pdf extension.
 
   #+BEGIN_SRC python
   fig.savefig('/my/path/figure.png')
   #+END_SRC python
 
-  
-  Potential change: more paragraphs - describe next step, show code, explain
+
