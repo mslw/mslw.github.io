@@ -1,0 +1,96 @@
+#+title: The search for a perfect note taking app
+#+layout: post
+#+date: 2021-11-01T17:50:00+0100
+#+tags[]: software
+#+draft: false
+
+A note taking app is essential: meeting notes, quick how-tos, sketches of ideas call for a simple and convenient tool.
+While note taking seems like a straightforward task, there is a surprising variety of programs, and it's difficult to find a perfect one.
+
+So far I've had good experiences with [[https://bear.app/][Bear]], [[https://joplinapp.org/][Joplin]], and [[https://www.gnu.org/software/emacs/][Emacs]] with [[https://orgmode.org/][Org Mode]].
+However, none of them came close enough to perfection for me to stick with it and forget about others.
+In this post, I explain what I like and do not like about each of them.
+
+As a side note, why not [[https://evernote.com][Evernote]], ome of the most popular apps out there? I tried, but it did not click for me at all.
+Two primary reasons: it felt like it tried to do too many things at once (for notes, I value simplicity), and it is necessarily tied to its own hosting service (paid or not).
+
+
+* What I'm looking for
+  - Simple, inobtrusive, elegant interface, which allows focusing on the content.
+  - Basic formatting support (including monospaced code fragments).
+    Ideally done through a markup language (Markdown or similar), so things like emphasis, lists, URLs and code snippets can be entered using keyboard only.
+  - Possibility of synchronisation between devices, so the notes can exist independently from a machine where they were typed.
+  - Support for independent hosting providers, so registering yet another account with the app creator is not necessary (distinction between app and service).
+  - Raw text storage (or at least export), so it's easy to read notes without the app or move them to another one.
+  - Export capabilities, so it's easy to generate e.g. a PDF when needed.
+  - Useful search ability, so it's easy to find an old note.
+
+* Bear
+
+  Website: https://bear.app/
+
+** Pros
+   - The most elegant interface I have encountered so far.
+     From fonts and colours to display layout, everything seems well thought out.
+     The sidebars can be hidden with a simple shortcut, leaving a perfectly simple, distraction-free slate of text.
+     The text is width-limited on a page for optimal readability.
+     Header levels and bullet points are subtly displayed in the left margin.
+   - Editing is markdown-based.
+     Formatting is applied live in the same window, and visual presentation is clever (eg. most formatting symbols are kept gently blended with the background).
+   - Provides ready-made themes, including classics such as [[https://ethanschoonover.com/solarized/][Solarized]], [[https://draculatheme.com/][Dracula]] and [[https://www.nordtheme.com/][Nord]].
+   - Organises notes by tags, replacing the more common structure of notebooks.
+   - Exported PDFs look nice, supports many different formats.
+   - Being MacOS native, uses iCloud in the background for storage, which eliminates the need for additional hosting.
+
+** Cons
+   - MacOS native, won't work outside Apple ecosystem.
+   - Fully functional version is paid in a subscription model, $15 per year.
+     There is a free version, which lacks some of the features listed above.
+     
+* Joplin
+
+  Website: https://joplinapp.org/
+
+** Pros
+   - Free and open source, most of the codebase is MIT-licensed.
+   - Editing is markdown-based.
+     Unlike Bear, the default view has two panels, one with markdown (with syntax highlighting), the other with fully rendered text.
+   - Can synchronise with Dropbox, OneDrive, NextCloud, generic WebDAV and others.
+     Provides optional encryption for transport and storage.
+   - Provides ready-made themes (also including Solarized, Dracula, and Nord) and the ability to select fonts.
+   - Exports to PDF and others (I haven't tested export though).
+   - Available across platforms, including mobile.
+
+** Cons
+   - The two-panel markdown view eats up space.
+     With side panels shown, the view is cramped, and with them hidden it still requires a sizeable part of the screen.
+     It feels like it has been designed with fullscreen use in mind.
+   - The UI is busier then Bear's.
+   - Looks like it tries to be a replacement for Evernote.
+   - Uses AppImage on Linux (there are no official packages, snaps, or flatpaks) and the best way to install is through their own install script.
+   - Bug fixes may take time.
+     Recently, changes in Let's Encrypt certificates [[https://discourse.joplinapp.org/t/letsencrypt-root-ca-certificate-expiration/20635][required an update to an underlying library]] which largely disabled synchronisation for a few weeks.
+     However, changes were communicated quickly, everything is back to normal, and such breaking changes are rare occurences anyway.
+
+* Emacs + Org
+
+  Website: https://orgmode.org/
+
+** Pros
+   - The most ascetic of them all.
+   - Uses org syntax, natively supported in emacs, which works quite nice for notes.
+     A case [[https://karl-voit.at/2017/09/23/orgmode-as-markup-only/][can be made]] for org over markdown, at least from some angles.
+   - Org files are text files which you can organise and manage the way you want to.
+     While emacs has a lot of native functionality for them, they are not emacs-specific and can be written in any editor.
+   - Everything is done with keyboard only.
+   - Synchronisation with any hosting solution (including Nextcloud) is easy to achieve using [[https://rclone.org/][rclone]], an external command-line tool.
+
+** Cons
+   - Since emacs is a world on its own, org + emacs probably won't appeal to people who aren't using emacs already.
+   - Emacs has a lot of org-specific behaviour.
+     While this may be a good thing, it also means that there is a lot to memorise.
+   - There is no standard way for managing note collections.
+     Some people on the Internet suggest having one huge file with collapsible headings.
+     I prefer to have one note in one file, but it makes searching harder.
+     There may be some extensions for managing many files, but for now I rely on a date-slug names and directory listing.
+   - Synchronisation is not built in, so it requires additional software and is an action on its own.
