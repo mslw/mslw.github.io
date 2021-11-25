@@ -1,0 +1,75 @@
+#+title: What makes a good file name
+#+layout: post
+#+date: 2021-11-25T19:30:00+0100
+#+author: Michał Szczepanik
+#+tags[]:
+#+draft: true
+
+One of the topics included in a research data management workshop with
+which I am involved is "what is a good file name". The question may
+seem trivial, but naming files is an everyday practice with real
+consequences on data usability that isn't talked about very often.
+
+When looking for existing recommendations, we found a popular
+presentation [[http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf][Naming Things]] by Jenny Bryan, a related presentation
+[[https://slides.djnavarro.net/project-structure/][Project Structure]] by Danielle Navarro, and a colelction of [[https://libraries.mit.edu/data-management/store/organize/][File naming
+best practices]] from the MIT Libraries. It was interesting to see that,
+although the three sources agree on core principles, they make
+different specific recommendations. So the question "what is a good
+file name" is not as trivial as it might first seem. In this post I am
+trying to pick apart several of the recommendations trying to better
+understand where they might come from and whether I would agree with
+them or not.
+
+* General principles
+  Sources agree that good filenames should make life easier when
+  working with files recorded a while ago. The three goals for file
+  names are best summarised as:
+  - machine readable
+  - human readable
+  - easy to sort and search
+
+* Spaces are bad but what about hyphen?
+  Sources also agree that spaces are best avoided. This comes, mainly,
+  for command line usage, which is a very popular way of interacting
+  with data. In a command line, space is used to separate arguments of
+  a command, so a file name (single argument) with spaces needs to be
+  put in quotation marks ="like this"= or written with an escape
+  character =like\ this=, which is plainly annoying. Even bigger
+  problems with quoting or escaping await when a file name needs to be
+  passed between programs.
+
+  A common recommendation, with which I agree, is to replace spaces
+  with underscores and hyphens. The two can be combined and have
+  different meaning, with underscores separating units of information,
+  and hyphens separating words within a unit for better
+  readability. For example, =sample_green_city-landscape.jpg= has
+  three units of information: category (sample), color (green) and
+  content description (city landscape). Every common programming
+  language will have a facility for easily splitting the name into
+  three blocks.
+
+  This can be taken further: the name can be constructed from
+  key-value pairs, with hyphens separating key from value, and
+  underscores separating pairs. This makes the pattern
+  self-explanatory and can be usefil if there are many possible units
+  of information, but different subsets of them are used. For example,
+  =kind-sample_color-green_content-citylandscape.jpg=. Again, a
+  programming language of your choice will have a key-value based
+  representation and an easy way to create it from this name.
+
+  Interestingly, one of the sources recommended that only underscores
+  should be used, and hyphens must be avoided. The reasoning? That
+  it's easy to confuse a hyphen (-) with an n-dash (–, a typographic
+  character used, for example, in ranges or numbers) or m-dash (—, a
+  typographic character often used to indicate a pause in a
+  sentence). I admit, I have fallen prey of a dash in a file name
+  once, and then it took me a while to find out why the file name does
+  not match. However, pretty much the only way a dash can find its way
+  into a file name is when it gets copied from a document editor; the
+  keyboard only has a hyphen. In my opinion, the adventages of having
+  two word-separating characters far outweigh this risk, and I was
+  surprised to see an assertive statement "don't use hyphens and
+  dashes" being made.
+  
+* Does a date belong in a name?
