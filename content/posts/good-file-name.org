@@ -21,6 +21,9 @@ trying to pick apart several of the recommendations trying to better
 understand where they might come from and whether I would agree with
 them or not.
 
+As a side note, the discussion also spawned a great appendix to the
+DataLad handbook [[https://handbook.datalad.org/en/latest/intro/filenaming.html][How to name a file: Interoperability considerations]].
+
 * General principles
   Sources agree that good filenames should make life easier when
   working with files recorded a while ago. The three goals for file
@@ -73,3 +76,21 @@ them or not.
   dashes" being made.
   
 * Does a date belong in a name?
+  One recommendation that seems pervasive is to start a filename with
+  a date, formatted according to ISO 8601,
+  e.g. =2021-12-10-file-naming.org=. It's hard to deny that /if/ a
+  date is used, ISO 8601 is the way to go (as it sorts
+  alphabetically). However, there is probably too much emphasis on
+  including the date at all.
+
+  If the date is an essential information (e.g. weather data collected
+  daily) or the chronology is particularly notable (e.g. meeting
+  notes, blog posts), then sure. Other than that? Probably redundant
+  in most cases. Arguably, it may even be considered bad practice,
+  especially when used to represent changes over time (when it becomes
+  no different than adding "_v1", "v2", etc.) - that problem is better
+  solved by using actual version control. Perhaps some of the drive
+  for including the date comes from the fact that creation date may or
+  may not survive file transfer between computers. But again, version
+  control tools solve this problem by associating each change with a
+  date.
