@@ -1,4 +1,149 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 01 Nov 2021 17:50:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>The search for a perfect note taking app</title><link>https://mslw.github.io/posts/2021-11-01-note-taking-apps/</link><pubDate>Mon, 01 Nov 2021 17:50:00 +0100</pubDate><guid>https://mslw.github.io/posts/2021-11-01-note-taking-apps/</guid><description>A note taking app is essential: meeting notes, quick how-tos, sketches of ideas call for a simple and convenient tool. While note taking seems like a straightforward task, there is a surprising variety of programs, and it&amp;#39;s difficult to find a perfect one.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 12 Dec 2021 22:45:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>What makes a good file name</title><link>https://mslw.github.io/posts/2021-12-12-good-file-name/</link><pubDate>Sun, 12 Dec 2021 22:45:00 +0100</pubDate><guid>https://mslw.github.io/posts/2021-12-12-good-file-name/</guid><description>One of the topics included in a research data management workshop with which I am involved is &amp;#34;what is a good file name&amp;#34;. The question may seem trivial, but naming files is an everyday practice with real consequences on data usability that isn&amp;#39;t talked about very often.
+When looking for existing recommendations, we found a popular presentation Naming Things by Jenny Bryan, a related presentation Project Structure by Danielle Navarro, and a colelction of File naming best practices from the MIT Libraries.</description><content type="html"><![CDATA[
+<p>
+One of the topics included in a research data management workshop with
+which I am involved is &#34;what is a good file name&#34;. The question may
+seem trivial, but naming files is an everyday practice with real
+consequences on data usability that isn&#39;t talked about very often.</p>
+<p>
+When looking for existing recommendations, we found a popular
+presentation <a href="http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf">Naming Things</a> by Jenny Bryan, a related presentation
+<a href="https://slides.djnavarro.net/project-structure/">Project Structure</a> by Danielle Navarro, and a colelction of <a href="https://libraries.mit.edu/data-management/store/organize/">File naming
+best practices</a> from the MIT Libraries. It was interesting to see that,
+although the three sources agree on core principles, they make
+different specific recommendations. So the question &#34;what is a good
+file name&#34; is not as trivial as it might first seem. In this post I am
+trying to pick apart a few recommendations, trying to better
+understand where they might come from and whether I would agree with
+them or not.</p>
+<p>
+If you are interested in the subject, the discussion also spawned an
+entertaining and comprehensive appendix to the DataLad Handbook
+written by my colleague – <a href="https://handbook.datalad.org/en/latest/intro/filenaming.html">How to name a file: Interoperability
+considerations</a>.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+General principles
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>The three sources listed at the beginning agree that the goal of
+  file naming is to make life easier when working with files recorded
+  a while ago. The three rules they give for file names are best
+  summarised as:</p>
+<ul>
+<li>
+<p>machine readable,</p>
+</li>
+<li>
+<p>human readable,</p>
+</li>
+<li>
+<p>easy to sort and search,</p>
+</li>
+</ul>
+<p>and it&#39;s hard not to agree on that.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Spaces are bad but what about hyphen?
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>Sources also agree that spaces are best avoided. This comes, mainly,
+  from command line usage, which is a very popular way of interacting
+  with data. In a command line, space is used to separate arguments of
+  a command, so a file name (single argument) with spaces needs to be
+  put in quotation marks <code class="verbatim">&#34;like this&#34;</code> or written with an escape
+  character <code class="verbatim">like\ this</code>, which is plainly annoying. Even bigger
+  problems await when a file name needs to be passed between programs,
+  and you may find yourself escaping quotation symbols or escape
+  characters themselves.</p>
+<p>
+  A common recommendation, with which I agree, is to replace spaces
+  with underscores and hyphens. The two can be combined and have
+  different meaning, with underscores separating units of information,
+  and hyphens separating words within a unit for better
+  readability. For example, <code class="verbatim">sample_green_city-landscape.jpg</code> has
+  three units of information: category (sample), color (green) and
+  content description (city landscape). Every common programming
+  language will have a facility for easily splitting the name into
+  three blocks.</p>
+<p>
+  This can be taken further: the name can be constructed from
+  key-value pairs, with hyphens separating key from value, and
+  underscores separating pairs. This makes the pattern
+  self-explanatory and can be useful if there are many possible units
+  of information, but different subsets are used between files. For
+  example, the previous name could be rewritten as
+  <code class="verbatim">kind-sample_color-green_content-citylandscape.jpg</code>. Again, a
+  programming language of your choice will have a key-value based
+  representation and an easy way to create it from this name.</p>
+<p>
+  Interestingly, one of the sources recommended that only underscores
+  should be used, and hyphens must be avoided. The reasoning? That
+  it&#39;s easy to confuse a hyphen (-) with an n-dash (–, a typographic
+  character used, for example, in ranges or numbers) or m-dash (—, a
+  typographic character often used to indicate a pause in a
+  sentence). I admit, I have fallen prey of a dash in a file name
+  once, and then it took me a while to find out why the file name does
+  not match. However, pretty much the only way a dash can find its way
+  into a file name is when it gets copied from a document editor; the
+  keyboard only has a hyphen. In my opinion, the adventages of having
+  two word-separating characters far outweigh this risk, and I was
+  surprised to see an assertive statement &#34;don&#39;t use hyphens and
+  dashes&#34;.</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">
+Does a date belong in a name?
+</h2>
+<div id="outline-text-headline-3" class="outline-text-2">
+<p>One recommendation that seems pervasive is to start a filename with
+  a date, formatted according to ISO 8601,
+  e.g. <code class="verbatim">2021-12-10-file-naming.org</code>. It&#39;s hard to deny that <em>if</em> a
+  date is used, ISO 8601 is the way to go (as alphabetic sorting
+  produces chronological order). However, there is probably too much
+  emphasis on including the date at all.</p>
+<p>
+  If the date is an essential information (e.g. weather data collected
+  daily) or the chronology is of particular importance (e.g. meeting
+  notes, blog posts), then sure. Other than that? Probably redundant
+  in most cases. Arguably, it may even be considered bad practice,
+  especially when used to represent changes over time (honestly,
+  that&#39;s hardly different than adding &#34;_v1&#34;, &#34;v2&#34;, etc.) – that
+  problem is better solved by using actual version control. Perhaps
+  some of the drive for including the date comes from the fact that
+  creation date may or may not survive file transfer between
+  computers. But again, since version version control tools associate
+  each change with a date, this problem is also solved.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Is numbering helpful?
+</h2>
+<div id="outline-text-headline-4" class="outline-text-2">
+<p>Another common recommendation is to include a number at or near the
+  beginning: <code class="verbatim">01_this</code> or <code class="verbatim">analysis02_that</code>.  As with dates, one thing
+  is for sure: if you are including numbers and there is a chance of
+  going beyond 10, use zero padding (because alphabetic sorting is
+  done by single characters, <code class="verbatim">10_x</code> will land before <code class="verbatim">2_x</code> but not
+  <code class="verbatim">02_x</code>).  But I&#39;m not certain that the recommendation is universal.
+  In some cases, adding numbers will certainly be easy and look nice.
+  In some, however, you won&#39;t know the definitive order in advance,
+  and if somethings needs to be inserted in the middle, you will have
+  to sequentially rename all subsequent files.  In these cases, at
+  least for code, an alternative strategy would be to record the
+  correct order in a free-form description (readme file) or some sort
+  of a master script (e.g. makefile).  And again, using version
+  control provides an additional perspective.  If the outcome of
+  including numerals is <code class="verbatim">02_first-attempt</code> and
+  <code class="verbatim">04_an-improved-approach</code> then it really could just be
+  <code class="verbatim">the-analysis</code> with the evolution stored in version control history.</p>
+</div>
+</div>
+]]></content></item><item><title>The search for a perfect note taking app</title><link>https://mslw.github.io/posts/2021-11-01-note-taking-apps/</link><pubDate>Mon, 01 Nov 2021 17:50:00 +0100</pubDate><guid>https://mslw.github.io/posts/2021-11-01-note-taking-apps/</guid><description>A note taking app is essential: meeting notes, quick how-tos, sketches of ideas call for a simple and convenient tool. While note taking seems like a straightforward task, there is a surprising variety of programs, and it&amp;#39;s difficult to find a perfect one.
 So far I&amp;#39;ve had good experiences with Bear, Joplin, and Emacs with Org Mode. However, none of them came close enough to perfection for me to stick with it and forget about others.</description><content type="html"><![CDATA[
 <p>
 A note taking app is essential: meeting notes, quick how-tos, sketches of ideas call for a simple and convenient tool.
