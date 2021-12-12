@@ -1,9 +1,9 @@
 #+title: What makes a good file name
 #+layout: post
-#+date: 2021-11-25T19:30:00+0100
+#+date: 2021-12-12T22:45:00+0100
 #+author: Michał Szczepanik
 #+tags[]:
-#+draft: true
+#+draft: false
 
 One of the topics included in a research data management workshop with
 which I am involved is "what is a good file name". The question may
@@ -17,30 +17,35 @@ best practices]] from the MIT Libraries. It was interesting to see that,
 although the three sources agree on core principles, they make
 different specific recommendations. So the question "what is a good
 file name" is not as trivial as it might first seem. In this post I am
-trying to pick apart several of the recommendations trying to better
+trying to pick apart a few recommendations, trying to better
 understand where they might come from and whether I would agree with
 them or not.
 
-As a side note, the discussion also spawned a great appendix to the
-DataLad handbook [[https://handbook.datalad.org/en/latest/intro/filenaming.html][How to name a file: Interoperability considerations]].
+If you are interested in the subject, the discussion also spawned an
+entertaining and comprehensive appendix to the DataLad Handbook
+written by my colleague -- [[https://handbook.datalad.org/en/latest/intro/filenaming.html][How to name a file: Interoperability
+considerations]].
 
 * General principles
-  Sources agree that good filenames should make life easier when
-  working with files recorded a while ago. The three goals for file
-  names are best summarised as:
-  - machine readable
-  - human readable
-  - easy to sort and search
+  The three sources listed at the beginning agree that the goal of
+  file naming is to make life easier when working with files recorded
+  a while ago. The three rules they give for file names are best
+  summarised as:
+  - machine readable,
+  - human readable,
+  - easy to sort and search,
+  and it's hard not to agree on that.
 
 * Spaces are bad but what about hyphen?
   Sources also agree that spaces are best avoided. This comes, mainly,
-  for command line usage, which is a very popular way of interacting
+  from command line usage, which is a very popular way of interacting
   with data. In a command line, space is used to separate arguments of
   a command, so a file name (single argument) with spaces needs to be
   put in quotation marks ="like this"= or written with an escape
   character =like\ this=, which is plainly annoying. Even bigger
-  problems with quoting or escaping await when a file name needs to be
-  passed between programs.
+  problems await when a file name needs to be passed between programs,
+  and you may find yourself escaping quotation symbols or escape
+  characters themselves.
 
   A common recommendation, with which I agree, is to replace spaces
   with underscores and hyphens. The two can be combined and have
@@ -55,8 +60,9 @@ DataLad handbook [[https://handbook.datalad.org/en/latest/intro/filenaming.html]
   This can be taken further: the name can be constructed from
   key-value pairs, with hyphens separating key from value, and
   underscores separating pairs. This makes the pattern
-  self-explanatory and can be usefil if there are many possible units
-  of information, but different subsets of them are used. For example,
+  self-explanatory and can be useful if there are many possible units
+  of information, but different subsets are used between files. For
+  example, the previous name could be rewritten as
   =kind-sample_color-green_content-citylandscape.jpg=. Again, a
   programming language of your choice will have a key-value based
   representation and an easy way to create it from this name.
@@ -73,24 +79,43 @@ DataLad handbook [[https://handbook.datalad.org/en/latest/intro/filenaming.html]
   keyboard only has a hyphen. In my opinion, the adventages of having
   two word-separating characters far outweigh this risk, and I was
   surprised to see an assertive statement "don't use hyphens and
-  dashes" being made.
+  dashes".
   
 * Does a date belong in a name?
   One recommendation that seems pervasive is to start a filename with
   a date, formatted according to ISO 8601,
   e.g. =2021-12-10-file-naming.org=. It's hard to deny that /if/ a
-  date is used, ISO 8601 is the way to go (as it sorts
-  alphabetically). However, there is probably too much emphasis on
-  including the date at all.
+  date is used, ISO 8601 is the way to go (as alphabetic sorting
+  produces chronological order). However, there is probably too much
+  emphasis on including the date at all.
 
   If the date is an essential information (e.g. weather data collected
-  daily) or the chronology is particularly notable (e.g. meeting
+  daily) or the chronology is of particular importance (e.g. meeting
   notes, blog posts), then sure. Other than that? Probably redundant
   in most cases. Arguably, it may even be considered bad practice,
-  especially when used to represent changes over time (when it becomes
-  no different than adding "_v1", "v2", etc.) - that problem is better
-  solved by using actual version control. Perhaps some of the drive
-  for including the date comes from the fact that creation date may or
-  may not survive file transfer between computers. But again, version
-  control tools solve this problem by associating each change with a
-  date.
+  especially when used to represent changes over time (honestly,
+  that's hardly different than adding "_v1", "v2", etc.) -- that
+  problem is better solved by using actual version control. Perhaps
+  some of the drive for including the date comes from the fact that
+  creation date may or may not survive file transfer between
+  computers. But again, since version version control tools associate
+  each change with a date, this problem is also solved.
+
+* Is numbering helpful?
+  Another common recommendation is to include a number at or near the
+  beginning: =01_this= or =analysis02_that=.  As with dates, one thing
+  is for sure: if you are including numbers and there is a chance of
+  going beyond 10, use zero padding (because alphabetic sorting is
+  done by single characters, =10_x= will land before =2_x= but not
+  =02_x=).  But I'm not certain that the recommendation is universal.
+  In some cases, adding numbers will certainly be easy and look nice.
+  In some, however, you won't know the definitive order in advance,
+  and if somethings needs to be inserted in the middle, you will have
+  to sequentially rename all subsequent files.  In these cases, at
+  least for code, an alternative strategy would be to record the
+  correct order in a free-form description (readme file) or some sort
+  of a master script (e.g. makefile).  And again, using version
+  control provides an additional perspective.  If the outcome of
+  including numerals is =02_first-attempt= and
+  =04_an-improved-approach= then it really could just be
+  =the-analysis= with the evolution stored in version control history.
