@@ -4,3 +4,6 @@
 
 # hugo resources folder (generated content?)
 resources/
+
+# MacOS
+.DS_store
