@@ -2,7 +2,7 @@
 #+layout: post
 #+date: 2021-12-12T22:45:00+0100
 #+author: Michał Szczepanik
-#+tags[]:
+#+tags[]: randomthoughts
 #+draft: false
 
 One of the topics included in a research data management workshop with
