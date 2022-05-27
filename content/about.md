@@ -4,7 +4,7 @@ layout: default
 
 Michał Szczepanik
 
-Postdoc
+Postdoc  
 Psychoinformatics Lab, INM-7, Forschungszentrum Jülich
 
 Also at: 
