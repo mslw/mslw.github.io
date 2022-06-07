@@ -27,47 +27,31 @@
 <link rel=manifest href=/site.webmanifest>
 <link rel=mask-icon href=/safari-pinned-tab.svg color>
 <link rel="shortcut icon" href=/favicon.ico>
-<title>What makes a good file name</title>
-<link rel=stylesheet href=https://mslw.github.io/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin=anonymous>
+<title>What makes a good file name</title><link rel=stylesheet href=https://mslw.github.io/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin=anonymous>
 <link rel=stylesheet href=https://mslw.github.io/fontawesome/css/all.css>
 <link rel=stylesheet href=https://mslw.github.io/academicons/css/academicons.css>
-</head>
-<body id=page>
+</head><body id=page>
 <header id=site-header class="animated slideInUp">
 <div class="hdr-wrapper section-inner">
 <div class=hdr-left>
 <div class=site-branding>
 <a href=https://mslw.github.io/>Michał Szczepanik</a>
-</div>
-<nav class="site-nav hide-in-mobile">
+</div><nav class="site-nav hide-in-mobile">
 <a href=https://mslw.github.io/posts/>Posts</a>
 <a href=https://mslw.github.io/about>About</a>
-</nav>
-</div>
-<div class="hdr-right hdr-icons">
+</nav></div><div class="hdr-right hdr-icons">
 <span class="hdr-social hide-in-mobile"><a href=https://github.com/mslw target=_blank rel="noopener me" title=Github><i class="fab fa-github"></i></a><a href=https://orcid.org/0000-0002-4028-2087 target=_blank rel="noopener me" title=Orcid><i class="fab fa-orcid"></i></a></span><button id=menu-btn class=hdr-btn title=Menu><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-</div>
-</div>
-</header>
-<div id=mobile-menu class="animated fast">
+</div></div></header><div id=mobile-menu class="animated fast">
 <ul>
-<li><a href=https://mslw.github.io/posts/>Posts</a></li>
-<li><a href=https://mslw.github.io/about>About</a></li>
-</ul>
-</div>
-<main class="site-main section-inner animated fadeIn faster">
+<li><a href=https://mslw.github.io/posts/>Posts</a></li><li><a href=https://mslw.github.io/about>About</a></li></ul></div><main class="site-main section-inner animated fadeIn faster">
 <article class=thin>
 <header class=post-header>
-<div class=post-meta><span>Dec 12, 2021</span></div>
-<h1>What makes a good file name</h1>
-</header>
-<div class=content>
+<div class=post-meta><span>Dec 12, 2021</span></div><h1>What makes a good file name</h1></header><div class=content>
 <p>
 One of the topics included in a research data management workshop with
 which I am involved is "what is a good file name". The question may
 seem trivial, but naming files is an everyday practice with real
-consequences on data usability that isn't talked about very often.</p>
-<p>
+consequences on data usability that isn't talked about very often.</p><p>
 When looking for existing recommendations, we found a popular
 presentation <a href=http://www2.stat.duke.edu/~rcs46/lectures_2015/01-markdown-git/slides/naming-slides/naming-slides.pdf>Naming Things</a> by Jenny Bryan, a related presentation
 <a href=https://slides.djnavarro.net/project-structure/>Project Structure</a> by Danielle Navarro, and a colelction of <a href=https://libraries.mit.edu/data-management/store/organize/>File naming
@@ -77,40 +61,22 @@ different specific recommendations. So the question "what is a good
 file name" is not as trivial as it might first seem. In this post I am
 trying to pick apart a few recommendations, trying to better
 understand where they might come from and whether I would agree with
-them or not.</p>
-<p>
+them or not.</p><p>
 If you are interested in the subject, the discussion also spawned an
 entertaining and comprehensive appendix to the DataLad Handbook
 written by my colleague – <a href=https://handbook.datalad.org/en/latest/intro/filenaming.html>How to name a file: Interoperability
-considerations</a>.</p>
-<div id=outline-container-headline-1 class=outline-2>
+considerations</a>.</p><div id=outline-container-headline-1 class=outline-2>
 <h2 id=headline-1>
 General principles
-</h2>
-<div id=outline-text-headline-1 class=outline-text-2>
+</h2><div id=outline-text-headline-1 class=outline-text-2>
 <p>The three sources listed at the beginning agree that the goal of
 file naming is to make life easier when working with files recorded
 a while ago. The three rules they give for file names are best
-summarised as:</p>
-<ul>
-<li>
-<p>machine readable,</p>
-</li>
-<li>
-<p>human readable,</p>
-</li>
-<li>
-<p>easy to sort and search,</p>
-</li>
-</ul>
-<p>and it's hard not to agree on that.</p>
-</div>
-</div>
-<div id=outline-container-headline-2 class=outline-2>
+summarised as:</p><ul>
+<li>machine readable,</li><li>human readable,</li><li>easy to sort and search,</li></ul><p>and it's hard not to agree on that.</p></div></div><div id=outline-container-headline-2 class=outline-2>
 <h2 id=headline-2>
 Spaces are bad but what about hyphen?
-</h2>
-<div id=outline-text-headline-2 class=outline-text-2>
+</h2><div id=outline-text-headline-2 class=outline-text-2>
 <p>Sources also agree that spaces are best avoided. This comes, mainly,
 from command line usage, which is a very popular way of interacting
 with data. In a command line, space is used to separate arguments of
@@ -119,8 +85,7 @@ put in quotation marks <code class=verbatim>"like this"</code> or written with a
 character <code class=verbatim>like\ this</code>, which is plainly annoying. Even bigger
 problems await when a file name needs to be passed between programs,
 and you may find yourself escaping quotation symbols or escape
-characters themselves.</p>
-<p>
+characters themselves.</p><p>
 A common recommendation, with which I agree, is to replace spaces
 with underscores and hyphens. The two can be combined and have
 different meaning, with underscores separating units of information,
@@ -129,8 +94,7 @@ readability. For example, <code class=verbatim>sample_green_city-landscape.jpg</
 three units of information: category (sample), color (green) and
 content description (city landscape). Every common programming
 language will have a facility for easily splitting the name into
-three blocks.</p>
-<p>
+three blocks.</p><p>
 This can be taken further: the name can be constructed from
 key-value pairs, with hyphens separating key from value, and
 underscores separating pairs. This makes the pattern
@@ -139,8 +103,7 @@ of information, but different subsets are used between files. For
 example, the previous name could be rewritten as
 <code class=verbatim>kind-sample_color-green_content-citylandscape.jpg</code>. Again, a
 programming language of your choice will have a key-value based
-representation and an easy way to create it from this name.</p>
-<p>
+representation and an easy way to create it from this name.</p><p>
 Interestingly, one of the sources recommended that only underscores
 should be used, and hyphens must be avoided. The reasoning? That
 it's easy to confuse a hyphen (-) with an n-dash (–, a typographic
@@ -153,21 +116,16 @@ into a file name is when it gets copied from a document editor; the
 keyboard only has a hyphen. In my opinion, the adventages of having
 two word-separating characters far outweigh this risk, and I was
 surprised to see an assertive statement "don't use hyphens and
-dashes".</p>
-</div>
-</div>
-<div id=outline-container-headline-3 class=outline-2>
+dashes".</p></div></div><div id=outline-container-headline-3 class=outline-2>
 <h2 id=headline-3>
 Does a date belong in a name?
-</h2>
-<div id=outline-text-headline-3 class=outline-text-2>
+</h2><div id=outline-text-headline-3 class=outline-text-2>
 <p>One recommendation that seems pervasive is to start a filename with
 a date, formatted according to ISO 8601,
 e.g. <code class=verbatim>2021-12-10-file-naming.org</code>. It's hard to deny that <em>if</em> a
 date is used, ISO 8601 is the way to go (as alphabetic sorting
 produces chronological order). However, there is probably too much
-emphasis on including the date at all.</p>
-<p>
+emphasis on including the date at all.</p><p>
 If the date is an essential information (e.g. weather data collected
 daily) or the chronology is of particular importance (e.g. meeting
 notes, blog posts), then sure. Other than that? Probably redundant
@@ -178,14 +136,10 @@ problem is better solved by using actual version control. Perhaps
 some of the drive for including the date comes from the fact that
 creation date may or may not survive file transfer between
 computers. But again, since version version control tools associate
-each change with a date, this problem is also solved.</p>
-</div>
-</div>
-<div id=outline-container-headline-4 class=outline-2>
+each change with a date, this problem is also solved.</p></div></div><div id=outline-container-headline-4 class=outline-2>
 <h2 id=headline-4>
 Is numbering helpful?
-</h2>
-<div id=outline-text-headline-4 class=outline-text-2>
+</h2><div id=outline-text-headline-4 class=outline-text-2>
 <p>Another common recommendation is to include a number at or near the
 beginning: <code class=verbatim>01_this</code> or <code class=verbatim>analysis02_that</code>. As with dates, one thing
 is for sure: if you are including numbers and there is a chance of
@@ -202,34 +156,17 @@ of a master script (e.g. makefile). And again, using version
 control provides an additional perspective. If the outcome of
 including numerals is <code class=verbatim>02_first-attempt</code> and
 <code class=verbatim>04_an-improved-approach</code> then it really could just be
-<code class=verbatim>the-analysis</code> with the evolution stored in version control history.</p>
-</div>
-</div>
-</div>
-<hr class=post-end>
+<code class=verbatim>the-analysis</code> with the evolution stored in version control history.</p></div></div></div><hr class=post-end>
 <footer class=post-info>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>Michał Szczepanik</p>
-<p>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>Michał Szczepanik</p><p>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://mslw.github.io/tags/randomthoughts>randomthoughts</a></span>
-</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>991 Words</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-12-12 21:45 +0000</p>
-</footer>
-</article>
-<div class="post-nav thin">
+</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>991 Words</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-12-12 21:45 +0000</p></footer></article><div class="post-nav thin">
 <a class=prev-post href=https://mslw.github.io/posts/2021-11-01-note-taking-apps/>
 <span class=post-nav-label>Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span><br><span>The search for a perfect note taking app</span>
 </a>
-</div>
-<div id=comments class=thin>
-</div>
-</main>
-<footer id=site-footer class="section-inner thin animated fadeIn faster">
-<p>&copy; 2022 <a href=https://mslw.github.io/>Michał Szczepanik</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p>
-<p>
+</div><div id=comments class=thin>
+</div></main><footer id=site-footer class="section-inner thin animated fadeIn faster">
+<p>&copy; 2022 <a href=https://mslw.github.io/>Michał Szczepanik</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p><p>
 Made with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> &#183; Theme <a href=https://github.com/Track3/hermit target=_blank rel=noopener>Hermit</a> &#183; <a href=https://mslw.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a>
-</p>
-</footer>
-<script src=https://mslw.github.io/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin=anonymous></script>
-</body>
-</html>
+</p></footer><script src=https://mslw.github.io/js/bundle.min.8256b8724b9578bbdf6d6f04c894255bc760e78e8a2d60ec0a91ea993acd3b77.js integrity="sha256-gla4ckuVeLvfbW8EyJQlW8dg546KLWDsCpHqmTrNO3c=" crossorigin=anonymous></script>
+</body></html>

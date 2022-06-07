@@ -27,285 +27,170 @@
 <link rel=manifest href=/site.webmanifest>
 <link rel=mask-icon href=/safari-pinned-tab.svg color>
 <link rel="shortcut icon" href=/favicon.ico>
-<title>Combining nilearn plots</title>
-<link rel=stylesheet href=https://mslw.github.io/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin=anonymous>
+<title>Combining nilearn plots</title><link rel=stylesheet href=https://mslw.github.io/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin=anonymous>
 <link rel=stylesheet href=https://mslw.github.io/fontawesome/css/all.css>
 <link rel=stylesheet href=https://mslw.github.io/academicons/css/academicons.css>
-</head>
-<body id=page>
+</head><body id=page>
 <header id=site-header class="animated slideInUp">
 <div class="hdr-wrapper section-inner">
 <div class=hdr-left>
 <div class=site-branding>
 <a href=https://mslw.github.io/>Michał Szczepanik</a>
-</div>
-<nav class="site-nav hide-in-mobile">
+</div><nav class="site-nav hide-in-mobile">
 <a href=https://mslw.github.io/posts/>Posts</a>
 <a href=https://mslw.github.io/about>About</a>
-</nav>
-</div>
-<div class="hdr-right hdr-icons">
+</nav></div><div class="hdr-right hdr-icons">
 <span class="hdr-social hide-in-mobile"><a href=https://github.com/mslw target=_blank rel="noopener me" title=Github><i class="fab fa-github"></i></a><a href=https://orcid.org/0000-0002-4028-2087 target=_blank rel="noopener me" title=Orcid><i class="fab fa-orcid"></i></a></span><button id=menu-btn class=hdr-btn title=Menu><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-</div>
-</div>
-</header>
-<div id=mobile-menu class="animated fast">
+</div></div></header><div id=mobile-menu class="animated fast">
 <ul>
-<li><a href=https://mslw.github.io/posts/>Posts</a></li>
-<li><a href=https://mslw.github.io/about>About</a></li>
-</ul>
-</div>
-<main class="site-main section-inner animated fadeIn faster">
+<li><a href=https://mslw.github.io/posts/>Posts</a></li><li><a href=https://mslw.github.io/about>About</a></li></ul></div><main class="site-main section-inner animated fadeIn faster">
 <article class=thin>
 <header class=post-header>
-<div class=post-meta><span>Jun 1, 2021</span></div>
-<h1>Combining nilearn plots</h1>
-</header>
-<div class=content>
+<div class=post-meta><span>Jun 1, 2021</span></div><h1>Combining nilearn plots</h1></header><div class=content>
 <p>
-Visual presentation of brain results should be clear for the viewer, but the exact kind of a plot will depend on the result presented (just a single, super-important cluster? a scattering of voxels? widespread network?). Still, preferences vary, and finding the right way to present a given result may feel almost like finding one's own artistic voice.</p>
-<p>
-For the last given example (widespread activation of multiple brain regions), I have grown to prefer a montage of slices, accompanied by a glass-brain showing selected cuts.</p>
-<p>
-Below I will show how to do it using the plotting sub-module from <a href=https://nilearn.github.io/index.html>nilearn</a>. Combining several plots efficiently wasn't difficult to figure out thanks to nilearn's documentation, but it required a tiny bit of hackery. Also, I didn't find examples which cover combined plots directly, so here's hoping that I can fill a gap (and perhaps encourage you to use nilearn's plotting functions).</p>
-<p>
-My goal is to create, with a block of code, a complete figure which won't need editing (such as merging or scaling) in external programs. This way, any changes made between the initial and final version (e.g. change of slice coordinates) will be simple to make and won't consume much time - a huge advantage of creating figures programatically.</p>
-<div id=outline-container-headline-1 class=outline-2>
+Visual presentation of brain results should be clear for the viewer, but the exact kind of a plot will depend on the result presented (just a single, super-important cluster? a scattering of voxels? widespread network?). Still, preferences vary, and finding the right way to present a given result may feel almost like finding one's own artistic voice.</p><p>
+For the last given example (widespread activation of multiple brain regions), I have grown to prefer a montage of slices, accompanied by a glass-brain showing selected cuts.</p><p>
+Below I will show how to do it using the plotting sub-module from <a href=https://nilearn.github.io/index.html>nilearn</a>. Combining several plots efficiently wasn't difficult to figure out thanks to nilearn's documentation, but it required a tiny bit of hackery. Also, I didn't find examples which cover combined plots directly, so here's hoping that I can fill a gap (and perhaps encourage you to use nilearn's plotting functions).</p><p>
+My goal is to create, with a block of code, a complete figure which won't need editing (such as merging or scaling) in external programs. This way, any changes made between the initial and final version (e.g. change of slice coordinates) will be simple to make and won't consume much time - a huge advantage of creating figures programatically.</p><div id=outline-container-headline-1 class=outline-2>
 <h2 id=headline-1>
 Nilearn plotting: basic elements
-</h2>
-<div id=outline-text-headline-1 class=outline-text-2>
+</h2><div id=outline-text-headline-1 class=outline-text-2>
 <p>
-For fMRI activations, nilearn provides the <code>plot_stat_map</code> function (<a href=https://nilearn.github.io/modules/generated/nilearn.plotting.plot_stat_map.html>docs</a>). By default, it shows 3 cuts (axial, coronal, and saggital); several other display modes can be used. When a single direction of cuts is used, multiple slices are arranged in one row; for my desired view I will be aiming for two such rows.</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span><span class=n>stat_map</span><span class=p>,</span> <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span> <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;z&#39;</span><span class=p>,</span>
-	   <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>5</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>45</span><span class=p>])</span></code></pre></div>
-</div>
-<figure>
+For fMRI activations, nilearn provides the <code>plot_stat_map</code> function (<a href=https://nilearn.github.io/modules/generated/nilearn.plotting.plot_stat_map.html>docs</a>). By default, it shows 3 cuts (axial, coronal, and saggital); several other display modes can be used. When a single direction of cuts is used, multiple slices are arranged in one row; for my desired view I will be aiming for two such rows.</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span><span class=n>stat_map</span><span class=p>,</span> <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span> <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;z&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>	   <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>5</span><span class=p>,</span> <span class=mi>15</span><span class=p>,</span> <span class=mi>45</span><span class=p>])</span></span></span></code></pre></div></div><figure>
 <img src=/img/combining-nilearn-plots/fig1.png alt=/img/combining-nilearn-plots/fig1.png title=/img/combining-nilearn-plots/fig1.png><figcaption>
 Example output of plot_stat_map showing four axial slices.
-</figcaption>
-</figure>
-<p>
-The glass brain can be plotted with the <code>plot_glass_brain</code> function (<a href=https://nilearn.github.io/modules/generated/nilearn.plotting.plot_glass_brain.html>docs</a>). Conveniently, the plot axes behave as expected, so in a basic version you can simply call <code>axhline</code> from pyplot without any hassle, and give it millimeter coordinates (as a side note, you can set the first argument to <code>None</code> to plot just the glass brain, without any blobs).</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>plotting</span><span class=o>.</span><span class=n>plot_glass_brain</span><span class=p>(</span><span class=n>stat_map</span><span class=p>,</span> <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span> <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;x&#39;</span><span class=p>)</span>
-  <span class=n>plt</span><span class=o>.</span><span class=n>axhline</span><span class=p>(</span><span class=o>-</span><span class=mi>15</span><span class=p>)</span>
-  <span class=n>plt</span><span class=o>.</span><span class=n>axhline</span><span class=p>(</span><span class=mi>45</span><span class=p>)</span></code></pre></div>
-</div>
-<figure>
+</figcaption></figure><p>
+The glass brain can be plotted with the <code>plot_glass_brain</code> function (<a href=https://nilearn.github.io/modules/generated/nilearn.plotting.plot_glass_brain.html>docs</a>). Conveniently, the plot axes behave as expected, so in a basic version you can simply call <code>axhline</code> from pyplot without any hassle, and give it millimeter coordinates (as a side note, you can set the first argument to <code>None</code> to plot just the glass brain, without any blobs).</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>plotting</span><span class=o>.</span><span class=n>plot_glass_brain</span><span class=p>(</span><span class=n>stat_map</span><span class=p>,</span> <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span> <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;x&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=n>plt</span><span class=o>.</span><span class=n>axhline</span><span class=p>(</span><span class=o>-</span><span class=mi>15</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>  <span class=n>plt</span><span class=o>.</span><span class=n>axhline</span><span class=p>(</span><span class=mi>45</span><span class=p>)</span></span></span></code></pre></div></div><figure>
 <img src=/img/combining-nilearn-plots/fig2.png alt=/img/combining-nilearn-plots/fig2.png title=/img/combining-nilearn-plots/fig2.png><figcaption>
 Example output of plot_glass_brain with only the sagittal display, and horizontal lines added.
-</figcaption>
-</figure>
-<p>
-Crucially, both functions accept the <code>axes</code> optional parameter (from the docs):</p>
-<blockquote>
-<p><code>axes</code> matplotlib axes or 4 tuple of float: (xmin, ymin, width, height), optional</p>
-<p>
-The axes, or the coordinates, in matplotlib figure space, of the axes used to display the plot. If None, the complete figure is used.</p>
-</blockquote>
-<p>
-I will use this to build the combined figure. Using coordinates rather than matplotlib axes as input is more practical and allows more control over the figure (I tried creating an uneven subplot grid, but ended up with oddly large margins).</p>
-</div>
-</div>
-<div id=outline-container-headline-2 class=outline-2>
+</figcaption></figure><p>
+Crucially, both functions accept the <code>axes</code> optional parameter (from the docs):</p><blockquote>
+<p><code>axes</code> matplotlib axes or 4 tuple of float: (xmin, ymin, width, height), optional</p><p>
+The axes, or the coordinates, in matplotlib figure space, of the axes used to display the plot. If None, the complete figure is used.</p></blockquote><p>
+I will use this to build the combined figure. Using coordinates rather than matplotlib axes as input is more practical and allows more control over the figure (I tried creating an uneven subplot grid, but ended up with oddly large margins).</p></div></div><div id=outline-container-headline-2 class=outline-2>
 <h2 id=headline-2>
 Building the figure, beginning to end
-</h2>
-<div id=outline-text-headline-2 class=outline-text-2>
+</h2><div id=outline-text-headline-2 class=outline-text-2>
 <p>
-These are the packages which I'll be using. </p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=kn>from</span> <span class=nn>nilearn</span> <span class=kn>import</span> <span class=n>datasets</span><span class=p>,</span> <span class=n>image</span><span class=p>,</span> <span class=n>plotting</span>
-  <span class=kn>from</span> <span class=nn>matplotlib</span> <span class=kn>import</span> <span class=n>pyplot</span> <span class=k>as</span> <span class=n>plt</span>  <span class=c1># basic plotting functions</span>
-  <span class=kn>from</span> <span class=nn>matplotlib</span> <span class=kn>import</span> <span class=n>rc</span>             <span class=c1># additional styling</span>
-  <span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>                    <span class=c1># for working with image data</span>
-  <span class=kn>import</span> <span class=nn>seaborn</span> <span class=k>as</span> <span class=nn>sns</span>                 <span class=c1># nice colormaps</span></code></pre></div>
-</div>
-<div id=outline-container-headline-3 class=outline-3>
+These are the packages which I'll be using. </p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=kn>from</span> <span class=nn>nilearn</span> <span class=kn>import</span> <span class=n>datasets</span><span class=p>,</span> <span class=n>image</span><span class=p>,</span> <span class=n>plotting</span>
+</span></span><span class=line><span class=cl>  <span class=kn>from</span> <span class=nn>matplotlib</span> <span class=kn>import</span> <span class=n>pyplot</span> <span class=k>as</span> <span class=n>plt</span>  <span class=c1># basic plotting functions</span>
+</span></span><span class=line><span class=cl>  <span class=kn>from</span> <span class=nn>matplotlib</span> <span class=kn>import</span> <span class=n>rc</span>             <span class=c1># additional styling</span>
+</span></span><span class=line><span class=cl>  <span class=kn>import</span> <span class=nn>numpy</span> <span class=k>as</span> <span class=nn>np</span>                    <span class=c1># for working with image data</span>
+</span></span><span class=line><span class=cl>  <span class=kn>import</span> <span class=nn>seaborn</span> <span class=k>as</span> <span class=nn>sns</span>                 <span class=c1># nice colormaps</span></span></span></code></pre></div></div><div id=outline-container-headline-3 class=outline-3>
 <h3 id=headline-3>
 Data loading and preparation
-</h3>
-<div id=outline-text-headline-3 class=outline-text-3>
+</h3><div id=outline-text-headline-3 class=outline-text-3>
 <p>
-When choosing the data used for plotting, I will follow examples from nilearn and use the "neurovault motor task" from <code>nilearn.datasets</code> (when working with my own data, I would just load my own statistical map).</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>motor_images</span> <span class=o>=</span> <span class=n>datasets</span><span class=o>.</span><span class=n>fetch_neurovault_motor_task</span><span class=p>()</span>
-  <span class=n>img_path</span> <span class=o>=</span> <span class=n>motor_images</span><span class=o>.</span><span class=n>images</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=c1># or use path to own data</span>
-  <span class=n>orig_img</span> <span class=o>=</span> <span class=n>image</span><span class=o>.</span><span class=n>load_img</span><span class=p>(</span><span class=n>img_path</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-Since usually I am interested only in the positive contrast values, I will also clip the negative values from the image (for this particular contrast, <em>left vs right button press</em>, this hardly makes any sense, but it would be desired in many cases). This is also a simple way to guarantee that nilearn will include just the positive values on the colorbars.</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>stat_map</span> <span class=o>=</span> <span class=n>image</span><span class=o>.</span><span class=n>new_img_like</span><span class=p>(</span><span class=n>orig_img</span><span class=p>,</span> <span class=n>np</span><span class=o>.</span><span class=n>clip</span><span class=p>(</span><span class=n>orig_img</span><span class=o>.</span><span class=n>get_fdata</span><span class=p>(),</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>None</span><span class=p>))</span></code></pre></div>
-</div>
-</div>
-</div>
-<div id=outline-container-headline-4 class=outline-3>
+When choosing the data used for plotting, I will follow examples from nilearn and use the "neurovault motor task" from <code>nilearn.datasets</code> (when working with my own data, I would just load my own statistical map).</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>motor_images</span> <span class=o>=</span> <span class=n>datasets</span><span class=o>.</span><span class=n>fetch_neurovault_motor_task</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>  <span class=n>img_path</span> <span class=o>=</span> <span class=n>motor_images</span><span class=o>.</span><span class=n>images</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=c1># or use path to own data</span>
+</span></span><span class=line><span class=cl>  <span class=n>orig_img</span> <span class=o>=</span> <span class=n>image</span><span class=o>.</span><span class=n>load_img</span><span class=p>(</span><span class=n>img_path</span><span class=p>)</span></span></span></code></pre></div></div><p>
+Since usually I am interested only in the positive contrast values, I will also clip the negative values from the image (for this particular contrast, <em>left vs right button press</em>, this hardly makes any sense, but it would be desired in many cases). This is also a simple way to guarantee that nilearn will include just the positive values on the colorbars.</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>stat_map</span> <span class=o>=</span> <span class=n>image</span><span class=o>.</span><span class=n>new_img_like</span><span class=p>(</span><span class=n>orig_img</span><span class=p>,</span> <span class=n>np</span><span class=o>.</span><span class=n>clip</span><span class=p>(</span><span class=n>orig_img</span><span class=o>.</span><span class=n>get_fdata</span><span class=p>(),</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>None</span><span class=p>))</span></span></span></code></pre></div></div></div></div><div id=outline-container-headline-4 class=outline-3>
 <h3 id=headline-4>
 Some more preparation: colormap & font
-</h3>
-<div id=outline-text-headline-4 class=outline-text-3>
+</h3><div id=outline-text-headline-4 class=outline-text-3>
 <p>
-Before starting with the actual figure, let's prepare a colormap that is different from the default. I like the <em>icefire</em> palette from seaborn - it is perceptually uniform, and I think it looks better than nilearn's default <em>cold_hot</em> (you can read more in the <a href=http://seaborn.pydata.org/tutorial/color_palettes.html>Choosing color palettes</a> seaborn tutorial).</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>my_cm</span> <span class=o>=</span> <span class=n>sns</span><span class=o>.</span><span class=n>color_palette</span><span class=p>(</span><span class=s2>&#34;icefire&#34;</span><span class=p>,</span> <span class=n>as_cmap</span> <span class=o>=</span> <span class=kc>True</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-What's more, while <code>plot_stat_map</code> always uses <em>cold_hot</em> as default, <code>plot_glass_brain</code> has defaults depending on the background: <em>cold_hot</em> if black, <em>cold_white_hot</em> otherwise. While there is a logic to that, especially when the glass brain is on its own (high values are bright on black background and dark on white), if I kept the default colormaps and a white background for both plot types, I would end up with two distinct color schemes within the figure. When specifying a colormap explicitly, I can keep a single color bar (value ranges should match too).</p>
-<p>
-I will also specify font size using the <code>matplotlib.rc</code> convenience function (which can also be used to set other parameters, eg. font family, by adding more keyword arguments; see <a href=https://matplotlib.org/stable/tutorials/introductory/customizing.html>Customizing Matplotlib</a> for details).</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>rc</span><span class=p>(</span><span class=s1>&#39;font&#39;</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-Size 8 should be fine. Strangely enough, this will affect the colorbars, but not the labels next to slices; those will be changed separately.</p>
-</div>
-</div>
-<div id=outline-container-headline-5 class=outline-3>
+Before starting with the actual figure, let's prepare a colormap that is different from the default. I like the <em>icefire</em> palette from seaborn - it is perceptually uniform, and I think it looks better than nilearn's default <em>cold_hot</em> (you can read more in the <a href=http://seaborn.pydata.org/tutorial/color_palettes.html>Choosing color palettes</a> seaborn tutorial).</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>my_cm</span> <span class=o>=</span> <span class=n>sns</span><span class=o>.</span><span class=n>color_palette</span><span class=p>(</span><span class=s2>&#34;icefire&#34;</span><span class=p>,</span> <span class=n>as_cmap</span> <span class=o>=</span> <span class=kc>True</span><span class=p>)</span></span></span></code></pre></div></div><p>
+What's more, while <code>plot_stat_map</code> always uses <em>cold_hot</em> as default, <code>plot_glass_brain</code> has defaults depending on the background: <em>cold_hot</em> if black, <em>cold_white_hot</em> otherwise. While there is a logic to that, especially when the glass brain is on its own (high values are bright on black background and dark on white), if I kept the default colormaps and a white background for both plot types, I would end up with two distinct color schemes within the figure. When specifying a colormap explicitly, I can keep a single color bar (value ranges should match too).</p><p>
+I will also specify font size using the <code>matplotlib.rc</code> convenience function (which can also be used to set other parameters, eg. font family, by adding more keyword arguments; see <a href=https://matplotlib.org/stable/tutorials/introductory/customizing.html>Customizing Matplotlib</a> for details).</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>rc</span><span class=p>(</span><span class=s1>&#39;font&#39;</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></span></span></code></pre></div></div><p>
+Size 8 should be fine. Strangely enough, this will affect the colorbars, but not the labels next to slices; those will be changed separately.</p></div></div><div id=outline-container-headline-5 class=outline-3>
 <h3 id=headline-5>
 Creating an empty figure
-</h3>
-<div id=outline-text-headline-5 class=outline-text-3>
+</h3><div id=outline-text-headline-5 class=outline-text-3>
 <p>
-At this point, it is good to start thinking about the figure as an empty canvas, which we are going to fill with the brain images. Having to specify the figure size in inches rather than pixels may seem counterintuitive when we are looking at a computer screen, but choosing the right size will guarantee that the output will look good in print (e.g. text size settings will match those on the page).</p>
-<p>
-A4 paper is 210 × 297 mm or 8.3 × 11.7 in. For a full width figure, Elsevier <a href=https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing>recommends</a> going with 190 mm (7.48 in) and elife <a href=https://reviewer.elifesciences.org/author-guide/revised>recommends</a> 200 mm (7.87 in). Both recommend using a resolution of at least 300 dpi (so a full width column by Elsevier standards will end up 2244 pixels wide).</p>
-<p>
-For this example, I am choosing full page width. For height, I am going to use a bit less than a third of the page. Within this space, I want to include two rows, one with three three brain slices, and one with four (the brains will come out quite large - probably even six slices per row should be perfectly legible), and place a single glass brain on the side, in the row with less slices. Don't be afraid to use a pen and (gridded) paper when planning your figure.</p>
-<p>
-Having made the decision, I can create the figure with the specified size:</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python>  <span class=n>fig</span> <span class=o>=</span> <span class=n>plt</span><span class=o>.</span><span class=n>figure</span><span class=p>(</span><span class=n>figsize</span><span class=o>=</span><span class=p>(</span><span class=mf>7.87</span><span class=p>,</span> <span class=mf>3.5</span><span class=p>),</span> <span class=n>dpi</span><span class=o>=</span><span class=mi>300</span><span class=p>)</span></code></pre></div>
-</div>
-</div>
-</div>
-<div id=outline-container-headline-6 class=outline-3>
+At this point, it is good to start thinking about the figure as an empty canvas, which we are going to fill with the brain images. Having to specify the figure size in inches rather than pixels may seem counterintuitive when we are looking at a computer screen, but choosing the right size will guarantee that the output will look good in print (e.g. text size settings will match those on the page).</p><p>
+A4 paper is 210 × 297 mm or 8.3 × 11.7 in. For a full width figure, Elsevier <a href=https://www.elsevier.com/authors/policies-and-guidelines/artwork-and-media-instructions/artwork-sizing>recommends</a> going with 190 mm (7.48 in) and elife <a href=https://reviewer.elifesciences.org/author-guide/revised>recommends</a> 200 mm (7.87 in). Both recommend using a resolution of at least 300 dpi (so a full width column by Elsevier standards will end up 2244 pixels wide).</p><p>
+For this example, I am choosing full page width. For height, I am going to use a bit less than a third of the page. Within this space, I want to include two rows, one with three three brain slices, and one with four (the brains will come out quite large - probably even six slices per row should be perfectly legible), and place a single glass brain on the side, in the row with less slices. Don't be afraid to use a pen and (gridded) paper when planning your figure.</p><p>
+Having made the decision, I can create the figure with the specified size:</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl>  <span class=n>fig</span> <span class=o>=</span> <span class=n>plt</span><span class=o>.</span><span class=n>figure</span><span class=p>(</span><span class=n>figsize</span><span class=o>=</span><span class=p>(</span><span class=mf>7.87</span><span class=p>,</span> <span class=mf>3.5</span><span class=p>),</span> <span class=n>dpi</span><span class=o>=</span><span class=mi>300</span><span class=p>)</span></span></span></code></pre></div></div></div></div><div id=outline-container-headline-6 class=outline-3>
 <h3 id=headline-6>
 Plotting: stat map
-</h3>
-<div id=outline-text-headline-6 class=outline-text-3>
+</h3><div id=outline-text-headline-6 class=outline-text-3>
 <p>
-It's time to start the actual plotting. Let's start with the lower part of the picture, showing three axial slices (explanations below).</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>sm_lower</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span>
-    <span class=n>stat_map_img</span> <span class=o>=</span> <span class=n>stat_map</span><span class=p>,</span>
-    <span class=n>threshold</span> <span class=o>=</span> <span class=mf>3.21</span><span class=p>,</span>
-    <span class=n>display_mode</span> <span class=o>=</span> <span class=s1>&#39;z&#39;</span><span class=p>,</span>
-    <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>20</span><span class=p>,</span> <span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>10</span><span class=p>],</span>
-    <span class=n>annotate</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
-    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
-    <span class=n>axes</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mf>0.75</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
-    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
-    <span class=n>colorbar</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
-<span class=p>)</span>
-
-<span class=n>sm_lower</span><span class=o>.</span><span class=n>annotate</span><span class=p>(</span><span class=n>left_right</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>positions</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-The first argument is the statistical map image to display, and the second is the threshold. Next, <code>display_mode = 'z'</code> means that axial slices will be shown, and <code>cut_coords = [-20, -15, -10]</code> specifies which. I am setting <code>annotate = False</code> (meaning no labels with position and left / right) because this function does not accept arguments for annotation font size (and it doesn't follow the general rc setting); instead, I add annotations afterwards, with a separate function call. With <code>figure = fig</code>, I am telling the function to draw onto the figure created previously. The <code>axes = (xmin, ymin, width, height)</code> is specified in the figure space (1 = entire width / height), allowing us to do this independently from the actual size in inches. For this part, I want to start in the lower left corner (0, 0), use three-quarters of the width (0.75) and almost half the height (0.48, because using all 0.5 made things look overcrowded). I am explicit with the <code>cmap</code> I use, and I don't want to show the <code>colorbar</code> here; I will put one next to the glass brain later on.</p>
-<p>
-The same goes for the upper part of the figure, although this time I am starting a tiny bit above the midline, and using the whole width with <code>axes = (0, 0.51, 1, 0.48)</code> to show four slices:</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>sm_upper</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span>
-    <span class=n>stat_map_img</span> <span class=o>=</span> <span class=n>stat_map</span><span class=p>,</span>
-    <span class=n>threshold</span> <span class=o>=</span> <span class=mf>3.21</span><span class=p>,</span>
-    <span class=n>display_mode</span> <span class=o>=</span> <span class=s1>&#39;z&#39;</span><span class=p>,</span>
-    <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=mi>20</span><span class=p>,</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>60</span><span class=p>],</span>
-    <span class=n>annotate</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
-    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
-    <span class=n>axes</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mf>0.51</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
-    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
-    <span class=n>colorbar</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
-<span class=p>)</span>
-
-<span class=n>sm_upper</span><span class=o>.</span><span class=n>annotate</span><span class=p>(</span><span class=n>left_right</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>positions</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></code></pre></div>
-</div>
-</div>
-</div>
-<div id=outline-container-headline-7 class=outline-3>
+It's time to start the actual plotting. Let's start with the lower part of the picture, showing three axial slices (explanations below).</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>sm_lower</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>stat_map_img</span> <span class=o>=</span> <span class=n>stat_map</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>threshold</span> <span class=o>=</span> <span class=mf>3.21</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>display_mode</span> <span class=o>=</span> <span class=s1>&#39;z&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>20</span><span class=p>,</span> <span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>10</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=n>annotate</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>axes</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mf>0.75</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>colorbar</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>sm_lower</span><span class=o>.</span><span class=n>annotate</span><span class=p>(</span><span class=n>left_right</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>positions</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></span></span></code></pre></div></div><p>
+The first argument is the statistical map image to display, and the second is the threshold. Next, <code>display_mode = 'z'</code> means that axial slices will be shown, and <code>cut_coords = [-20, -15, -10]</code> specifies which. I am setting <code>annotate = False</code> (meaning no labels with position and left / right) because this function does not accept arguments for annotation font size (and it doesn't follow the general rc setting); instead, I add annotations afterwards, with a separate function call. With <code>figure = fig</code>, I am telling the function to draw onto the figure created previously. The <code>axes = (xmin, ymin, width, height)</code> is specified in the figure space (1 = entire width / height), allowing us to do this independently from the actual size in inches. For this part, I want to start in the lower left corner (0, 0), use three-quarters of the width (0.75) and almost half the height (0.48, because using all 0.5 made things look overcrowded). I am explicit with the <code>cmap</code> I use, and I don't want to show the <code>colorbar</code> here; I will put one next to the glass brain later on.</p><p>
+The same goes for the upper part of the figure, although this time I am starting a tiny bit above the midline, and using the whole width with <code>axes = (0, 0.51, 1, 0.48)</code> to show four slices:</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>sm_upper</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_stat_map</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>stat_map_img</span> <span class=o>=</span> <span class=n>stat_map</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>threshold</span> <span class=o>=</span> <span class=mf>3.21</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>display_mode</span> <span class=o>=</span> <span class=s1>&#39;z&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>cut_coords</span> <span class=o>=</span> <span class=p>[</span><span class=mi>20</span><span class=p>,</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>60</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=n>annotate</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>axes</span> <span class=o>=</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mf>0.51</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>colorbar</span> <span class=o>=</span> <span class=kc>False</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>sm_upper</span><span class=o>.</span><span class=n>annotate</span><span class=p>(</span><span class=n>left_right</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span> <span class=n>positions</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>size</span><span class=o>=</span><span class=mi>8</span><span class=p>)</span></span></span></code></pre></div></div></div></div><div id=outline-container-headline-7 class=outline-3>
 <h3 id=headline-7>
 Plotting: glass brain
-</h3>
-<div id=outline-text-headline-7 class=outline-text-3>
+</h3><div id=outline-text-headline-7 class=outline-text-3>
 <p>
-Now comes the time for the glass brain. Since I used axial slices before, I will mark them on the sagittal view: <code>display_mode='x'</code>. I will put the glass brain on the lower right: <code>axes=(0.8, 0, 0.2, 0.48)</code> (proportions for the glass brain are slightly different, and 0.2 width seems just right). Again, I am explicit with <code>cmap</code>, but this time I do want to show the <code>colorbar</code>.</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>gb</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_glass_brain</span><span class=p>(</span>
-    <span class=n>stat_map</span><span class=p>,</span>
-    <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span>
-    <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;x&#39;</span><span class=p>,</span>
-    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
-    <span class=n>axes</span><span class=o>=</span><span class=p>(</span><span class=mf>0.8</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mf>0.2</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
-    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
-    <span class=n>colorbar</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
-<span class=p>)</span></code></pre></div>
-</div>
-<p>
-Note that because we used the same colormap across all three figure parts, and <code>plot_stat_map</code> scales itself to the maximum of the entire image regardless of selected slices, this colorbar will be valid for the entire figure. If we were showing positive and negative values, we would also gave to set <code>plot_abs=False</code> for the glass brain. To make sure that the scales match, you can try enabling the colorbar everywhere before making the final version.</p>
-<p>
-And here comes the last tricky part: marking the slices. When placed onto a figure, the glass brain creates its own set of <code>GlassBrainAxes</code> (three if all slices are shown; only one in our case). This means we cannot work directly with the object we created, <code>gb</code>. Before adding lines, we need to unpack it a little to get to the relevant <code>Axes</code> object: <code>gb.axes[&lt;slice>].ax</code> is what we want. We will get the start and end points with <code>get_object_bounds()</code> (we could also know the MNI brain size by heart and just hardcode the values) and draw all lines at once with <code>hlines</code>.</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>bounds</span> <span class=o>=</span> <span class=n>gb</span><span class=o>.</span><span class=n>axes</span><span class=p>[</span><span class=s1>&#39;x&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>get_object_bounds</span><span class=p>()</span>
-<span class=n>gb</span><span class=o>.</span><span class=n>axes</span><span class=p>[</span><span class=s1>&#39;x&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>ax</span><span class=o>.</span><span class=n>hlines</span><span class=p>(</span>
-    <span class=n>y</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>20</span><span class=p>,</span> <span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>10</span><span class=p>,</span> <span class=mi>20</span><span class=p>,</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>60</span><span class=p>],</span> 
-    <span class=n>xmin</span> <span class=o>=</span> <span class=n>bounds</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span>
-    <span class=n>xmax</span> <span class=o>=</span> <span class=n>bounds</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span>
-    <span class=n>color</span><span class=o>=</span><span class=s1>&#39;gray&#39;</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-One final note: in practice, I would store the cut coordinates in a list and refer to it both when plotting brains and drawing lines to minimze errors. However, for demonstration I decided to be explicit.</p>
-</div>
-</div>
-<div id=outline-container-headline-8 class=outline-3>
+Now comes the time for the glass brain. Since I used axial slices before, I will mark them on the sagittal view: <code>display_mode='x'</code>. I will put the glass brain on the lower right: <code>axes=(0.8, 0, 0.2, 0.48)</code> (proportions for the glass brain are slightly different, and 0.2 width seems just right). Again, I am explicit with <code>cmap</code>, but this time I do want to show the <code>colorbar</code>.</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>gb</span> <span class=o>=</span> <span class=n>plotting</span><span class=o>.</span><span class=n>plot_glass_brain</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>stat_map</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>threshold</span><span class=o>=</span><span class=mf>3.21</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>display_mode</span><span class=o>=</span><span class=s1>&#39;x&#39;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>figure</span> <span class=o>=</span> <span class=n>fig</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>axes</span><span class=o>=</span><span class=p>(</span><span class=mf>0.8</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mf>0.2</span><span class=p>,</span> <span class=mf>0.48</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>    <span class=n>cmap</span> <span class=o>=</span> <span class=n>my_cm</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=n>colorbar</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span>
+</span></span><span class=line><span class=cl><span class=p>)</span></span></span></code></pre></div></div><p>
+Note that because we used the same colormap across all three figure parts, and <code>plot_stat_map</code> scales itself to the maximum of the entire image regardless of selected slices, this colorbar will be valid for the entire figure. If we were showing positive and negative values, we would also gave to set <code>plot_abs=False</code> for the glass brain. To make sure that the scales match, you can try enabling the colorbar everywhere before making the final version.</p><p>
+And here comes the last tricky part: marking the slices. When placed onto a figure, the glass brain creates its own set of <code>GlassBrainAxes</code> (three if all slices are shown; only one in our case). This means we cannot work directly with the object we created, <code>gb</code>. Before adding lines, we need to unpack it a little to get to the relevant <code>Axes</code> object: <code>gb.axes[&lt;slice>].ax</code> is what we want. We will get the start and end points with <code>get_object_bounds()</code> (we could also know the MNI brain size by heart and just hardcode the values) and draw all lines at once with <code>hlines</code>.</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>bounds</span> <span class=o>=</span> <span class=n>gb</span><span class=o>.</span><span class=n>axes</span><span class=p>[</span><span class=s1>&#39;x&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>get_object_bounds</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=n>gb</span><span class=o>.</span><span class=n>axes</span><span class=p>[</span><span class=s1>&#39;x&#39;</span><span class=p>]</span><span class=o>.</span><span class=n>ax</span><span class=o>.</span><span class=n>hlines</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>    <span class=n>y</span> <span class=o>=</span> <span class=p>[</span><span class=o>-</span><span class=mi>20</span><span class=p>,</span> <span class=o>-</span><span class=mi>15</span><span class=p>,</span> <span class=o>-</span><span class=mi>10</span><span class=p>,</span> <span class=mi>20</span><span class=p>,</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>60</span><span class=p>],</span> 
+</span></span><span class=line><span class=cl>    <span class=n>xmin</span> <span class=o>=</span> <span class=n>bounds</span><span class=p>[</span><span class=mi>0</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=n>xmax</span> <span class=o>=</span> <span class=n>bounds</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span>
+</span></span><span class=line><span class=cl>    <span class=n>color</span><span class=o>=</span><span class=s1>&#39;gray&#39;</span><span class=p>)</span></span></span></code></pre></div></div><p>
+One final note: in practice, I would store the cut coordinates in a list and refer to it both when plotting brains and drawing lines to minimze errors. However, for demonstration I decided to be explicit.</p></div></div><div id=outline-container-headline-8 class=outline-3>
 <h3 id=headline-8>
 Saving
-</h3>
-<div id=outline-text-headline-8 class=outline-text-3>
+</h3><div id=outline-text-headline-8 class=outline-text-3>
 <p>
-And finally comes the last part: saving. We can do this with one siple call, and we can specify either png or pdf extension to determine the file format.</p>
-<div class="src src-python">
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>fig</span><span class=o>.</span><span class=n>savefig</span><span class=p>(</span><span class=s1>&#39;/my/path/figure.png&#39;</span><span class=p>)</span></code></pre></div>
-</div>
-<p>
-This is the result:</p>
-<figure>
+And finally comes the last part: saving. We can do this with one siple call, and we can specify either png or pdf extension to determine the file format.</p><div class="src src-python">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>fig</span><span class=o>.</span><span class=n>savefig</span><span class=p>(</span><span class=s1>&#39;/my/path/figure.png&#39;</span><span class=p>)</span></span></span></code></pre></div></div><p>
+This is the result:</p><figure>
 <img src=/img/combining-nilearn-plots/combined_figure.png alt=/img/combining-nilearn-plots/combined_figure.png title=/img/combining-nilearn-plots/combined_figure.png><figcaption>
 A combined figure
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-<hr class=post-end>
+</figcaption></figure></div></div></div></div></div><hr class=post-end>
 <footer class=post-info>
 <p>
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://mslw.github.io/tags/software>software</a></span><span class=tag><a href=https://mslw.github.io/tags/python>python</a></span><span class=tag><a href=https://mslw.github.io/tags/tips-tricks>tips-tricks</a></span><span class=tag><a href=https://mslw.github.io/tags/neuroscience>neuroscience</a></span>
-</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>1765 Words</p>
-<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-06-01 21:45 +0000</p>
-</footer>
-</article>
-<div class="post-nav thin">
+</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>1765 Words</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021-06-01 21:45 +0000</p></footer></article><div class="post-nav thin">
 <a class=next-post href=https://mslw.github.io/posts/2021-11-01-note-taking-apps/>
 <span class=post-nav-label><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>&nbsp;Newer</span><br><span>The search for a perfect note taking app</span>
 </a>
 <a class=prev-post href=https://mslw.github.io/posts/2021-05-05-matlab-table-string/>
 <span class=post-nav-label>Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span><br><span>Matlab table & string</span>
 </a>
-</div>
-<div id=comments class=thin>
-</div>
-</main>
-<footer id=site-footer class="section-inner thin animated fadeIn faster">
-<p>&copy; 2022 <a href=https://mslw.github.io/>Michał Szczepanik</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p>
-<p>
+</div><div id=comments class=thin>
+</div></main><footer id=site-footer class="section-inner thin animated fadeIn faster">
+<p>&copy; 2022 <a href=https://mslw.github.io/>Michał Szczepanik</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p><p>
 Made with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> &#183; Theme <a href=https://github.com/Track3/hermit target=_blank rel=noopener>Hermit</a> &#183; <a href=https://mslw.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a>
-</p>
-</footer>
-<script src=https://mslw.github.io/js/bundle.min.7d8545daa55d62427355498dd8da13f98ff79a7938ce7d2a5e2ae1ec0de3beb8.js integrity="sha256-fYVF2qVdYkJzVUmN2NoT+Y/3mnk4zn0qXirh7A3jvrg=" crossorigin=anonymous></script>
-</body>
-</html>
+</p></footer><script src=https://mslw.github.io/js/bundle.min.8256b8724b9578bbdf6d6f04c894255bc760e78e8a2d60ec0a91ea993acd3b77.js integrity="sha256-gla4ckuVeLvfbW8EyJQlW8dg546KLWDsCpHqmTrNO3c=" crossorigin=anonymous></script>
+</body></html>

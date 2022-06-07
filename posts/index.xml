@@ -31,15 +31,9 @@ General principles
   a while ago. The three rules they give for file names are best
   summarised as:</p>
 <ul>
-<li>
-<p>machine readable,</p>
-</li>
-<li>
-<p>human readable,</p>
-</li>
-<li>
-<p>easy to sort and search,</p>
-</li>
+<li>machine readable,</li>
+<li>human readable,</li>
+<li>easy to sort and search,</li>
 </ul>
 <p>and it&#39;s hard not to agree on that.</p>
 </div>
@@ -161,28 +155,14 @@ What I&#39;m looking for
 </h2>
 <div id="outline-text-headline-1" class="outline-text-2">
 <ul>
-<li>
-<p>Simple, inobtrusive, elegant interface, which allows focusing on the content.</p>
-</li>
-<li>
-<p>Basic formatting support (including monospaced code fragments).
-Ideally done through a markup language (Markdown or similar), so things like emphasis, lists, URLs and code snippets can be entered using keyboard only.</p>
-</li>
-<li>
-<p>Possibility of synchronisation between devices, so the notes can exist independently from a machine where they were typed.</p>
-</li>
-<li>
-<p>Support for independent hosting providers, so registering yet another account with the app creator is not necessary (distinction between app and service).</p>
-</li>
-<li>
-<p>Raw text storage (or at least export), so it&#39;s easy to read notes without the app or move them to another one.</p>
-</li>
-<li>
-<p>Export capabilities, so it&#39;s easy to generate e.g. a PDF when needed.</p>
-</li>
-<li>
-<p>Useful search ability, so it&#39;s easy to find an old note.</p>
-</li>
+<li>Simple, inobtrusive, elegant interface, which allows focusing on the content.</li>
+<li>Basic formatting support (including monospaced code fragments).
+Ideally done through a markup language (Markdown or similar), so things like emphasis, lists, URLs and code snippets can be entered using keyboard only.</li>
+<li>Possibility of synchronisation between devices, so the notes can exist independently from a machine where they were typed.</li>
+<li>Support for independent hosting providers, so registering yet another account with the app creator is not necessary (distinction between app and service).</li>
+<li>Raw text storage (or at least export), so it&#39;s easy to read notes without the app or move them to another one.</li>
+<li>Export capabilities, so it&#39;s easy to generate e.g. a PDF when needed.</li>
+<li>Useful search ability, so it&#39;s easy to find an old note.</li>
 </ul>
 </div>
 </div>
@@ -199,29 +179,17 @@ Pros
 </h3>
 <div id="outline-text-headline-3" class="outline-text-3">
 <ul>
-<li>
-<p>The most elegant interface I have encountered so far.
+<li>The most elegant interface I have encountered so far.
 From fonts and colours to display layout, everything seems well thought out.
 The sidebars can be hidden with a simple shortcut, leaving a perfectly simple, distraction-free slate of text.
 The text is width-limited on a page for optimal readability.
-Header levels and bullet points are subtly displayed in the left margin.</p>
-</li>
-<li>
-<p>Editing is markdown-based.
-Formatting is applied live in the same window, and visual presentation is clever (eg. most formatting symbols are kept gently blended with the background).</p>
-</li>
-<li>
-<p>Provides ready-made themes, including classics such as <a href="https://ethanschoonover.com/solarized/">Solarized</a>, <a href="https://draculatheme.com/">Dracula</a> and <a href="https://www.nordtheme.com/">Nord</a>.</p>
-</li>
-<li>
-<p>Organises notes by tags, replacing the more common structure of notebooks.</p>
-</li>
-<li>
-<p>Exported PDFs look nice, supports many different formats.</p>
-</li>
-<li>
-<p>Being MacOS native, uses iCloud in the background for storage, which eliminates the need for additional hosting.</p>
-</li>
+Header levels and bullet points are subtly displayed in the left margin.</li>
+<li>Editing is markdown-based.
+Formatting is applied live in the same window, and visual presentation is clever (eg. most formatting symbols are kept gently blended with the background).</li>
+<li>Provides ready-made themes, including classics such as <a href="https://ethanschoonover.com/solarized/">Solarized</a>, <a href="https://draculatheme.com/">Dracula</a> and <a href="https://www.nordtheme.com/">Nord</a>.</li>
+<li>Organises notes by tags, replacing the more common structure of notebooks.</li>
+<li>Exported PDFs look nice, supports many different formats.</li>
+<li>Being MacOS native, uses iCloud in the background for storage, which eliminates the need for additional hosting.</li>
 </ul>
 </div>
 </div>
@@ -231,13 +199,9 @@ Cons
 </h3>
 <div id="outline-text-headline-4" class="outline-text-3">
 <ul>
-<li>
-<p>MacOS native, won&#39;t work outside Apple ecosystem.</p>
-</li>
-<li>
-<p>Fully functional version is paid in a subscription model, $15 per year.
-There is a free version, which lacks some of the features listed above.</p>
-</li>
+<li>MacOS native, won&#39;t work outside Apple ecosystem.</li>
+<li>Fully functional version is paid in a subscription model, $15 per year.
+There is a free version, which lacks some of the features listed above.</li>
 </ul>
 </div>
 </div>
@@ -256,26 +220,14 @@ Pros
 </h3>
 <div id="outline-text-headline-6" class="outline-text-3">
 <ul>
-<li>
-<p>Free and open source, most of the codebase is MIT-licensed.</p>
-</li>
-<li>
-<p>Editing is markdown-based.
-Unlike Bear, the default view has two panels, one with markdown (with syntax highlighting), the other with fully rendered text.</p>
-</li>
-<li>
-<p>Can synchronise with Dropbox, OneDrive, NextCloud, generic WebDAV and others.
-Provides optional encryption for transport and storage.</p>
-</li>
-<li>
-<p>Provides ready-made themes (also including Solarized, Dracula, and Nord) and the ability to select fonts.</p>
-</li>
-<li>
-<p>Exports to PDF and others (I haven&#39;t tested export though).</p>
-</li>
-<li>
-<p>Available across platforms, including mobile.</p>
-</li>
+<li>Free and open source, most of the codebase is MIT-licensed.</li>
+<li>Editing is markdown-based.
+Unlike Bear, the default view has two panels, one with markdown (with syntax highlighting), the other with fully rendered text.</li>
+<li>Can synchronise with Dropbox, OneDrive, NextCloud, generic WebDAV and others.
+Provides optional encryption for transport and storage.</li>
+<li>Provides ready-made themes (also including Solarized, Dracula, and Nord) and the ability to select fonts.</li>
+<li>Exports to PDF and others (I haven&#39;t tested export though).</li>
+<li>Available across platforms, including mobile.</li>
 </ul>
 </div>
 </div>
@@ -285,25 +237,15 @@ Cons
 </h3>
 <div id="outline-text-headline-7" class="outline-text-3">
 <ul>
-<li>
-<p>The two-panel markdown view eats up space.
+<li>The two-panel markdown view eats up space.
 With side panels shown, the view is cramped, and with them hidden it still requires a sizeable part of the screen.
-It feels like it has been designed with fullscreen use in mind.</p>
-</li>
-<li>
-<p>The UI is busier then Bear&#39;s.</p>
-</li>
-<li>
-<p>Looks like it tries to be a replacement for Evernote.</p>
-</li>
-<li>
-<p>Uses AppImage on Linux (there are no official packages, snaps, or flatpaks) and the best way to install is through their own install script.</p>
-</li>
-<li>
-<p>Bug fixes may take time.
+It feels like it has been designed with fullscreen use in mind.</li>
+<li>The UI is busier then Bear&#39;s.</li>
+<li>Looks like it tries to be a replacement for Evernote.</li>
+<li>Uses AppImage on Linux (there are no official packages, snaps, or flatpaks) and the best way to install is through their own install script.</li>
+<li>Bug fixes may take time.
 Recently, changes in Let&#39;s Encrypt certificates <a href="https://discourse.joplinapp.org/t/letsencrypt-root-ca-certificate-expiration/20635">required an update to an underlying library</a> which largely disabled synchronisation for a few weeks.
-However, changes were communicated quickly, everything is back to normal, and such breaking changes are rare occurences anyway.</p>
-</li>
+However, changes were communicated quickly, everything is back to normal, and such breaking changes are rare occurences anyway.</li>
 </ul>
 </div>
 </div>
@@ -322,23 +264,13 @@ Pros
 </h3>
 <div id="outline-text-headline-9" class="outline-text-3">
 <ul>
-<li>
-<p>The most ascetic of them all.</p>
-</li>
-<li>
-<p>Uses org syntax, natively supported in emacs, which works quite nice for notes.
-A case <a href="https://karl-voit.at/2017/09/23/orgmode-as-markup-only/">can be made</a> for org over markdown, at least from some angles.</p>
-</li>
-<li>
-<p>Org files are text files which you can organise and manage the way you want to.
-While emacs has a lot of native functionality for them, they are not emacs-specific and can be written in any editor.</p>
-</li>
-<li>
-<p>Everything is done with keyboard only.</p>
-</li>
-<li>
-<p>Synchronisation with any hosting solution (including Nextcloud) is easy to achieve using <a href="https://rclone.org/">rclone</a>, an external command-line tool.</p>
-</li>
+<li>The most ascetic of them all.</li>
+<li>Uses org syntax, natively supported in emacs, which works quite nice for notes.
+A case <a href="https://karl-voit.at/2017/09/23/orgmode-as-markup-only/">can be made</a> for org over markdown, at least from some angles.</li>
+<li>Org files are text files which you can organise and manage the way you want to.
+While emacs has a lot of native functionality for them, they are not emacs-specific and can be written in any editor.</li>
+<li>Everything is done with keyboard only.</li>
+<li>Synchronisation with any hosting solution (including Nextcloud) is easy to achieve using <a href="https://rclone.org/">rclone</a>, an external command-line tool.</li>
 </ul>
 </div>
 </div>
@@ -348,22 +280,14 @@ Cons
 </h3>
 <div id="outline-text-headline-10" class="outline-text-3">
 <ul>
-<li>
-<p>Since emacs is a world on its own, org + emacs probably won&#39;t appeal to people who aren&#39;t using emacs already.</p>
-</li>
-<li>
-<p>Emacs has a lot of org-specific behaviour.
-While this may be a good thing, it also means that there is a lot to memorise.</p>
-</li>
-<li>
-<p>There is no standard way for managing note collections.
+<li>Since emacs is a world on its own, org + emacs probably won&#39;t appeal to people who aren&#39;t using emacs already.</li>
+<li>Emacs has a lot of org-specific behaviour.
+While this may be a good thing, it also means that there is a lot to memorise.</li>
+<li>There is no standard way for managing note collections.
 Some people on the Internet suggest having one huge file with collapsible headings.
 I prefer to have one note in one file, but it makes searching harder.
-There may be some extensions for managing many files, but for now I rely on a date-slug names and directory listing.</p>
-</li>
-<li>
-<p>Synchronisation is not built in, so it requires additional software and is an action on its own.</p>
-</li>
+There may be some extensions for managing many files, but for now I rely on a date-slug names and directory listing.</li>
+<li>Synchronisation is not built in, so it requires additional software and is an action on its own.</li>
 </ul>
 </div>
 </div>
@@ -387,8 +311,8 @@ Nilearn plotting: basic elements
 <p>
   For fMRI activations, nilearn provides the <code>plot_stat_map</code> function (<a href="https://nilearn.github.io/modules/generated/nilearn.plotting.plot_stat_map.html">docs</a>). By default, it shows 3 cuts (axial, coronal, and saggital); several other display modes can be used. When a single direction of cuts is used, multiple slices are arranged in one row; for my desired view I will be aiming for two such rows.</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">stat_map</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span>
-	   <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">stat_map</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;z&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	   <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span></span></span></code></pre></div>
 </div>
 <figure>
 <img src="/img/combining-nilearn-plots/fig1.png" alt="/img/combining-nilearn-plots/fig1.png" title="/img/combining-nilearn-plots/fig1.png" /><figcaption>
@@ -398,9 +322,9 @@ Example output of plot_stat_map showing four axial slices.
 <p>
   The glass brain can be plotted with the <code>plot_glass_brain</code> function (<a href="https://nilearn.github.io/modules/generated/nilearn.plotting.plot_glass_brain.html">docs</a>). Conveniently, the plot axes behave as expected, so in a basic version you can simply call <code>axhline</code> from pyplot without any hassle, and give it millimeter coordinates (as a side note, you can set the first argument to <code>None</code> to plot just the glass brain, without any blobs).</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">stat_map</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">)</span>
-  <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span><span class="n">stat_map</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <figure>
 <img src="/img/combining-nilearn-plots/fig2.png" alt="/img/combining-nilearn-plots/fig2.png" title="/img/combining-nilearn-plots/fig2.png" /><figcaption>
@@ -426,11 +350,11 @@ Building the figure, beginning to end
 <p>
   These are the packages which I&#39;ll be using. </p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">plotting</span>
-  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>  <span class="c1"># basic plotting functions</span>
-  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>             <span class="c1"># additional styling</span>
-  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                    <span class="c1"># for working with image data</span>
-  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                 <span class="c1"># nice colormaps</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">plotting</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>  <span class="c1"># basic plotting functions</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>             <span class="c1"># additional styling</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                    <span class="c1"># for working with image data</span>
+</span></span><span class="line"><span class="cl">  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                 <span class="c1"># nice colormaps</span></span></span></code></pre></div>
 </div>
 <div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
@@ -440,14 +364,14 @@ Data loading and preparation
 <p>
   When choosing the data used for plotting, I will follow examples from nilearn and use the &#34;neurovault motor task&#34; from <code>nilearn.datasets</code> (when working with my own data, I would just load my own statistical map).</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">motor_images</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_neurovault_motor_task</span><span class="p">()</span>
-  <span class="n">img_path</span> <span class="o">=</span> <span class="n">motor_images</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># or use path to own data</span>
-  <span class="n">orig_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">motor_images</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_neurovault_motor_task</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">  <span class="n">img_path</span> <span class="o">=</span> <span class="n">motor_images</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># or use path to own data</span>
+</span></span><span class="line"><span class="cl">  <span class="n">orig_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   Since usually I am interested only in the positive contrast values, I will also clip the negative values from the image (for this particular contrast, <em>left vs right button press</em>, this hardly makes any sense, but it would be desired in many cases). This is also a simple way to guarantee that nilearn will include just the positive values on the colorbars.</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">stat_map</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">new_img_like</span><span class="p">(</span><span class="n">orig_img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">orig_img</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">stat_map</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">new_img_like</span><span class="p">(</span><span class="n">orig_img</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">orig_img</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -459,14 +383,14 @@ Some more preparation: colormap &amp; font
 <p>
     Before starting with the actual figure, let&#39;s prepare a colormap that is different from the default. I like the <em>icefire</em> palette from seaborn - it is perceptually uniform, and I think it looks better than nilearn&#39;s default <em>cold_hot</em> (you can read more in the <a href="http://seaborn.pydata.org/tutorial/color_palettes.html">Choosing color palettes</a> seaborn tutorial).</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">my_cm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&#34;icefire&#34;</span><span class="p">,</span> <span class="n">as_cmap</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">my_cm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">&#34;icefire&#34;</span><span class="p">,</span> <span class="n">as_cmap</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   What&#39;s more, while <code>plot_stat_map</code> always uses <em>cold_hot</em> as default, <code>plot_glass_brain</code> has defaults depending on the background: <em>cold_hot</em> if black, <em>cold_white_hot</em> otherwise. While there is a logic to that, especially when the glass brain is on its own (high values are bright on black background and dark on white), if I kept the default colormaps and a white background for both plot types, I would end up with two distinct color schemes within the figure. When specifying a colormap explicitly, I can keep a single color bar (value ranges should match too).</p>
 <p>
   I will also specify font size using the <code>matplotlib.rc</code> convenience function (which can also be used to set other parameters, eg. font family, by adding more keyword arguments; see <a href="https://matplotlib.org/stable/tutorials/introductory/customizing.html">Customizing Matplotlib</a> for details).</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   Size 8 should be fine. Strangely enough, this will affect the colorbars, but not the labels next to slices; those will be changed separately.</p>
@@ -486,7 +410,7 @@ Creating an empty figure
 <p>
   Having made the decision, I can create the figure with the specified size:</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python">  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.87</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">7.87</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -498,38 +422,38 @@ Plotting: stat map
 <p>
   It&#39;s time to start the actual plotting. Let&#39;s start with the lower part of the picture, showing three axial slices (explanations below).</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">sm_lower</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
-    <span class="n">stat_map_img</span> <span class="o">=</span> <span class="n">stat_map</span><span class="p">,</span>
-    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.21</span><span class="p">,</span>
-    <span class="n">display_mode</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
-    <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span>
-    <span class="n">annotate</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
-    <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
-    <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">sm_lower</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">left_right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sm_lower</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stat_map_img</span> <span class="o">=</span> <span class="n">stat_map</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.21</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_mode</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annotate</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sm_lower</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">left_right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   The first argument is the statistical map image to display, and the second is the threshold. Next, <code>display_mode = &#39;z&#39;</code> means that axial slices will be shown, and <code>cut_coords = [-20, -15, -10]</code> specifies which. I am setting <code>annotate = False</code> (meaning no labels with position and left / right) because this function does not accept arguments for annotation font size (and it doesn&#39;t follow the general rc setting); instead, I add annotations afterwards, with a separate function call. With <code>figure = fig</code>, I am telling the function to draw onto the figure created previously. The <code>axes = (xmin, ymin, width, height)</code> is specified in the figure space (1 = entire width / height), allowing us to do this independently from the actual size in inches. For this part, I want to start in the lower left corner (0, 0), use three-quarters of the width (0.75) and almost half the height (0.48, because using all 0.5 made things look overcrowded). I am explicit with the <code>cmap</code> I use, and I don&#39;t want to show the <code>colorbar</code> here; I will put one next to the glass brain later on.</p>
 <p>
   The same goes for the upper part of the figure, although this time I am starting a tiny bit above the midline, and using the whole width with <code>axes = (0, 0.51, 1, 0.48)</code> to show four slices:</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">sm_upper</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
-    <span class="n">stat_map_img</span> <span class="o">=</span> <span class="n">stat_map</span><span class="p">,</span>
-    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.21</span><span class="p">,</span>
-    <span class="n">display_mode</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
-    <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
-    <span class="n">annotate</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
-    <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
-    <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">sm_upper</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">left_right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">sm_upper</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stat_map_img</span> <span class="o">=</span> <span class="n">stat_map</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threshold</span> <span class="o">=</span> <span class="mf">3.21</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_mode</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cut_coords</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">annotate</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colorbar</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sm_upper</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">left_right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -541,27 +465,27 @@ Plotting: glass brain
 <p>
   Now comes the time for the glass brain. Since I used axial slices before, I will mark them on the sagittal view: <code>display_mode=&#39;x&#39;</code>. I will put the glass brain on the lower right: <code>axes=(0.8, 0, 0.2, 0.48)</code> (proportions for the glass brain are slightly different, and 0.2 width seems just right). Again, I am explicit with <code>cmap</code>, but this time I do want to show the <code>colorbar</code>.</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">gb</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span>
-    <span class="n">stat_map</span><span class="p">,</span>
-    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span>
-    <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
-    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
-    <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
-    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">gb</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_glass_brain</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">stat_map</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">threshold</span><span class="o">=</span><span class="mf">3.21</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">figure</span> <span class="o">=</span> <span class="n">fig</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.48</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cmap</span> <span class="o">=</span> <span class="n">my_cm</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   Note that because we used the same colormap across all three figure parts, and <code>plot_stat_map</code> scales itself to the maximum of the entire image regardless of selected slices, this colorbar will be valid for the entire figure. If we were showing positive and negative values, we would also gave to set <code>plot_abs=False</code> for the glass brain. To make sure that the scales match, you can try enabling the colorbar everywhere before making the final version.</p>
 <p>
   And here comes the last tricky part: marking the slices. When placed onto a figure, the glass brain creates its own set of <code>GlassBrainAxes</code> (three if all slices are shown; only one in our case). This means we cannot work directly with the object we created, <code>gb</code>. Before adding lines, we need to unpack it a little to get to the relevant <code>Axes</code> object: <code>gb.axes[&lt;slice&gt;].ax</code> is what we want. We will get the start and end points with <code>get_object_bounds()</code> (we could also know the MNI brain size by heart and just hardcode the values) and draw all lines at once with <code>hlines</code>.</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">bounds</span> <span class="o">=</span> <span class="n">gb</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_object_bounds</span><span class="p">()</span>
-<span class="n">gb</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> 
-    <span class="n">xmin</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="n">xmax</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">bounds</span> <span class="o">=</span> <span class="n">gb</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_object_bounds</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">gb</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">xmin</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">xmax</span> <span class="o">=</span> <span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   One final note: in practice, I would store the cut coordinates in a list and refer to it both when plotting brains and drawing lines to minimze errors. However, for demonstration I decided to be explicit.</p>
@@ -575,7 +499,7 @@ Saving
 <p>
   And finally comes the last part: saving. We can do this with one siple call, and we can specify either png or pdf extension to determine the file format.</p>
 <div class="src src-python">
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/my/path/figure.png&#39;</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/my/path/figure.png&#39;</span><span class="p">)</span></span></span></code></pre></div>
 </div>
 <p>
   This is the result:</p>
@@ -594,17 +518,17 @@ Matlab continuously evolves, and the two data types are fairly recent additions 
 <p>To demonstrate how useful they can be together, I will show an example modelled after preparing an input for SPM batch (specifically, second level two sample t-test design). If you work in neuroimaging, you&rsquo;ll probably be familiar with SPM, but if not, you will be able to follow along just as well.</p>
 <h1 id="problem-statement">Problem statement</h1>
 <p>What we have is a tab-separated file <code>participants.tsv</code> with a list of subjects (in accordance with the <a href="https://bids-specification.readthedocs.io/en/stable/03-modality-agnostic-files.html#participants-file">BIDS specification</a>):</p>
-<pre><code>participant_id age group
+<pre tabindex="0"><code>participant_id age group
 sub-01         34  read
 sub-02         12  write
 sub-03         33  read
 </code></pre><p>We also have a set of intermediate files (first level output), which we organised in the following way (this time according to our whim, rather than any standard):</p>
-<pre><code>/work/sub-01/task-motor/con_0001.nii
+<pre tabindex="0"><code>/work/sub-01/task-motor/con_0001.nii
 /work/sub-01/task-nback/con_0001.nii
 /work/sub-02/task-motor/con_0001.nii
 /work/sub-02/task-nback/con_0001.nii
 </code></pre><p>What we want to get is two lists of files for the motor task: one for the read group, and one for the write group:</p>
-<pre><code>group1 = {
+<pre tabindex="0"><code>group1 = {
 	/work/sub-01/task-motor/con_0001.nii;
 	/work/sub-03/task-motor/con_0001.nii;
 	...
@@ -615,65 +539,64 @@ group2 = {
 	}
 </code></pre><h1 id="solution">Solution</h1>
 <p>Let&rsquo;s start by reading the participant file:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">participants</span> <span class="p">=</span> <span class="n">readtable</span><span class="p">(</span><span class="s">&#39;/path/to/participants.tsv&#39;</span><span class="p">,</span> <span class="c">...</span>
-	<span class="s">&#39;FileType&#39;</span><span class="p">,</span> <span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="s">&#39;Delimiter&#39;</span><span class="p">,</span> <span class="s">&#39;\t&#39;</span><span class="p">,</span> <span class="s">&#39;TextType&#39;</span><span class="p">,</span> <span class="s">&#39;string&#39;</span><span class="p">)</span>
-</code></pre></div><p>Unfortunately, <code>readtable</code> recognizes <code>.txt</code>, <code>.dat</code> or <code>.csv</code> extensions, but not <code>.tsv</code>, so we have to specify both <code>FileType</code> and <code>Delimiter</code> (either <code>\t</code> or <code>tab</code> will work) in addition to the obligatory file name. Additionally, we use <code>TextType</code> to import text data as string arrays, rather than character vectors. This produces the following:</p>
-<pre><code>participants =
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">participants</span> <span class="p">=</span> <span class="n">readtable</span><span class="p">(</span><span class="s">&#39;/path/to/participants.tsv&#39;</span><span class="p">,</span> <span class="c">...</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#39;FileType&#39;</span><span class="p">,</span> <span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="s">&#39;Delimiter&#39;</span><span class="p">,</span> <span class="s">&#39;\t&#39;</span><span class="p">,</span> <span class="s">&#39;TextType&#39;</span><span class="p">,</span> <span class="s">&#39;string&#39;</span><span class="p">)</span>
+</span></span></code></pre></div><p>Unfortunately, <code>readtable</code> recognizes <code>.txt</code>, <code>.dat</code> or <code>.csv</code> extensions, but not <code>.tsv</code>, so we have to specify both <code>FileType</code> and <code>Delimiter</code> (either <code>\t</code> or <code>tab</code> will work) in addition to the obligatory file name. Additionally, we use <code>TextType</code> to import text data as string arrays, rather than character vectors. This produces the following:</p>
+<pre tabindex="0"><code>participants =
 
   3×3 table
 
     participant_id    age     group 
     ______________    ___    _______
 
-       &quot;sub-01&quot;       34     &quot;read&quot; 
-       &quot;sub-02&quot;       12     &quot;write&quot;
-       &quot;sub-03&quot;       33     &quot;read&quot; 
-
+       &#34;sub-01&#34;       34     &#34;read&#34; 
+       &#34;sub-02&#34;       12     &#34;write&#34;
+       &#34;sub-03&#34;       33     &#34;read&#34; 
 </code></pre><p>Next, let&rsquo;s add another column with paths to the con files:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">participants</span><span class="p">.</span><span class="n">con_files</span> <span class="p">=</span> <span class="n">fullfile</span><span class="p">(</span><span class="c">...</span>
-	&#34;<span class="o">/</span><span class="n">work</span>&#34;<span class="p">,</span> <span class="n">participants</span><span class="p">.</span><span class="n">participant_id</span><span class="p">,</span> &#34;<span class="n">task</span><span class="o">-</span><span class="n">motor</span>&#34;<span class="p">,</span> &#34;<span class="n">con_0001</span><span class="p">.</span><span class="n">nii</span>&#34;<span class="p">)</span>
-</code></pre></div><p>The <code>fullfile</code> function joins its arguments by adding a path separator (<code>/</code> or <code>\</code>, depending on system). One of the inputs we gave, <code>particiants.participant_id</code> is a string array (with as many rows as there are subjects), and consequently the output will be a string array of the same shape. Adding a column is as simple as retrieving one, and can be done by using a dot notation with a new name. Convenient. This is what the table looks as a result:</p>
-<pre><code>participants =
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">participants</span><span class="p">.</span><span class="n">con_files</span> <span class="p">=</span> <span class="n">fullfile</span><span class="p">(</span><span class="c">...</span>
+</span></span><span class="line"><span class="cl">	&#34;<span class="o">/</span><span class="n">work</span>&#34;<span class="p">,</span> <span class="n">participants</span><span class="p">.</span><span class="n">participant_id</span><span class="p">,</span> &#34;<span class="n">task</span><span class="o">-</span><span class="n">motor</span>&#34;<span class="p">,</span> &#34;<span class="n">con_0001</span><span class="p">.</span><span class="n">nii</span>&#34;<span class="p">)</span>
+</span></span></code></pre></div><p>The <code>fullfile</code> function joins its arguments by adding a path separator (<code>/</code> or <code>\</code>, depending on system). One of the inputs we gave, <code>particiants.participant_id</code> is a string array (with as many rows as there are subjects), and consequently the output will be a string array of the same shape. Adding a column is as simple as retrieving one, and can be done by using a dot notation with a new name. Convenient. This is what the table looks as a result:</p>
+<pre tabindex="0"><code>participants =
 
   3×4 table
 
     participant_id    age     group                   con_files               
     ______________    ___    _______    ______________________________________
 
-       &quot;sub-01&quot;       34     &quot;read&quot;     &quot;/work/sub-01/task-motor/con_0001.nii&quot;
-       &quot;sub-02&quot;       12     &quot;write&quot;    &quot;/work/sub-02/task-motor/con_0001.nii&quot;
-       &quot;sub-03&quot;       33     &quot;read&quot;     &quot;/work/sub-03/task-motor/con_0001.nii&quot;
+       &#34;sub-01&#34;       34     &#34;read&#34;     &#34;/work/sub-01/task-motor/con_0001.nii&#34;
+       &#34;sub-02&#34;       12     &#34;write&#34;    &#34;/work/sub-02/task-motor/con_0001.nii&#34;
+       &#34;sub-03&#34;       33     &#34;read&#34;     &#34;/work/sub-03/task-motor/con_0001.nii&#34;
 </code></pre><p>We can next filter the table for each group in turn.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">read_con</span> <span class="p">=</span> <span class="n">participants</span><span class="p">{</span><span class="n">participants</span><span class="p">.</span><span class="n">group</span> <span class="o">==</span> &#34;<span class="n">read</span>&#34;<span class="p">,</span> &#34;<span class="n">con_files</span>&#34;<span class="p">}</span>
-<span class="n">write_con</span> <span class="p">=</span> <span class="n">participants</span><span class="p">{</span><span class="n">participants</span><span class="p">.</span><span class="n">group</span> <span class="o">==</span> &#34;<span class="n">write</span>&#34;<span class="p">,</span> &#34;<span class="n">con_files</span>&#34;<span class="p">}</span>
-</code></pre></div><p>Here, we used brace indexing to get a subset of rows (since the group column is a string array, we could use <code>==</code> to obtain a logical array of a matching shape for logical indexing) and a single column (by giving its name). In a typical matlab fashion, using round brackets would keep the type of the indexed object and return a table with selected rows and columns, while the curly brackets used above return column content<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (in this case, a string array). This produces:</p>
-<pre><code>read_con = 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">read_con</span> <span class="p">=</span> <span class="n">participants</span><span class="p">{</span><span class="n">participants</span><span class="p">.</span><span class="n">group</span> <span class="o">==</span> &#34;<span class="n">read</span>&#34;<span class="p">,</span> &#34;<span class="n">con_files</span>&#34;<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">write_con</span> <span class="p">=</span> <span class="n">participants</span><span class="p">{</span><span class="n">participants</span><span class="p">.</span><span class="n">group</span> <span class="o">==</span> &#34;<span class="n">write</span>&#34;<span class="p">,</span> &#34;<span class="n">con_files</span>&#34;<span class="p">}</span>
+</span></span></code></pre></div><p>Here, we used brace indexing to get a subset of rows (since the group column is a string array, we could use <code>==</code> to obtain a logical array of a matching shape for logical indexing) and a single column (by giving its name). In a typical matlab fashion, using round brackets would keep the type of the indexed object and return a table with selected rows and columns, while the curly brackets used above return column content<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (in this case, a string array). This produces:</p>
+<pre tabindex="0"><code>read_con = 
 
   2×1 string array
 
-    &quot;/work/sub-01/task-motor/con_0001.nii&quot;
-    &quot;/work/sub-03/task-motor/con_0001.nii&quot;
+    &#34;/work/sub-01/task-motor/con_0001.nii&#34;
+    &#34;/work/sub-03/task-motor/con_0001.nii&#34;
 
 
 write_con = 
 
-    &quot;/work/sub-02/task-motor/con_0001.nii&quot;
+    &#34;/work/sub-02/task-motor/con_0001.nii&#34;
 </code></pre><p>Finally, since SPM batch requires cellstrings rather than string arrays, we can do a simple conversion:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="n">group1</span> <span class="p">=</span> <span class="n">cellstr</span><span class="p">(</span><span class="n">read_con</span><span class="p">)</span>
-<span class="n">group2</span> <span class="p">=</span> <span class="n">cellstr</span><span class="p">(</span><span class="n">write_con</span><span class="p">)</span>
-</code></pre></div><pre><code>group1 =
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="n">group1</span> <span class="p">=</span> <span class="n">cellstr</span><span class="p">(</span><span class="n">read_con</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">group2</span> <span class="p">=</span> <span class="n">cellstr</span><span class="p">(</span><span class="n">write_con</span><span class="p">)</span>
+</span></span></code></pre></div><pre tabindex="0"><code>group1 =
 
   2×1 cell array
 
-    {'/work/sub-01/task-motor/con_0001.nii'}
-    {'/work/sub-03/task-motor/con_0001.nii'}
+    {&#39;/work/sub-01/task-motor/con_0001.nii&#39;}
+    {&#39;/work/sub-03/task-motor/con_0001.nii&#39;}
 
 
 group2 =
 
   1×1 cell array
 
-    {'/work/sub-02/task-motor/con_0001.nii'}
+    {&#39;/work/sub-02/task-motor/con_0001.nii&#39;}
 </code></pre><h1 id="further-comments">Further comments</h1>
 <p>Naturally, the example above was fairly basic, and there is more that can be done with strings and tables. Here are some things that I found particularly useful.</p>
 <p>You can join string arrays using <code>+</code> (eg. you could use <code>&quot;sub-&quot; + participants.participant_id</code> if the &ldquo;sub-&rdquo; prefix was missing). If you are a fan of <code>sprintf</code>, you can use <a href="https://www.mathworks.com/help/matlab/ref/compose.html">compose</a> as its &ldquo;vectorised&rdquo; alternative (eg. <code>compose(&quot;sub-%s&quot;, participants.participant_id)</code>) for a similar effect. Should you wish to replace part of the string, you can use things like <a href="https://www.mathworks.com/help/matlab/ref/replace.html">replace</a>, eg. <code>replace(participants.participant_id, &quot;sub-&quot;, &quot;subject-&quot;)</code>. For filtering, you might want to use <a href="https://www.mathworks.com/help/matlab/ref/startswith.html">startsWith</a> and the like.</p>
@@ -721,12 +644,12 @@ group2 =
 <p>After pyenv, it is good to install <a href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv</a>, a pyenv plugin which provides features to manage virtual environments, with <code>brew install pyenv-virtualenv</code>. Its readme suggests making another addition to <code>.zshrc</code> (pyenv virtualenv-init, to enable auto-activation of environments), which I personally skipped.</p>
 <p>Unfortunately, pyenv does not mix smoothly with homebrew. When things are left alone, <code>brew doctor</code> will complain about existence of python config files created by pyenv, and, if I understand correctly, homebrew formulae having python as dependency would use the pyenv-managed python (potentially leading to mixups). According to recommendations <a href="https://raycent.medium.com/managing-python-on-macos-the-clean-way-7673cab874f6">here</a> and <a href="https://github.com/pyenv/pyenv/issues/106">here</a>, the best way to deal with it is by adding an alias for homebrew to <code>.zshrc</code>. This should make homebrew oblivious to the existence of pyenv-installed python (the homebrew-installed python will be used as a dependency for everything else homebrew does). While this means having two separate python ecosystems, seamless operation far outweighs the redundancy.</p>
 <p>In the end, here are the three <code>.zshrc</code> additions: one for pyenv, one for pyenv-virtualenv, and one for aliasing homebrew. I placed them all inside the <code>if</code> block (check if pyenv is available) suggested in pyenv&rsquo;s readme.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="k">if</span> <span class="nb">command</span> -v pyenv 1&gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
-	<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span>
-	<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&#34;</span>  <span class="c1"># OPTIONAL</span>
-	<span class="nb">alias</span> <span class="nv">brew</span><span class="o">=</span><span class="s1">&#39;env PATH=&#34;${PATH//$(pyenv root)\/shims:/}&#34; brew&#39;</span>
-<span class="k">fi</span>
-</code></pre></div><h3 id="organising-things-with-pyenv">Organising things with pyenv</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="line"><span class="cl"><span class="k">if</span> <span class="nb">command</span> -v pyenv 1&gt;/dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv virtualenv-init -<span class="k">)</span><span class="s2">&#34;</span>  <span class="c1"># OPTIONAL</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">alias</span> <span class="nv">brew</span><span class="o">=</span><span class="s1">&#39;env PATH=&#34;${PATH//$(pyenv root)\/shims:/}&#34; brew&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="k">fi</span>
+</span></span></code></pre></div><h3 id="organising-things-with-pyenv">Organising things with pyenv</h3>
 <p>With pyenv installed, I think this is a reasonable way to proceed:</p>
 <ul>
 <li>install the latest python version and set it as global</li>
@@ -773,7 +696,7 @@ Toolboxes Before we dig into the files: you may find what you already need in on
 <h2 id="file-structure">File structure</h2>
 <p>Based on what I&rsquo;ve seen, some details may depend on hardware &amp; software versions used, but the general principles should be the same. The example below is based on the data obtained on the Trio scanner at the Laboratory of Brain Imaging. At the end I will also point out differences in the data collected on a Prisma in a different lab.</p>
 <p>The .puls file is just a text file, in which the first line contains all the data points (!), and the following lines contain metadata. It looks like this:</p>
-<pre><code>1 2 40 280 1102 1069 1031 1017 1136 1449 …
+<pre tabindex="0"><code>1 2 40 280 1102 1069 1031 1017 1136 1449 …
 ECG  Freq Per: 0 0
 PULS Freq Per: 100 595
 RESP Freq Per: 0 0
@@ -793,69 +716,69 @@ LogStopMPCUTime:  55179315
 <p>In the metadata, the crucial entries to watch for are the MDH Times[^1], expressed in milliseconds after midnight. Although notation is different, they are taken from the same clock as the time values in DICOM files and can be used for synchronising the two modalities.</p>
 <h2 id="loading-the-data-using-python">Loading the data using python</h2>
 <p>Numpy and pydicom libraries are essential; we will also use the built-in itertools:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pydicom</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
-</code></pre></div><p>Let&rsquo;s start by defining paths to the pulse file and the first dicom file of a given series:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">pulse_file_name</span> <span class="o">=</span> <span class="n">path_to_the_pulse_file</span>
-<span class="n">dicom_file_name</span> <span class="o">=</span> <span class="n">path_to_the_dicom_file</span>
-</code></pre></div><p>Loading the signal and dropping the markers is trivial, just remember to specify <code>dtype</code> &amp; <code>max_rows</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">pulse_file_name</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>  <span class="c1"># drop parameters stored at the beginning</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">)]</span>  <span class="c1"># drop markers</span>
-</code></pre></div><p>We can read all the metadata (although we only need <code>LogStartMDHTime</code>) into a dictionary:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pulse_file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># read from second line to the end</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-            <span class="n">meta</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="c1"># don’t care about entries which can&#39;t be split into key: value</span>
-            <span class="k">pass</span>
-</code></pre></div><p>The time needs to be converted from string to a number, we can also convert it from miliseconds to seconds:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">pulse_time_sec</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;LogStartMDHTime&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.001</span>
-</code></pre></div><p>Now, to read the time from dicom header we can use pydicom. I am using field (0008, 0032) Acquisition Time:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">ds</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">dicom_file_name</span><span class="p">)</span>
-<span class="n">dicom_time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">AcquisitionTime</span>
-</code></pre></div><p>The time looks like this: <code>'090029.930000'</code>. The first two digits are hours, next two are minutes, next two - seconds. Four digits after the dot are <em>tics</em> (1/10000 of a second), and the two trailing zeros can be ignored. A conversion function (translating into seconds) can look as follows:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dicomtime2sec</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
-    <span class="n">tics</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">11</span><span class="p">])</span>
-
-    <span class="k">return</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">tics</span> <span class="o">*</span> <span class="mf">0.0001</span><span class="p">)</span>
-</code></pre></div><p>We will use this function to convert the value into seconds after midnight (same as physio recordings) and then calculate the offset between the recordings. Take care with studies lasting through midnight!</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">dicom_time_sec</span> <span class="o">=</span> <span class="n">dicomtime2sec</span><span class="p">(</span><span class="n">dicom_time</span><span class="p">)</span>
-<span class="n">delta_time</span> <span class="o">=</span> <span class="n">pulse_time_sec</span> <span class="o">-</span> <span class="n">dicom_time_sec</span>
-</code></pre></div><p>With that, we have all we need (pulse oximetry signal and its start time relative to the MRI data)!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pydicom</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">islice</span>
+</span></span></code></pre></div><p>Let&rsquo;s start by defining paths to the pulse file and the first dicom file of a given series:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pulse_file_name</span> <span class="o">=</span> <span class="n">path_to_the_pulse_file</span>
+</span></span><span class="line"><span class="cl"><span class="n">dicom_file_name</span> <span class="o">=</span> <span class="n">path_to_the_dicom_file</span>
+</span></span></code></pre></div><p>Loading the signal and dropping the markers is trivial, just remember to specify <code>dtype</code> &amp; <code>max_rows</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">pulse_file_name</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="n">max_rows</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>  <span class="c1"># drop parameters stored at the beginning</span>
+</span></span><span class="line"><span class="cl"><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">)]</span>  <span class="c1"># drop markers</span>
+</span></span></code></pre></div><p>We can read all the metadata (although we only need <code>LogStartMDHTime</code>) into a dictionary:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">meta</span> <span class="o">=</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pulse_file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">islice</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># read from second line to the end</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">meta</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="c1"># don’t care about entries which can&#39;t be split into key: value</span>
+</span></span><span class="line"><span class="cl">            <span class="k">pass</span>
+</span></span></code></pre></div><p>The time needs to be converted from string to a number, we can also convert it from miliseconds to seconds:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">pulse_time_sec</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;LogStartMDHTime&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.001</span>
+</span></span></code></pre></div><p>Now, to read the time from dicom header we can use pydicom. I am using field (0008, 0032) Acquisition Time:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ds</span> <span class="o">=</span> <span class="n">pydicom</span><span class="o">.</span><span class="n">dcmread</span><span class="p">(</span><span class="n">dicom_file_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dicom_time</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">AcquisitionTime</span>
+</span></span></code></pre></div><p>The time looks like this: <code>'090029.930000'</code>. The first two digits are hours, next two are minutes, next two - seconds. Four digits after the dot are <em>tics</em> (1/10000 of a second), and the two trailing zeros can be ignored. A conversion function (translating into seconds) can look as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dicomtime2sec</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">h</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tics</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">11</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span><span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="mi">3600</span> <span class="o">+</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="n">tics</span> <span class="o">*</span> <span class="mf">0.0001</span><span class="p">)</span>
+</span></span></code></pre></div><p>We will use this function to convert the value into seconds after midnight (same as physio recordings) and then calculate the offset between the recordings. Take care with studies lasting through midnight!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">dicom_time_sec</span> <span class="o">=</span> <span class="n">dicomtime2sec</span><span class="p">(</span><span class="n">dicom_time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">delta_time</span> <span class="o">=</span> <span class="n">pulse_time_sec</span> <span class="o">-</span> <span class="n">dicom_time_sec</span>
+</span></span></code></pre></div><p>With that, we have all we need (pulse oximetry signal and its start time relative to the MRI data)!</p>
 <p>Finally, we can verify the sampling frequency by dividing the number of samples by the duration read from metadata (likely it won&rsquo;t be <em>exactly</em> 50 Hz, but it should come negligibly close):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">duration</span> <span class="o">=</span> <span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">footer</span><span class="p">[</span><span class="s1">&#39;LogStopMDHTime&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">footer</span><span class="p">[</span><span class="s1">&#39;LogStartMDHTime&#39;</span><span class="p">])</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span> <span class="c1"># in seconds</span>
-<span class="n">calculated_fs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">duration</span>
-</code></pre></div><p>The result can now be saved in a desired format for further processing. When exporting, consider using the <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/06-physiological-and-other-continuous-recordings.html">BIDS convention for physiological recordings</a>, which uses a gzip compressed tsv file for data (tip: use <code>numpy.savetxt</code> - for filenames ending in <code>.gz</code>, the file is automatically compressed) and a json file to store sampling frequency and relative start time (tip: use <code>json.dump</code> from built-in json library).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">duration</span> <span class="o">=</span> <span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">footer</span><span class="p">[</span><span class="s1">&#39;LogStopMDHTime&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">footer</span><span class="p">[</span><span class="s1">&#39;LogStartMDHTime&#39;</span><span class="p">])</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span> <span class="c1"># in seconds</span>
+</span></span><span class="line"><span class="cl"><span class="n">calculated_fs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">duration</span>
+</span></span></code></pre></div><p>The result can now be saved in a desired format for further processing. When exporting, consider using the <a href="https://bids-specification.readthedocs.io/en/stable/04-modality-specific-files/06-physiological-and-other-continuous-recordings.html">BIDS convention for physiological recordings</a>, which uses a gzip compressed tsv file for data (tip: use <code>numpy.savetxt</code> - for filenames ending in <code>.gz</code>, the file is automatically compressed) and a json file to store sampling frequency and relative start time (tip: use <code>json.dump</code> from built-in json library).</p>
 <p>This is left as an exercise for the reader, and so is dealing with cases when you have to divide one pulse recording made across several MRI runs.</p>
 <h2 id="prisma---note-on-the-differences">Prisma - note on the differences</h2>
 <p>I also had a chance to take a look at data from another lab, which has a Prisma scanner. It was <em>same, but different</em>. Most notably, it had text metadata inserted <em>inbetween</em> the data values. Luckily, the marker convention seems to be clear, with 5002 and 6002 values used to mark the beginning and end of the inserted information. Interestingly, the sampling frequency turned out to be 400 Hz in this case. Beginning of the data may look as follows:</p>
-<pre><code>1 2 40 280 5002 LOGVERSION_PULS   1 6002 3185 3167 &lt; ... about 200 datapoints ...&gt; 5002 uiHwRevisionPeru/ucHWRevLevel: 0, uiPartNbrPeruPub: 0, uiHwRevisionPpu/ucSWSubRevLevel: 0, uiPartNbrPpuPub: 0, uiSwVersionPdau/ucSWMainRevLevel: 0 6002 1395 1391 ... 
+<pre tabindex="0"><code>1 2 40 280 5002 LOGVERSION_PULS   1 6002 3185 3167 &lt; ... about 200 datapoints ...&gt; 5002 uiHwRevisionPeru/ucHWRevLevel: 0, uiPartNbrPeruPub: 0, uiHwRevisionPpu/ucSWSubRevLevel: 0, uiPartNbrPpuPub: 0, uiSwVersionPdau/ucSWMainRevLevel: 0 6002 1395 1391 ... 
 </code></pre><p>The <code>numpy.loadtxt</code> function used previously will obviously crash on such input, luckily the most basic way of processing won&rsquo;t be much slower. Let&rsquo;s read the line, split by spaces and collect one element at a time (pausing collection for items between 5002 and 6002):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">read_pulse</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        
-    <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-    
-    <span class="n">read</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="s1">&#39;5002&#39;</span><span class="p">:</span>
-            <span class="n">read</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">elif</span> <span class="n">elem</span> <span class="o">==</span> <span class="s1">&#39;6002&#39;</span><span class="p">:</span>
-            <span class="n">read</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">elif</span> <span class="n">read</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">read_pulse</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="n">elements</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">read</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">elem</span> <span class="o">==</span> <span class="s1">&#39;5002&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">read</span> <span class="o">=</span> <span class="kc">False</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">elem</span> <span class="o">==</span> <span class="s1">&#39;6002&#39;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">read</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        <span class="k">elif</span> <span class="n">read</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">elem</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span></span></code></pre></div><hr>
 <p>[^1] According to the website for PART, MDH is the DICOM clock, while MPCU is the physio clock. Of the sources, only the Aguirre wiki suggests using MPCU, which is likely a mistake.</p>
 <p>[^2] Aguirre wiki suggests that they are scanner pulses marking TR, but the timing doesn&rsquo;t check out, so maybe it depends on software version.</p>
 ]]></content></item><item><title>Docker pruning</title><link>https://mslw.github.io/posts/2020-12-17-docker-pruning/</link><pubDate>Thu, 17 Dec 2020 14:00:00 +0100</pubDate><guid>https://mslw.github.io/posts/2020-12-17-docker-pruning/</guid><description>Sometimes (especially after messing around with several different images) I get the „No space left on device” error when doing even the simplest of tasks (e.g. running a small container or trying to build a new one). This issue may be MacOS-specific. Finding a clear answer wasn’t straightforward, so below I summarise what I learned.
@@ -864,7 +787,7 @@ The problem boils down to the Docker’s disk image, located (on MacOS) under:
 This issue <em>may</em> be MacOS-specific.
 Finding a clear answer wasn’t straightforward, so below I summarise what I learned.</p>
 <p>The problem boils down to the Docker’s disk image, located (on MacOS) under:</p>
-<pre><code>~/Library/Containers/com.docker.docker/Data/vms/0/Docker.qcow2
+<pre tabindex="0"><code>~/Library/Containers/com.docker.docker/Data/vms/0/Docker.qcow2
 </code></pre><p>See  <a href="https://stackoverflow.com/questions/49887747/what-is-docker-qcow2">Stackoverflow: What is Docker.qcow2</a> for details.
 In short, this is a virtual disk, with a size cap set to 64 GB by default.
 Different things are written there, and not always cleaned, causing it to grow in size (also, I believe that for complex reasons, the space taken on your disk does not necessarily reflect the size of the contents).
@@ -872,9 +795,9 @@ Docker is conservative when it comes to removing things.
 If it gets filled to the brim, your containers can’t work properly.</p>
 <p>For a solution (and different levels of cleanup), read  <a href="https://docs.docker.com/config/pruning/">Docker docs: Prune unused Docker objects</a>.
 In short, you can clean up some space by running:</p>
-<pre><code>docker system prune
+<pre tabindex="0"><code>docker system prune
 </code></pre><p>or, more likely using a thorough version (warning: it will destroy data stored in containers):</p>
-<pre><code>docker system prune --images
+<pre tabindex="0"><code>docker system prune --images
 </code></pre><p>Alternatively, the <em>burnt ground</em> strategy would be to remove the Docker.qcow2 file altogether (as it will rebuild next time docker is used), but it seems unnecessary.</p>
 <p>Text initially published on my lab&rsquo;s forum, which has been closed.</p>
 ]]></content></item><item><title>Inkscape + ImageMagick: a powerful combination</title><link>https://mslw.github.io/posts/2020-09-28-inkscape-imagemagick/</link><pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate><guid>https://mslw.github.io/posts/2020-09-28-inkscape-imagemagick/</guid><description>I can&amp;rsquo;t recommend Inkscape enough, either for assembling figures or for building posters. However, Inkscape on its own does not export to tiff. Luckily, this can be accomplished with ImageMagick. Here&amp;rsquo;s a short recipe, and a sort of laudation for both programs.
@@ -882,7 +805,7 @@ Recently I had to rework a figure with a schematic of an experimental design. Th
 <p>Recently I had to rework a figure with a schematic of an experimental design. The first version was put together in PowerPoint, but we somehow lost the ungrouped source file, so I had to start from scratch. Two pieces of free software made the job easy: Inkscape and ImageMagick.</p>
 <p>It&rsquo;s easy to start with an A4 page, to have a sense of proportions in print (the graphics are vector, so scaling is not much of an issue anyway). Before saving, it might be useful to limit the page size to content and margins, by going to File → Document Properties (Shift+Ctrl+D) → Page Tab → Resize page to content.</p>
 <p>Following that, the conversion can be performed as follows (an updated invocation, based on this <a href="https://gist.github.com/matsen/4263955">gist</a> by matsen). It goes from svg through png to tif, but there is little apparent loss of quality, if any:</p>
-<pre><code>inkscape --export-filename new.png --export-dpi 300 file.svg
+<pre tabindex="0"><code>inkscape --export-filename new.png --export-dpi 300 file.svg
 convert -compress LZW -alpha remove new.png new.tif
 </code></pre><p>As a side note, clipping to content and adding margins could theoretically be incorporated in the export call, as the CLI has <code>--export-margin</code> and <code>--export-area-drawing</code> options, but as of the day of writing they are unsupported; see <a href="https://gitlab.com/inkscape/inkscape/-/issues/1142">this issue</a>.</p>
 <p>Tried with Inkscape 1.0 and ImageMagick 6.9.11-22.</p>
@@ -953,7 +876,7 @@ The common Python on Windows advice soon changed to &amp;ldquo;install anaconda&
 ]]></content></item><item><title>Beyond Meat</title><link>https://mslw.github.io/posts/2019-11-19-beyond-meat/</link><pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate><guid>https://mslw.github.io/posts/2019-11-19-beyond-meat/</guid><description>Today I finally got to try the Beyond Meat burger at Krowarzywa. This was the second plant-based meat replacement I tried (after the Impossible Burger), but the first one I could get in Poland, which feels good. It was great.
 Speaking of the patty, the outside look is the biggest giveaway. The taste is indeed very similar to meat, maybe seasoned in a slightly unusual way, but definitely believable. The texture is really great, not unlike coarsly ground beef.</description><content type="html"><![CDATA[<p>Today I finally got to try the Beyond Meat burger at <a href="https://krowarzywa.pl/">Krowarzywa</a>. This was the second plant-based meat replacement I tried (after the Impossible Burger), but the first one I could get in Poland, which feels good. It was great.</p>
 <p>Speaking of the patty, the outside look is the biggest giveaway. The taste is indeed very similar to meat, maybe seasoned in a slightly unusual way, but definitely believable. The texture is really great, not unlike coarsly ground beef.</p>
-<p>But what really made that particular burger was the sauces, just like with any other at Krowarzywa. I had spicy tomato and dill, both are just amazing and work really well together. It only makes me wish that more &lsquo;traditional&rsquo; burger places had their sauce game on a comparable level.</p>
+<p>But what really made that particular burger was the sauces, just like with any other at Krowarzywa. I had spicy tomato and dill, both are just amazing and work really well together. It only makes me wish that more &rsquo;traditional&rsquo; burger places had their sauce game on a comparable level.</p>
 ]]></content></item><item><title>Dealing with arcane bullshit</title><link>https://mslw.github.io/posts/2019-11-07-arcane-bullshit/</link><pubDate>Thu, 07 Nov 2019 22:30:00 +0100</pubDate><guid>https://mslw.github.io/posts/2019-11-07-arcane-bullshit/</guid><description>Being a young scientist, at times I find myself having to deal with some programing related arcane bullshit. This post is something I wanted to write about for a while.
 Case 1: video stimuli The primary culprit in this case is Presentation software from Neurobehavioral Systems, which, fittingly for its name, is a software for rigorously timed stimulus presentation. To be clear - it&amp;rsquo;s a very good, very reliable program and it has been serving our lab well for several years.</description><content type="html"><![CDATA[<p>Being a young scientist, at times I find myself having to deal with some programing related arcane bullshit. This post is something I wanted to write about for a while.</p>
 <p><img src="https://imgs.xkcd.com/comics/arcane_bullshit.png" alt="xkcd no 1671"></p>
@@ -962,7 +885,7 @@ Case 1: video stimuli The primary culprit in this case is Presentation software 
 <p>One of the things I had to deal with was playing video. The features list states that it can <em>display compressed video using any DirectShow compatible codecs installed on your system</em>. In practice, only after trying to play some file given to you by your colleague do you realise that only .avi container can be opened. And after converting to .avi things still fail, with a cryptic error message about calls to DirectX going wrong.</p>
 <p>The solution comes from a semi-official wiki, on which the <a href="http://www.neurobs.com/wiki/Presentation/Video">video</a> page is immensly helpful. The problem is due to codecs. First, you should ideally be using x264, because it&rsquo;s tried and tested. Second, you need to have ffdshow software installed on your PC to ensure that those codecs are available where they are needed (your video player working does not mean Presentation would work too). And as a cherry on top, you need to override some system settings. So you keep telling yourself that you are a serious scientist while you get flashbacks of the 2000&rsquo;s as you download and launch a somewhat shady looking program called Codec Tweek Tool (to make things even more arcane, the wiki specifically tells you to get version 6.1.1 because later releases removed the required functionality). Afterwards, things begin to work.</p>
 <p>As a side note, for my current study I need to prepare mp4 files by cutting, resizing, removing audio and converting. My tool of choice is ffmpeg and I keep the following command as a very precious note, maybe it comes useful for somebody else too (the <code>-strict</code> and <code>-experimental</code> flags seem essential for good video quality; <code>-ss</code> and <code>-t</code> are for selecting the right fragment, <code>-vf scale=...</code> scales and <code>-c:v</code> selects the codec):</p>
-<pre><code>ffmpeg -ss &lt;start time&gt; -i INFILE.mp4 -t &lt;duration&gt; -vf scale=1440:1080 -c:v libx264 -an -strict -experimental OUT.avi
+<pre tabindex="0"><code>ffmpeg -ss &lt;start time&gt; -i INFILE.mp4 -t &lt;duration&gt; -vf scale=1440:1080 -c:v libx264 -an -strict -experimental OUT.avi
 </code></pre><h3 id="case-2-port-codes-in-recorder">Case 2: port codes in Recorder</h3>
 <p>Second example involves an interface between Presentation and Brain Vision Recorder, again an established and reliable software, used for EEG and other physiological recordings. In many experiments, we mark the presentation of stimuli in the EEG signal by sending markers over an LPT port (essentially using an old printer cable). In Presentation, the experimenter simply needs to assign a number (port code) from 1-128 range to a stimulus.</p>
 <p>Behind the scenes, in technical terms, the LPT port has 8 signal lines (8 pins used to send signals) which can be switched from low (0 volts) to high (5 volts) state for several milliseconds with negligible latency. This allows for sending port codes in binary format, so for example number 21 is represented by pins 0, 2 and 4 (I am counting from 0) being set to high, because 21 equals 2^0 + 2^2 + 2^4.</p>
