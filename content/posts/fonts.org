@@ -1,0 +1,105 @@
+#+title: From my font folder
+#+layout: post
+#+date: 2022-05-06T20:00:00+0200
+#+author: Michał Szczepanik
+#+tags[]: tips-tricks software
+#+draft: true
+
+* Serif
+
+** Cormorant
+
+   [[/img/fonts/Cormorant.svg]]
+
+   Extremely elegant. This has become my go-to font for "serious" documents.
+   I used it for my CV and my doctoral thesis.
+   It's similar in style to Garamond.
+   According to author's description, it has been /heavily inspired by Claude Garamont's immortal legacy/, but /most glyphs were drawn for scratch/.
+
+   One interesting feature is that the distinction between hyphen (-) and en-dash (–) is made very visible, as the former is drawn slightly slanted.
+   This makes hyphenated words look great (as they connection is nicely flowing), but makes incorrect usages (as minus sign, or in numeric ranges) stand out way more.
+   Due diligence to enter everything properly is required when writing in LaTeX.
+
+   Speaking of Garamond, Wikipedia page gives a nice overview of its history.
+   Digital recreations include Adobe Garamond and OFL-licensed EB Garamond, and there is also Cormorant Garamond (also OFL).
+   Cormorant Garamond has similar feel to the Cormorant proper, but the glyphs differ on closer inspection.
+
+   # | Links:   | [[https://fonts.google.com/specimen/Cormorant][Google Fonts]] / [[https://www.behance.net/gallery/28579883/Cormorant-an-open-source-display-font-family][Behance]] / [[https://github.com/CatharsisFonts/Cormorant][GitHub]]     |
+   # | Author:  | Christian Thalmann, Catharsis Fonts |
+   # | License: | OFL                                 |
+
+   See: [[https://fonts.google.com/specimen/Cormorant][Google Fonts]] / [[https://www.behance.net/gallery/28579883/Cormorant-an-open-source-display-font-family][Behance]] / [[https://github.com/CatharsisFonts/Cormorant][GitHub]].
+   Author: Christian Thalmann, Catharsis Fonts.
+   License: OFL.
+
+** Antykwa Półtawskiego (Półtawski's antiqua)
+
+   [[/img/fonts/Poltawski_Nowy.svg]]
+
+   Designed in the 1920s and brought into the digital world in early 2000s by the Polish TeX Users Group (GUST).
+   At the time, diacritics in LaTeX caused some headaches.
+   Unicode wasn't as common, many fonts lacked Polish symbols, and users had to define font and character encoding to use a proper adaptation of [[https://en.wikipedia.org/wiki/Computer_Modern][Computer Modern]] fonts.
+   Being able to use a font in which Polish characters were designed from ground up (as opposed to adding diacritics on top of existing characters) was quite something.
+
+   In 2020, the font was digitized again, from scratch, based on materials (fonts, scans, drawings) from a Polish foundry /Idźkowski i S-ka/ and a British printing press manufacturer /Monotype Salfords/.
+   This version was called Półtawski Nowy (Półtawski New) and is distributed under free-as-in-beer custom license (which forbids redistribution and requires registration to download).
+   The reissue was accompanied by a really nice publication on the [[http://poltawski-nowy.wtf/wp-content/uploads/2020/12/POLTAWSKI_BOOK_WEB.pdf][font's history]] (PDF, 14.9 MB).
+
+   I don't really like antiqua, but I like the font's historical significance (both its origin and digitization).
+
+     See: [[https://www.gust.org.pl/projects/e-foundry/poltawski][GUST]] / [[https://en.wikipedia.org/wiki/Antykwa_P%C3%B3%C5%82tawskiego][Wikipedia]] / [[http://poltawski-nowy.wtf/][Półtawski Nowy]].
+   Authors: Adam Półtawski (original); Janusz M. Nowacki, Bogusław Jackowski & Piotr Strzelczyk, GUST (Antykwa Półtawskiego); Mateusz Machalski, Borys Kosmynka, Ania Weluńska, Andrzej Tomaszewski, Adam Twardoch (Półtawski Nowy).
+   License: GUST font license (GFL - Antykwa Półtawskiego), custom (Półtawski Nowy).
+
+* Monospace
+  
+** Hack
+
+   [[/img/fonts/Hack.svg]]
+
+   Pleasantly rounded, very readable, and with a great name, is one of my go-to monospace fonts.
+   For a long time, I used it to liven up my Matlab window.
+   I'm especially fond of the zero filled with a slender vertical oval (instead of a more common slashed zero).
+
+** Anonymous Pro
+
+   [[/img/fonts/Anonymous_Pro.svg]]
+
+   Another favourite, perhaps even number one.
+   More angular than hack, light and very readable.
+   I am currently using it in Emacs and in the terminal.
+
+   See: [[https://fonts.google.com/specimen/Anonymous+Pro][Google Fonts]] / [[https://www.marksimonson.com/fonts/view/anonymous-pro][Mark Simonson Studio]].
+   Author: Mark Simonson.
+   License: OFL
+
+** Monaco / Menlo
+   
+   A honorable mention goes to Monaco, a former default monospace font on Mac, and Menlo, the current one.
+   Both ship with MacOS, and to me they both have a similar rounded and elegant quality.
+   I used both a lot when I worked on MacOS.
+
+   See: [[https://en.wikipedia.org/wiki/Monaco_(typeface)][Wikipedia (Monaco)]] / [[https://en.wikipedia.org/wiki/Menlo_(typeface)][Wikipedia (Menlo)]]
+   Author: Susan Kare (Monaco) / Jim Lyles (Menlo).
+   License: proprietary
+
+* Sans-serif
+
+** Lato
+
+   [[/img/fonts/Lato.svg]]
+
+   Another Polish connection, with an interesting backstory: it was commisioned by a big company, which withdrew close to the end of the project.
+   The author then released it under an open license, and the font gained popularity.
+   Light, clean, and far from boring, in my opinion it works great for presentations and posters.
+
+** Carlito
+
+   [[/img/fonts/Carlito.svg]]
+
+   [[https://blogs.gnome.org/uraeus/2013/10/10/a-thank-you-to-google/][Metrically compatible]] with the proprietary Calibri, comes useful whenever a document in Calibri is requested.
+   Not very interesting besides.
+
+** Futura
+
+   
