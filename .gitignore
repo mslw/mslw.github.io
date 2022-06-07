@@ -4,6 +4,7 @@
 
 # hugo resources folder (generated content?)
 resources/
+.hugo_build.lock
 
 # MacOS
 .DS_store
