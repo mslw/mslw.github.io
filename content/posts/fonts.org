@@ -5,11 +5,24 @@
 #+tags[]: tips-tricks software
 #+draft: true
 
+I spend a large part of my workday staring at a text on a computer.
+Sometimes, I also need to produce some text that needs to be beamed onto a wall, plotted onto a large piece of paper, or printed on a bunch of A4s.
+I like when these things look nice.
+
+Polish type designer Łukasz Dziedzic said in an [[https://wiadomosci.gazeta.pl/wiadomosci/7,143647,18850417,lato-podbija-swiat-czyli-jak-nieudane-zlecenie-doprowadzilo.html][interview]] (Polish, translation mine):
+
+#+BEGIN_QUOTE
+Letters give us plenty of information, but in a way which is completely unnoticeable.
+They are a bit like music in a movie, which can change its mood - if during a tragic scene it was cheerful, we would perceive what we see in an entirely different manner.
+And vice versa.
+With letters it is similar, only more discreet.
+#+END_QUOTE
+
+Without further ado, here is a short listing of my favourite fonts.
+
 * Serif
 
 ** Cormorant
-
-   [[/img/fonts/Cormorant.svg]]
 
    Extremely elegant. This has become my go-to font for "serious" documents.
    I used it for my CV and my doctoral thesis.
@@ -28,13 +41,13 @@
    # | Author:  | Christian Thalmann, Catharsis Fonts |
    # | License: | OFL                                 |
 
+   [[/img/fonts/Cormorant.svg]]
+
    See: [[https://fonts.google.com/specimen/Cormorant][Google Fonts]] / [[https://www.behance.net/gallery/28579883/Cormorant-an-open-source-display-font-family][Behance]] / [[https://github.com/CatharsisFonts/Cormorant][GitHub]].
    Author: Christian Thalmann, Catharsis Fonts.
    License: OFL.
 
 ** Antykwa Półtawskiego (Półtawski's antiqua)
-
-   [[/img/fonts/Poltawski_Nowy.svg]]
 
    Designed in the 1920s and brought into the digital world in early 2000s by the Polish TeX Users Group (GUST).
    At the time, diacritics in LaTeX caused some headaches.
@@ -42,36 +55,56 @@
    Being able to use a font in which Polish characters were designed from ground up (as opposed to adding diacritics on top of existing characters) was quite something.
 
    In 2020, the font was digitized again, from scratch, based on materials (fonts, scans, drawings) from a Polish foundry /Idźkowski i S-ka/ and a British printing press manufacturer /Monotype Salfords/.
-   This version was called Półtawski Nowy (Półtawski New) and is distributed under free-as-in-beer custom license (which forbids redistribution and requires registration to download).
+   This version was called Półtawski Nowy (Półtawski New) and is distributed under free-as-in-beer custom license (which, sadly, forbids redistribution and requires registration to download).
    The reissue was accompanied by a really nice publication on the [[http://poltawski-nowy.wtf/wp-content/uploads/2020/12/POLTAWSKI_BOOK_WEB.pdf][font's history]] (PDF, 14.9 MB).
 
    I don't really like antiqua, but I like the font's historical significance (both its origin and digitization).
 
-     See: [[https://www.gust.org.pl/projects/e-foundry/poltawski][GUST]] / [[https://en.wikipedia.org/wiki/Antykwa_P%C3%B3%C5%82tawskiego][Wikipedia]] / [[http://poltawski-nowy.wtf/][Półtawski Nowy]].
+   [[/img/fonts/Poltawski_Nowy.svg]]
+
+   See: [[https://www.gust.org.pl/projects/e-foundry/poltawski][GUST]] / [[https://en.wikipedia.org/wiki/Antykwa_P%C3%B3%C5%82tawskiego][Wikipedia]] / [[http://poltawski-nowy.wtf/][Półtawski Nowy]].
    Authors: Adam Półtawski (original); Janusz M. Nowacki, Bogusław Jackowski & Piotr Strzelczyk, GUST (Antykwa Półtawskiego); Mateusz Machalski, Borys Kosmynka, Ania Weluńska, Andrzej Tomaszewski, Adam Twardoch (Półtawski Nowy).
    License: GUST font license (GFL - Antykwa Półtawskiego), custom (Półtawski Nowy).
 
 * Monospace
-  
-** Hack
-
-   [[/img/fonts/Hack.svg]]
-
-   Pleasantly rounded, very readable, and with a great name, is one of my go-to monospace fonts.
-   For a long time, I used it to liven up my Matlab window.
-   I'm especially fond of the zero filled with a slender vertical oval (instead of a more common slashed zero).
 
 ** Anonymous Pro
 
-   [[/img/fonts/Anonymous_Pro.svg]]
+   My current favourite, I have it selected in Emacs and in the terminal.
+   Light and very readable, slightly angular, but with a nice degree of roundness.
+   Clearly signals "programming font"; looks cool and modern.
 
-   Another favourite, perhaps even number one.
-   More angular than hack, light and very readable.
-   I am currently using it in Emacs and in the terminal.
+   [[/img/fonts/Anonymous_Pro.svg]]
 
    See: [[https://fonts.google.com/specimen/Anonymous+Pro][Google Fonts]] / [[https://www.marksimonson.com/fonts/view/anonymous-pro][Mark Simonson Studio]].
    Author: Mark Simonson.
    License: OFL
+
+** Hack
+
+   Pleasantly rounded (more so than Anonymous Pro, and also slightly heavier), very readable, and with a great name, it's my second go-to monospace font.
+   For a long time, I used it to liven up my Matlab window.
+   I'm especially fond of the zero filled with a slender vertical oval (instead of a more common slashed zero).
+
+   [[/img/fonts/Hack.svg]]
+
+   See: [[https://sourcefoundry.org/hack/][Source foundry]].
+   Authors: Chris Simpkins, David van Gemeren (design)
+   Licence: MIT
+
+
+** Iosevka
+
+   My most recent discovery.
+   Sleek and balancing roundness with angularity, it looks cool and has some of the features which I like in Anonymous Pro.
+   The default is uniquely slim ("spatially efficient") -- useful for fitting long lines into a window or a status bar, but too condensed for my liking.
+   I'm currently giving the alternative, "extended" version a try (/If you prefer more breeze between the character, choose Extended and enjoy/ --- says the website).
+
+   Two widths aside, there are (too) many flavours and variations. Importantly, there are three main monospace fonts with slight differences (Iosevka, Iosevka Terminal, Iosevka Fixed),
+   and two "quasi-proportional" for general writing (Iosevka Aile, Iosevka Etoile).
+
+   See: [[https://en.wikipedia.org/wiki/Iosevka][Wikipedia]] / [[https://typeof.net/Iosevka/][typeof.net]]
+   
 
 ** Monaco / Menlo
    
@@ -79,7 +112,7 @@
    Both ship with MacOS, and to me they both have a similar rounded and elegant quality.
    I used both a lot when I worked on MacOS.
 
-   See: [[https://en.wikipedia.org/wiki/Monaco_(typeface)][Wikipedia (Monaco)]] / [[https://en.wikipedia.org/wiki/Menlo_(typeface)][Wikipedia (Menlo)]]
+   See: [[https://en.wikipedia.org/wiki/Monaco_(typeface)][Wikipedia (Monaco)]] / [[https://en.wikipedia.org/wiki/Menlo_(typeface)][Wikipedia (Menlo)]].
    Author: Susan Kare (Monaco) / Jim Lyles (Menlo).
    License: proprietary
 
@@ -87,19 +120,54 @@
 
 ** Lato
 
-   [[/img/fonts/Lato.svg]]
-
    Another Polish connection, with an interesting backstory: it was commisioned by a big company, which withdrew close to the end of the project.
    The author then released it under an open license, and the font gained popularity.
    Light, clean, and far from boring, in my opinion it works great for presentations and posters.
+
+   [[/img/fonts/Lato.svg]]
+
+   See: [[https://en.wikipedia.org/wiki/Lato_(typeface)][Wikipedia]] / [[https://fonts.google.com/specimen/Lato][Google Fonts]] / [[http://lukaszdziedzic.eu/][Łukasz Dziedzic]].
+   Author: Łukasz Dziedzic.
+   License: OFL
 
 ** Carlito
 
    [[/img/fonts/Carlito.svg]]
 
-   [[https://blogs.gnome.org/uraeus/2013/10/10/a-thank-you-to-google/][Metrically compatible]] with the proprietary Calibri, comes useful whenever a document in Calibri is requested.
-   Not very interesting besides.
+   [[https://blogs.gnome.org/uraeus/2013/10/10/a-thank-you-to-google/][Metrically compatible]] with the proprietary Calibri, useful for filling in documents created in Word and laid out based on Calibri.
+
+   According to this [[https://github.com/google/fonts/issues/1441#issuecomment-750044948][comment in a GitHub PR]] to google fonts, Carlito was derived from Lato in a semi-automatic fashion (to fit letter widths), and the entire discussion below is worth reading.
+   Indeed, it carries some of Lato character - but in said discussion it has also been described (by a co-author?) as /just an ugly Frankenstein monster/.
+
+   See: [[https://en.wikipedia.org/wiki/Croscore_fonts#Crosextra_fonts][Wikipedia]].
+   Author: Łukasz Dziedzic (?)
+   License: OFL
 
 ** Futura
 
-   
+   A honorable mention in this category goes to Bauhaus-related (or inspired) Futura, dating back to German modernism of 1920s.
+   Like Garamond, it has seen multiple digitizations, and I'm familiar with the one bundled with MacOS.
+
+   I enjoyed using it in presentations - it has a distinct, elegant appearance which comes at no cost for text clarity.
+   It was placed on my radar by the manual of the [[https://ctan.org/pkg/beamer][Beamer]] class for LaTeX ---
+   /Futura is, in our opinion, a beautiful font that is very well-suited for presentations. Its thick letters make it robust against scaling, inversion, and low contrast./
+
+   See: [[https://en.wikipedia.org/wiki/Futura_(typeface)][Wikipedia]].
+   Author: Paul Renner (original).
+   License: proprietary (?)
+
+# TODO: move images down (between text and links)
+
+* Afterword
+
+  I started writing this post when configuring a new computer, and it was supposed to be quick and easy write-up of something that I like.
+  But wanting to include author and license information led me down several rabbit holes.
+  First, I knew I wanted to include Półtawski's Antykwa, but I only knew the LaTeX (GUST) version, as Półtawski Nowy came out only two years ago.
+  This, together with the story of Garamond, made me realise that there may be several digitizations of traditional fonts, based on different sets of source materials (iron fonts, photographs), and done in different software frameworks.
+  Then, also the details of Carlito required some jumping across links to find the discussion of its provenance on GitHub.
+  Finally, Wikipedia has a nice template for font illustrations, but doesn't have them all, and each sample is slightly different.
+  I ended up creating my own with a small Python script using svgwrite.
+  All in all, it was very interesting.
+
+  As a side note, both [[https://docs.fedoraproject.org/en-US/quick-docs/fonts/][Fedora]] and [[https://wiki.debian.org/Fonts][Debian]] (two distributions I use between personal and work computers) have nice documentation on how to install fonts.
+  
