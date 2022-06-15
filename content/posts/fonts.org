@@ -12,8 +12,8 @@ I like when these things look nice.
 Polish type designer Łukasz Dziedzic said in an [[https://wiadomosci.gazeta.pl/wiadomosci/7,143647,18850417,lato-podbija-swiat-czyli-jak-nieudane-zlecenie-doprowadzilo.html][interview]] (Polish, translation mine):
 
 #+BEGIN_QUOTE
-Letters give us plenty of information, but in a way which is completely unnoticeable.
-They are a bit like music in a movie, which can change its mood - if during a tragic scene it was cheerful, we would perceive what we see in an entirely different manner.
+Letters give us plenty of information, but they do so in a way which is completely unnoticeable.
+They are a bit like music in a movie, which can change its mood - if during a tragic scene the score was cheerful, we would perceive what we see in an entirely different manner.
 And vice versa.
 With letters it is similar, only more discreet.
 #+END_QUOTE
@@ -103,6 +103,8 @@ Without further ado, here is a short listing of my favourite fonts.
    Two widths aside, there are (too) many flavours and variations. Importantly, there are three main monospace fonts with slight differences (Iosevka, Iosevka Terminal, Iosevka Fixed),
    and two "quasi-proportional" for general writing (Iosevka Aile, Iosevka Etoile).
 
+   [[/img/fonts/Iosevka.svg]]
+
    See: [[https://en.wikipedia.org/wiki/Iosevka][Wikipedia]] / [[https://typeof.net/Iosevka/][typeof.net]]
    
 
@@ -132,12 +134,12 @@ Without further ado, here is a short listing of my favourite fonts.
 
 ** Carlito
 
-   [[/img/fonts/Carlito.svg]]
-
    [[https://blogs.gnome.org/uraeus/2013/10/10/a-thank-you-to-google/][Metrically compatible]] with the proprietary Calibri, useful for filling in documents created in Word and laid out based on Calibri.
 
    According to this [[https://github.com/google/fonts/issues/1441#issuecomment-750044948][comment in a GitHub PR]] to google fonts, Carlito was derived from Lato in a semi-automatic fashion (to fit letter widths), and the entire discussion below is worth reading.
    Indeed, it carries some of Lato character - but in said discussion it has also been described (by a co-author?) as /just an ugly Frankenstein monster/.
+
+   [[/img/fonts/Carlito.svg]]
 
    See: [[https://en.wikipedia.org/wiki/Croscore_fonts#Crosextra_fonts][Wikipedia]].
    Author: Łukasz Dziedzic (?)
@@ -156,8 +158,6 @@ Without further ado, here is a short listing of my favourite fonts.
    Author: Paul Renner (original).
    License: proprietary (?)
 
-# TODO: move images down (between text and links)
-
 * Afterword
 
   I started writing this post when configuring a new computer, and it was supposed to be quick and easy write-up of something that I like.
@@ -168,6 +168,12 @@ Without further ado, here is a short listing of my favourite fonts.
   Finally, Wikipedia has a nice template for font illustrations, but doesn't have them all, and each sample is slightly different.
   I ended up creating my own with a small Python script using svgwrite.
   All in all, it was very interesting.
+
+  The Beamer manual mentioned previously has a nice 10-page chapter on "Guidelines for creating presentations", with a couple pages dedicated to choosing fonts.
+  It also contains this honest advice: /There is one popular font that is a bit special: Microsoft’s Comic Sans. (...) Think twice before using this font, but do not let yourself be intimidated./
+  The reason why the authors don't discourage it outright is that it /does create the impression of a slide "written by hand," which gives the presentation a natural look/.
+  I didn't include script typefaces in this post because I don't have favourites, but I've used them sometimes to add some comments on slides (not full slides though).
+  There are, naturally, way better options than Comic Sans, such as [[https://fonts.google.com/specimen/Comic+Neue][Comic Neue]] or [[https://fonts.google.com/specimen/Nanum+Pen+Script][Naunum Pen script]]; both OFL-licensed (the latter discovered thanks to my colleague who used it as his main poster font - works very well).
 
   As a side note, both [[https://docs.fedoraproject.org/en-US/quick-docs/fonts/][Fedora]] and [[https://wiki.debian.org/Fonts][Debian]] (two distributions I use between personal and work computers) have nice documentation on how to install fonts.
   
