@@ -3,6 +3,6 @@
   <defs/>
   <rect fill="rgb(48,52,70)" height="115" width="800" x="0" y="0"/>
   <text fill="rgb(198,208,245)" font-family="Poltawski Nowy" font-size="42" x="10" y="45">Cwm fjord bank glyphs vext quiz</text>
-  <text fill="rgb(166,209,137)" font-family="Poltawski Nowy" font-size="42" x="10" y="95">1234567890</text>
-  <text fill="rgb(231,130,132)" font-family="Poltawski Nowy" font-size="42" x="400" y="95">Aa Qq Rr Łł Żż</text>
+  <text fill="rgb(231,130,132)" font-family="Poltawski Nowy" font-size="42" x="10" y="95">Aa Qq Rr Łł Żż</text>
+  <text fill="rgb(166,209,137)" font-family="Poltawski Nowy" font-size="42" text-anchor="end" x="790" y="95">1234567890</text>
 </svg>
