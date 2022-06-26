@@ -69,6 +69,17 @@ Without further ado, here is a short listing of my favourite fonts.
    License (Antykwa Półtawskiego): GUST font license (GFL, based on LaTeX Project Public License, LPPL).
    License (Półtawski Nowy): custom.
 
+** Vollkorn
+
+   I discovered Vollkorn as it came installed among the fonts available on my Tolino[fn:3] e-book reader.
+   Its tagline says /the free and healthy typeface for bread and butter use/, but for me it evokes the slightly oldschool, printed book feeling.
+
+   [[/img/fonts/Vollkorn.png]]
+
+   See: [[https://fonts.google.com/specimen/Vollkorn][Google Fonts]] / [[https://github.com/FAlthausen/Vollkorn-Typeface][GitHub]] / [[http://vollkorn-typeface.com/][Project page]].
+   Author: Friedrich Althausen.
+   License: OFL.
+
 * Monospace
 
 ** Anonymous Pro
@@ -171,7 +182,7 @@ Without further ado, here is a short listing of my favourite fonts.
   This, together with the story of Garamond, made me realise that traditional fonts often have several digitizations, which can be based on different sets of source materials (metal types, photographs), and done in different software frameworks.
   Then, also the details of Carlito required some jumping across links to find the discussion of its provenance on GitHub.
   Finally, Wikipedia has a nice template for font illustrations, but doesn't have them all, and each sample is slightly different.
-  I ended up creating my own with a small Python script using svgwrite, and then converting to path and exporting to png in Inkscape (ImageMagick export didn't preserve ligatures).
+  I ended up creating my own with a [[https://gist.github.com/mslw/9cd6b4acee8ceda366a6c10cb5503477][small Python script]] using svgwrite, and then converting to path and exporting to png in Inkscape (ImageMagick export didn't preserve ligatures).
   All in all, it was very interesting.
 
   The Beamer manual mentioned previously has a nice 10-page chapter on "Guidelines for creating presentations", with a couple pages dedicated to choosing fonts.
@@ -182,6 +193,9 @@ Without further ado, here is a short listing of my favourite fonts.
 
   As a side note, both [[https://docs.fedoraproject.org/en-US/quick-docs/fonts/][Fedora]] and [[https://wiki.debian.org/Fonts][Debian]] (two distributions I use between personal and work computers) have nice documentation on how to install fonts.
 
+* Changelog
+
+  2022-06-26: Added Vollkorn. Added a link to the Python script used to generate font specimens.
 
 
 [fn:1] Which annoys me for two reasons.
@@ -192,3 +206,6 @@ Yet, the license PDF distributed with the font (in Polish, the English version l
 
 [fn:2] The publication mentions two other digitizations, Poltawski OM by Felix Tymcik and Polanta Serif by Julia Gonina.
 Neither were broadly distributed.
+
+[fn:3] [[https://mytolino.de][Tolino]] is a German brand crated by several book stores, with a reasonably open ecosystem.
+They are using Kobo hardware, but with an alternate Android-based operating system.
