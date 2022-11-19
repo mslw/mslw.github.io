@@ -1,0 +1,52 @@
+#+layout: default
+#+title: Projects
+
+* Research
+** Key Mechanisms of Motor Control in Health and Disease - Data Managemnent for Computational Modelling (INF)
+The INF project within the [[https://www.crc1451.uni-koeln.de/][Collaborative Research Centre 1451]] aims to provide tools, services, and training to help other projects align their research output to facilitate data analysis for understanding mechanisms underlying motor behaviours across species, and promote data-driven computational modelling.
+Comprised of diverse groups, the CRC1451 setup presents an interesting challenge of decentralised research data management.
+
+My role in the INF project combines workshops, consultations, documentation writing, and software development.
+
+- Role: Postdoctoral
+- [[https://gepris.dfg.de/gepris/projekt/458705875][Project page]]
+
+** Neural Correlates of Emotional Contagion in Humans
+In this project, we investigated emotional contagion, and more specifically observational fear conditioning, in pairs of friends.
+We used fMRI and psychophysiology, and adapted an existing observational fear conditioning paradigm to live observation, where two participants were in the lab at the same time (as opposed to the use of actors and recordings).
+We confirmed the engagement of brain regions typically involved in either fear-related or social-related processes.
+Somewhat surprisingly, we found little difference between acquisition of fear through observation of friends compared to strangers.
+
+As a PhD student I was involved in all stages of the project, from planning and preparation, through data collection, analysis and writing.
+The project was interesting in multiple aspects, both technical (setting up live observation during fMRI) and scientific (working at an intersection of social and emotion neuroscience).
+
+- Role: Graduate Student
+- Selected publications:
+  - {{<icon "ai ai-open-access" >}} Szczepanik, M., Kaźmierowska, A. M., Michałowski, J. M., Wypych, M., Olsson, A., & Knapska, E. (2020). Observational learning of fear in real time procedure. /Scientific Reports, 10(1)/, 16960. https://doi.org/10.1038/s41598-020-74113-w
+  - {{<icon "ai ai-biorxiv" >}} Kaźmierowska, A. M., Szczepanik, M., Wypych, M., Droździel, D., Marchewka, A., Michałowski, J. M., Olsson, A., Knapska, E. (2021). Learning about threat from friends and strangers is equally effective: an fMRI study on observational fear conditioning. /bioRxiv/. https://doi.org/10.1101/2021.09.20.461036
+- [[https://projekty.ncn.gov.pl/en/index.php?projekt_id=311885][Project page]] (National Science Centre, Poland)
+
+** Modality-General and Modality-Specific Plastic Changes When Learning a Second Language 
+This longitudinal study, centered around five fMRI sessions across one year time span, tracked three groups of participants as they learned a language with a novel modality (Polish Sign Language, Braille Alphabet, Greek).
+We observed rapid functional reorganization within first three months of language learning, and highlighted the involvement of areas specific for language processing.
+
+This project was my introduction to cognitive neuroscience, and I learned a lot about fMRI practice in the process.
+I was involved mostly in software (preparing experimental procedures) and working with participants during multiple scanning sessions, and a bit less in data analysis.
+
+- Role: Undergraduate / Graduate Student / Postdoctoral 
+- Selected publications:
+  - {{<icon "ai ai-closed-access" >}} Banaszkiewicz, A., Bola, Ł., Matuszewski, J., Szczepanik, M., Kossowski, B., Mostowski, P., Rutkowski, P., Śliwińska, M., Jednoróg, K., Emmorey, K., & Marchewka, A. (2021). The role of the superior parietal lobule in lexical processing of sign language: Insights from fMRI and TMS. /Cortex, 135/, 250-254. https://doi.org/10.1016/j.cortex.2020.10.025
+  - {{<icon "ai ai-open-access" >}} Kuper, C., Matuszewski, J., Banaszkiewicz, A., Bola Ł., Szczepanik, M., Draps, M., Kordos, P., Szwed, M., Jednoróg, K., & Marchewka, A. (2021). Functional reorganization of the reading network in the course of foreign language acquisition. /Neuroimage, 226/, 117544. https://doi.org/10.1016/j.neuroimage.2020.117544
+- [[https://projekty.ncn.gov.pl/en/index.php?projekt_id=265590][Project page]] (National Science Centre, Poland)
+
+* Software
+** DataLad
+DataLad is a free and open source distributed data management system, which can be used to assist at all stages of life of digital objects - from local version control, through collaboration, to publication and consumption.
+As part of tha DataLad team I contribute to DataLad core (my PRs) as well as related datalad projects and the DataLad handbook through code, testing, development and teaching.
+DataLad is, by far, the biggest software project I have been involved in.
+
+** Horos BIDS plugin
+This plugin for DICOM viewer Horos provides a graphical interface to annotate a set of acquired images and to convert them into using dcm2niix.
+It was my first "serious" personal project, in that it was developed from scratch and iterated upon to become useful.
+It became actively used by my lab colleagues to grab their freshly acquired data in BIDS format.
+
