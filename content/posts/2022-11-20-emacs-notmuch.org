@@ -56,21 +56,17 @@ I had to disassemble and reassemble the file with =openssl= before importing int
 The following is based on [[https://git.scc.kit.edu/-/snippets/572][this snippet]]:
 
 #+begin_src bash
-  # extract user certificate
-  openssl pkcs12 -in mypkcsfile.p12 -clcerts -nokeys -out user_cert.pem
-
-  # extract private key
-  openssl pkcs12 -in mypkcsfile.p12 -nocerts -out user_key.pem
-
-  # merge them back
-  openssl pkcs12 -export -in user_cert.pem -inkey user_key.pem -out user_cert.p12
-
-  # import into gpgsm
-  gpgsm --import user_cert.p12
-  
-  # see that it worked
-  gpgsm --list-secret-keys
-  gpgsm --list-keys
+# extract user certificate
+openssl pkcs12 -in mypkcsfile.p12 -clcerts -nokeys -out user_cert.pem
+# extract private key
+openssl pkcs12 -in mypkcsfile.p12 -nocerts -out user_key.pem
+# merge them back
+openssl pkcs12 -export -in user_cert.pem -inkey user_key.pem -out user_cert.p12
+# import into gpgsm
+gpgsm --import user_cert.p12
+# see that it worked
+gpgsm --list-secret-keys
+gpgsm --list-keys
 #+end_src
 
 The commands will prompt for a password for the pkcs file, and the newly created files, as it is good practice to password-protect private keys.
@@ -137,26 +133,26 @@ It is based on my note-taking during setup, and I'll keep it in the form of bull
 ** Getting mail: isync configuration
 - Config file, =~/.mbsyncrc=, based on [[https://wiki.archlinux.org/title/Isync#Configuring][arch wiki]]:
   #+begin_src conf
-    IMAPAccount work
-    Host imap.example.com
-    User me@example.com
-    PassCmd "pass Email/example.com"
-    SSLType IMAPS
+  IMAPAccount work
+  Host imap.example.com
+  User me@example.com
+  PassCmd "pass Email/example.com"
+  SSLType IMAPS
 
-    IMAPStore work-remote
-    Account work
+  IMAPStore work-remote
+  Account work
 
-    MaildirStore work-local
-    SubFolders Verbatim
-    Path ~/.mail/work/
-    Inbox ~/.mail/work/Inbox
+  MaildirStore work-local
+  SubFolders Verbatim
+  Path ~/.mail/work/
+  Inbox ~/.mail/work/Inbox
 
-    Channel work
-    Far :work-remote:
-    Near :work-local:
-    Create Both
-    Expunge Both
-    SyncState *
+  Channel work
+  Far :work-remote:
+  Near :work-local:
+  Create Both
+  Expunge Both
+  SyncState *
   #+end_src
 
 - To get new version of isync on Debian stable (1.4.4, has Far & Near keywords): =sudo apt install isync/bullseye-backports=.
@@ -173,7 +169,7 @@ It is based on my note-taking during setup, and I'll keep it in the form of bull
 - Official guide: [[https://notmuchmail.org/notmuch-emacs/][Notmuch Emacs Interface]].
 - Add a minimal configuration to =~/.emacs.d/init.el= (autoload, sorting, closing messages):
 
-#+begin_src lisp
+  #+begin_src lisp
   (autoload 'notmuch "notmuch" "notmuch mail" t)
   (setq notmuch-search-oldest-first nil)
   (setq message-kill-buffer-on-exit t)
@@ -249,7 +245,7 @@ The message would be signed upon sending (see [[https://www.gnu.org/software/Ema
 
 ** Mail footer signature
 - Emacs manual, [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Signature.html][Mail Signature]]:
-  - create text file, =~/.signature=
+  - create text file, =~/.signature=,
   - insert always by default, or disable and use =C-c C-w= to insert manually.
 
 * Link collection
