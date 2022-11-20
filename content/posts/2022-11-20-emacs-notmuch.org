@@ -1,0 +1,265 @@
+#+title: E-mail in Emacs with Notmuch
+#+layout: post
+#+date: 2022-11-20T16:15:00+0100
+#+author: Michał Szczepanik
+#+tags[]: tips-tricks software emacs
+#+draft: false
+
+I switched to reading and writing my e-mail in [[https://www.gnu.org/software/emacs/][Emacs]] with [[https://notmuchmail.org/][Notmuch]].
+The first impressions are good -- I like the simplicity brought by text interface, and the workflow focused on tagging, archiving, and searching.
+
+There is a ton of blog posts on configuring e-mail in Emacs already (I link several at the end).
+One thing that was important for me and not easy to find was S/MIME signing, so I will describe it in more detail, and be more concise about other aspects.
+
+* Overview
+
+E-mail workflow in Emacs requires several pieces, in line with the Unix philosophy, "make each program do one thing well".
+This can seem scary at first (/where do I begin?/), but is actually very nice: you can deal with pieces one at a time, knowing that you can always swap things out later on.
+Moreover, pretty much all of the components are surprisingly turnkey.
+In [[https://www.reddit.com/r/emacs/comments/4rl0a9/comment/d52q08p/][this comment on Reddit]], u/IceDane nicely explains what are the pieces you need.
+Listing along his categories, these are the ones I chose:
+
+- something to fetch your email: isync (mbsync);
+- something to send mail: msmtp;
+- something to view your mail: Notmuch.
+
+I would also add two minor categories:
+
+- something to manage your passwords: pass;
+- something to encrypt/sign your messages: gpgsm.
+
+Let's go over the entire setup, starting with signing, as this part was slightly unusual in my case.
+
+* S/MIME signing
+
+My employer strongly recommends that I sign my e-mails using an S/MIME (X.509) certificate issued by them.
+The key difference from another standard, PGP, is that S/MIME relies on certificate authorities to establish trust, while PGP relies on a decentralised web of trust.
+S/MIME is seamlessly integrated into standard e-mail clients (Outlook, Thunderbird), but is less popular in the free software world, and less documented for the software we will use.
+
+For signing e-mails in Emacs, very little changes between PGP and S/MIME.
+In both cases, the cryptography is handed over to GnuPG.
+For S/MIME, the specific utility which handles signing would be =gpgsm=, the lesser known sibling of the =gpg= program.
+
+** Importing the certificate into gpgsm
+I have my X.509 certificate in a .p12 (PKCS) file.
+Although =gpgsm= should be able to import it, it errors on some files of this type (hopefully not all?), as it did for mine:
+#+begin_src
+❱ gpgsm --import mypkcsfile.p12
+gpgsm: data error at "data.objectidentifier", offset 67
+gpgsm: error at "bag-sequence", offset 49
+gpgsm: error parsing or decrypting the PKCS#12 file
+gpgsm: total number processed: 0
+#+end_src
+
+This is apparently due to having additional certificates (full chain) in the file.
+I had to disassemble and reassemble the file with =openssl= before importing into =gpgsm=.
+The following is based on [[https://git.scc.kit.edu/-/snippets/572][this snippet]]:
+
+#+begin_src bash
+  # extract user certificate
+  openssl pkcs12 -in mypkcsfile.p12 -clcerts -nokeys -out user_cert.pem
+
+  # extract private key
+  openssl pkcs12 -in mypkcsfile.p12 -nocerts -out user_key.pem
+
+  # merge them back
+  openssl pkcs12 -export -in user_cert.pem -inkey user_key.pem -out user_cert.p12
+
+  # import into gpgsm
+  gpgsm --import user_cert.p12
+  
+  # see that it worked
+  gpgsm --list-secret-keys
+  gpgsm --list-keys
+#+end_src
+
+The commands will prompt for a password for the pkcs file, and the newly created files, as it is good practice to password-protect private keys.
+
+** Trusting the root certificate
+Although our GnuPG knows the secret key now, it won't trust it, and will refuse to use it for signing.
+Unlike =gpg=, =gpgsm= has no option to edit the key trust level, and this is handled through config files instead.
+
+This mechanism is kind-of explained (mentioned) in the gpgsm's [[https://man.archlinux.org/man/gpgsm.1.en][man page]], for example in the FILES section when describing =qualified.txt=:
+#+begin_quote
+This is the list of root certificates used for qualified certificates.  They are defined as certificates capable  of
+creating  legally binding signatures in the same way as handwritten signatures are. (...)
+
+Note  that even if a certificate is listed in this file, this does not mean that the certificate is trusted; in gen‐
+eral the certificates listed in this file need to be listed also in ‘trustlist.txt’.
+#+end_quote
+
+The [[https://wiki.gnupg.org/X.509][GnuPG Wiki]] links to this mailing list [[https://lists.gnupg.org/pipermail/gnupg-devel/2011-June/026126.html][message]] from 2011 with more explanations, and [[https://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html][GnuPG manual for gpg-agent configuration]] describes trustlist.txt, but the real source of help was the [[https://www.mew.org/en/feature/smime.html][documentation page]] for mew, another (now unmaintained?) e-mail reader for Emacs (see "Trusting your root CA" section there).
+
+First, you need to find the root certificate.
+To do so, list the imported keys and look for one which is self-signed (Issuer and Subject are the same).
+In my key chain, it was one issued by [[https://www.telesec.de/][TeleSec]].
+
+#+begin_src
+   ❱ gpgsm --list-keys
+     (...)
+	    ID: 0x17D894E9
+	   S/N: 01
+	 (dec): 1
+	Issuer: /CN=T-TeleSec GlobalRoot Class 2/OU=T-Systems Trust Center/O=T-Systems Enterprise Services GmbH/C=DE
+       Subject: /CN=T-TeleSec GlobalRoot Class 2/OU=T-Systems Trust Center/O=T-Systems Enterprise Services GmbH/C=DE
+      validity: 2008-10-01 10:40:14 through 2033-10-01 23:59:59
+      key type: 2048 bit RSA
+     key usage: certSign crlSign
+  chain length: unlimited
+   fingerprint: 59:0D:2D:7D:88:4F:40:2E:61:7E:A5:62:32:17:65:CF:17:D8:94:E9
+      sha2 fpr: 91:E2:F5:78:8D:58:10:EB:A7:BA:58:73:7D:E1:54:8A:8E:CA:CD:01:45:98:BC:0B:14:3E:04:1B:17:05:25:52
+#+end_src
+
+Then, you need to copy the fingerprint, and paste it into =~/.gnupg/trustlist.txt= (just the fingerprint value, in a single line, creating the file if necessary).
+The mew docs also say that if the root key doesn't specify "key usage" (mine does), you also need to append " S relax" to the line with the fingerprint.
+
+To verify that it worked, create and verify a detached signature:
+
+#+begin_src
+  ❱ gpgsm --detach-sign file > sig
+  ❱ gpgsm --verify sig file
+#+end_src
+
+And that's it! Hard to find instructions, but easy to do.
+
+* Step-by-step guide
+
+Below is a step-by-step guide for my configuration.
+It is based on my note-taking during setup, and I'll keep it in the form of bullet points with resource links and minimal snippets.
+
+** Preliminary: storing the e-mail password
+- Use [[https://www.passwordstore.org/][pass]] (keepassxc would be an option, but there's no way to cache password).
+- Pass relies on gpg for encryption, need to have a gpg key [[https://docs.fedoraproject.org/en-US/quick-docs/create-gpg-keys/#creating-gpg-keys-cli][created]]: =gpg --full-generate-key=.
+- =pass init <gpg key id>= and =pass insert Email/example.com=
+- When decryption is needed, gpg-agent will pop up a prompt window, asking for the encryption key password (it will be cached for a configurable amount of time).
+- For a more complete GPG key management, Debian wiki explains [[https://wiki.debian.org/Subkeys][subkeys]] nicely.
+
+** Getting mail: isync configuration
+- Config file, =~/.mbsyncrc=, based on [[https://wiki.archlinux.org/title/Isync#Configuring][arch wiki]]:
+  #+begin_src conf
+    IMAPAccount work
+    Host imap.example.com
+    User me@example.com
+    PassCmd "pass Email/example.com"
+    SSLType IMAPS
+
+    IMAPStore work-remote
+    Account work
+
+    MaildirStore work-local
+    SubFolders Verbatim
+    Path ~/.mail/work/
+    Inbox ~/.mail/work/Inbox
+
+    Channel work
+    Far :work-remote:
+    Near :work-local:
+    Create Both
+    Expunge Both
+    SyncState *
+  #+end_src
+
+- To get new version of isync on Debian stable (1.4.4, has Far & Near keywords): =sudo apt install isync/bullseye-backports=.
+- Create a folder to store e-mails: =mkdir ~/.mail/work=.
+- Sync: =mbsync -V work=.
+
+** Notmuch configuration
+*** Notmuch itself
+- Official guide: [[https://notmuchmail.org/getting-started/][Getting Started with Notmuch]].
+- Basic configuration: =notmuch=.
+- Indexing: =notmuch new=.
+
+*** Notmuch Emacs Interface
+- Official guide: [[https://notmuchmail.org/notmuch-emacs/][Notmuch Emacs Interface]].
+- Add a minimal configuration to =~/.emacs.d/init.el= (autoload, sorting, closing messages):
+
+#+begin_src lisp
+  (autoload 'notmuch "notmuch" "notmuch mail" t)
+  (setq notmuch-search-oldest-first nil)
+  (setq message-kill-buffer-on-exit t)
+#+end_src
+
+** Sending email
+- Could use [[https://www.gnu.org/software/emacs/manual/html_mono/smtpmail.html][Emacs SMTP Library]] directly.
+- Using msmtp for now, seems more popular and easy to configure.
+- =apt install msmtp=
+- msmtp config in =~/.msmtprc=, based on [[https://wiki.archlinux.org/title/Msmtp][Arch wiki]]:
+  
+  #+begin_src
+  # Set default values for all following accounts.
+  defaults
+  auth           on
+  tls            on
+  logfile        ~/.msmtp.log
+
+  # work
+  account        work
+  host           mail.example.com
+  port           587
+  from           me@example.com
+  user           me@example.com
+  passwordeval   "pass Email/example.com"
+
+  # Set a default account
+  account default : work
+  #+end_src
+
+- Emacs config in =~/.emacs.d/init.el=:
+
+  #+begin_src lisp
+  ;; msmtp
+  (setq send-mail-function 'sendmail-send-it
+	sendmail-program "/usr/bin/msmtp"
+	mail-specify-envelope-from t
+	message-sendmail-envelope-from 'header
+	mail-envelope-from 'header)
+  #+end_src
+
+** Signing
+- Configure GnuPg (gpgsm) as explained above:
+  - import certificate,
+  - add root certificate to trust list.
+- Enable signing by default in =~/.emacs.d/init.el=:
+
+  #+begin_src lisp
+  ;; smime
+  (setq mml-secure-smime-sign-with-sender t)
+  (add-hook 'message-setup-hook 'mml-secure-message-sign-smime)
+#+end_src
+
+Note: the above would insert the MML secure tag (=<#secure method=smime mode=sign>=) at the beginning of message body.
+The message would be signed upon sending (see [[https://www.gnu.org/software/Emacs/manual/html_node/message/Signing-and-encryption.html][Emacs manual on signing and encrypyting commands]].
+
+** Notmuch hooks
+- I trigger updates manually from emacs-notmuch ("G" in Notmuch screen).
+- I use the hooks to fetch and tag incoming e-mails.
+- Hooks are described by =man notmuch-hooks= ([[https://man.archlinux.org/man/community/notmuch-runtime/notmuch-hooks.5.en][online version]]).
+- They must be saved without extension in =$DATABASEDIR/.notmuch/hooks/*= and made executable (=chmod +x=).
+- =pre-new=, "typically this hook is used for fetching or delivering new mail to be imported into the database":
+  #+begin_src
+  mbsync work
+  #+end_src
+- =post-new=, "typically this hook is used to perform additional query-based tagging on the imported messages":
+  #+begin_src
+  notmuch tag -unread -inbox +sent -- tag:inbox and from:me@example.com
+  #+end_src
+
+- I tried using =post-insert= to handle my sent messages but couldn't make it work, so I tag them in post-new instead.
+- I plan to add separate tags for mailing lists: [[https://notmuchmail.org/initial_tagging/][Notmuch - initial tagging]].
+
+** Mail footer signature
+- Emacs manual, [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Signature.html][Mail Signature]]:
+  - create text file, =~/.signature=
+  - insert always by default, or disable and use =C-c C-w= to insert manually.
+
+* Link collection
+The following pages have been useful, and describe different setups:
+
+- https://skeptric.com/emacs-email/
+- https://frostyx.cz/posts/synchronize-your-2fa-gmail-with-mbsync
+- https://systemcrafters.net/emacs-mail/
+- http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/
+- https://bostonenginerd.com/posts/notmuch-of-a-mail-setup-part-1-mbsync-msmtp-and-systemd/
+- https://www.reddit.com/r/emacs/comments/4rl0a9/email_in_emacs_i_want_to_but_wow_its_overwhelming/
+- https://jonathanchu.is/posts/emacs-notmuch-isync-msmtp-setup/
+- https://firminmartin.com/en/posts/2020/10/read_email_in_emacs_with_notmuch/
