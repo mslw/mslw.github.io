@@ -1,4 +1,367 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 17 Jun 2022 17:30:00 +0200</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>From my font folder</title><link>https://mslw.github.io/posts/2022-06-17-fonts/</link><pubDate>Fri, 17 Jun 2022 17:30:00 +0200</pubDate><guid>https://mslw.github.io/posts/2022-06-17-fonts/</guid><description>I spend a large part of my workday staring at a text on a computer screen. Sometimes, I also need to produce some text that needs to be beamed onto a wall, plotted onto a large piece of paper, or printed on a bunch of A4s. I like when these things look nice.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 20 Nov 2022 16:15:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>E-mail in Emacs with Notmuch</title><link>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</link><pubDate>Sun, 20 Nov 2022 16:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</guid><description>I switched to reading and writing my e-mail in Emacs with Notmuch. The first impressions are good – I like the simplicity brought by text interface, and the workflow focused on tagging, archiving, and searching.
+There is a ton of blog posts on configuring e-mail in Emacs already (I link several at the end). One thing that was important for me and not easy to find was S/MIME signing, so I will describe it in more detail, and be more concise about other aspects.</description><content type="html"><![CDATA[
+<p>
+I switched to reading and writing my e-mail in <a href="https://www.gnu.org/software/emacs/">Emacs</a> with <a href="https://notmuchmail.org/">Notmuch</a>.
+The first impressions are good – I like the simplicity brought by text interface, and the workflow focused on tagging, archiving, and searching.</p>
+<p>
+There is a ton of blog posts on configuring e-mail in Emacs already (I link several at the end).
+One thing that was important for me and not easy to find was S/MIME signing, so I will describe it in more detail, and be more concise about other aspects.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Overview
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+E-mail workflow in Emacs requires several pieces, in line with the Unix philosophy, &#34;make each program do one thing well&#34;.
+This can seem scary at first (<em>where do I begin?</em>), but is actually very nice: you can deal with pieces one at a time, knowing that you can always swap things out later on.
+Moreover, pretty much all of the components are surprisingly turnkey.
+In <a href="https://www.reddit.com/r/emacs/comments/4rl0a9/comment/d52q08p/">this comment on Reddit</a>, u/IceDane nicely explains what are the pieces you need.
+Listing along his categories, these are the ones I chose:</p>
+<ul>
+<li>something to fetch your email: isync (mbsync);</li>
+<li>something to send mail: msmtp;</li>
+<li>something to view your mail: Notmuch.</li>
+</ul>
+<p>I would also add two minor categories:</p>
+<ul>
+<li>something to manage your passwords: pass;</li>
+<li>something to encrypt/sign your messages: gpgsm.</li>
+</ul>
+<p>Let&#39;s go over the entire setup, starting with signing, as this part was slightly unusual in my case.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+S/MIME signing
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+My employer strongly recommends that I sign my e-mails using an S/MIME (X.509) certificate issued by them.
+The key difference from another standard, PGP, is that S/MIME relies on certificate authorities to establish trust, while PGP relies on a decentralised web of trust.
+S/MIME is seamlessly integrated into standard e-mail clients (Outlook, Thunderbird), but is less popular in the free software world, and less documented for the software we will use.</p>
+<p>
+For signing e-mails in Emacs, very little changes between PGP and S/MIME.
+In both cases, the cryptography is handed over to GnuPG.
+For S/MIME, the specific utility which handles signing would be <code class="verbatim">gpgsm</code>, the lesser known sibling of the <code class="verbatim">gpg</code> program.</p>
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Importing the certificate into gpgsm
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>I have my X.509 certificate in a .p12 (PKCS) file.
+Although <code class="verbatim">gpgsm</code> should be able to import it, it errors on some files of this type (hopefully not all?), as it did for mine:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">❱ gpgsm --import mypkcsfile.p12
+</span></span><span class="line"><span class="cl">gpgsm: data error at &#34;data.objectidentifier&#34;, offset 67
+</span></span><span class="line"><span class="cl">gpgsm: error at &#34;bag-sequence&#34;, offset 49
+</span></span><span class="line"><span class="cl">gpgsm: error parsing or decrypting the PKCS#12 file
+</span></span><span class="line"><span class="cl">gpgsm: total number processed: 0</span></span></code></pre></div>
+</div>
+<p>
+This is apparently due to having additional certificates (full chain) in the file.
+I had to disassemble and reassemble the file with <code class="verbatim">openssl</code> before importing into <code class="verbatim">gpgsm</code>.
+The following is based on <a href="https://git.scc.kit.edu/-/snippets/572">this snippet</a>:</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  <span class="c1"># extract user certificate</span>
+</span></span><span class="line"><span class="cl">  openssl pkcs12 -in mypkcsfile.p12 -clcerts -nokeys -out user_cert.pem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># extract private key</span>
+</span></span><span class="line"><span class="cl">  openssl pkcs12 -in mypkcsfile.p12 -nocerts -out user_key.pem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># merge them back</span>
+</span></span><span class="line"><span class="cl">  openssl pkcs12 -export -in user_cert.pem -inkey user_key.pem -out user_cert.p12
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># import into gpgsm</span>
+</span></span><span class="line"><span class="cl">  gpgsm --import user_cert.p12
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl">  <span class="c1"># see that it worked</span>
+</span></span><span class="line"><span class="cl">  gpgsm --list-secret-keys
+</span></span><span class="line"><span class="cl">  gpgsm --list-keys</span></span></code></pre></div>
+</div>
+<p>
+The commands will prompt for a password for the pkcs file, and the newly created files, as it is good practice to password-protect private keys.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+Trusting the root certificate
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>Although our GnuPG knows the secret key now, it won&#39;t trust it, and will refuse to use it for signing.
+Unlike <code class="verbatim">gpg</code>, <code class="verbatim">gpgsm</code> has no option to edit the key trust level, and this is handled through config files instead.</p>
+<p>
+This mechanism is kind-of explained (mentioned) in the gpgsm&#39;s <a href="https://man.archlinux.org/man/gpgsm.1.en">man page</a>, for example in the FILES section when describing <code class="verbatim">qualified.txt</code>:</p>
+<blockquote>
+<p>This is the list of root certificates used for qualified certificates.  They are defined as certificates capable  of
+creating  legally binding signatures in the same way as handwritten signatures are. (…)</p>
+<p>
+Note  that even if a certificate is listed in this file, this does not mean that the certificate is trusted; in gen‐
+eral the certificates listed in this file need to be listed also in ‘trustlist.txt’.</p>
+</blockquote>
+<p>
+The <a href="https://wiki.gnupg.org/X.509">GnuPG Wiki</a> links to this mailing list <a href="https://lists.gnupg.org/pipermail/gnupg-devel/2011-June/026126.html">message</a> from 2011 with more explanations, and <a href="https://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html">GnuPG manual for gpg-agent configuration</a> describes trustlist.txt, but the real source of help was the <a href="https://www.mew.org/en/feature/smime.html">documentation page</a> for mew, another (now unmaintained?) e-mail reader for Emacs (see &#34;Trusting your root CA&#34; section there).</p>
+<p>
+First, you need to find the root certificate.
+To do so, list the imported keys and look for one which is self-signed (Issuer and Subject are the same).
+In my key chain, it was one issued by <a href="https://www.telesec.de/">TeleSec</a>.</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">   ❱ gpgsm --list-keys
+</span></span><span class="line"><span class="cl">     (...)
+</span></span><span class="line"><span class="cl">	    ID: 0x17D894E9
+</span></span><span class="line"><span class="cl">	   S/N: 01
+</span></span><span class="line"><span class="cl">	 (dec): 1
+</span></span><span class="line"><span class="cl">	Issuer: /CN=T-TeleSec GlobalRoot Class 2/OU=T-Systems Trust Center/O=T-Systems Enterprise Services GmbH/C=DE
+</span></span><span class="line"><span class="cl">       Subject: /CN=T-TeleSec GlobalRoot Class 2/OU=T-Systems Trust Center/O=T-Systems Enterprise Services GmbH/C=DE
+</span></span><span class="line"><span class="cl">      validity: 2008-10-01 10:40:14 through 2033-10-01 23:59:59
+</span></span><span class="line"><span class="cl">      key type: 2048 bit RSA
+</span></span><span class="line"><span class="cl">     key usage: certSign crlSign
+</span></span><span class="line"><span class="cl">  chain length: unlimited
+</span></span><span class="line"><span class="cl">   fingerprint: 59:0D:2D:7D:88:4F:40:2E:61:7E:A5:62:32:17:65:CF:17:D8:94:E9
+</span></span><span class="line"><span class="cl">      sha2 fpr: 91:E2:F5:78:8D:58:10:EB:A7:BA:58:73:7D:E1:54:8A:8E:CA:CD:01:45:98:BC:0B:14:3E:04:1B:17:05:25:52</span></span></code></pre></div>
+</div>
+<p>
+Then, you need to copy the fingerprint, and paste it into <code class="verbatim">~/.gnupg/trustlist.txt</code> (just the fingerprint value, in a single line, creating the file if necessary).
+The mew docs also say that if the root key doesn&#39;t specify &#34;key usage&#34; (mine does), you also need to append &#34; S relax&#34; to the line with the fingerprint.</p>
+<p>
+To verify that it worked, create and verify a detached signature:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">  ❱ gpgsm --detach-sign file &gt; sig
+</span></span><span class="line"><span class="cl">  ❱ gpgsm --verify sig file</span></span></code></pre></div>
+</div>
+<p>
+And that&#39;s it! Hard to find instructions, but easy to do.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
+Step-by-step guide
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
+<p>
+Below is a step-by-step guide for my configuration.
+It is based on my note-taking during setup, and I&#39;ll keep it in the form of bullet points with resource links and minimal snippets.</p>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Preliminary: storing the e-mail password
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ul>
+<li>Use <a href="https://www.passwordstore.org/">pass</a> (keepassxc would be an option, but there&#39;s no way to cache password).</li>
+<li>Pass relies on gpg for encryption, need to have a gpg key <a href="https://docs.fedoraproject.org/en-US/quick-docs/create-gpg-keys/#creating-gpg-keys-cli">created</a>: <code class="verbatim">gpg --full-generate-key</code>.</li>
+<li><code class="verbatim">pass init &lt;gpg key id&gt;</code> and <code class="verbatim">pass insert Email/example.com</code></li>
+<li>When decryption is needed, gpg-agent will pop up a prompt window, asking for the encryption key password (it will be cached for a configurable amount of time).</li>
+<li>For a more complete GPG key management, Debian wiki explains <a href="https://wiki.debian.org/Subkeys">subkeys</a> nicely.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+Getting mail: isync configuration
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<ul>
+<li>
+<p>Config file, <code class="verbatim">~/.mbsyncrc</code>, based on <a href="https://wiki.archlinux.org/title/Isync#Configuring">arch wiki</a>:</p>
+<div class="src src-conf">
+<pre tabindex="0"><code class="language-conf" data-lang="conf">  IMAPAccount work
+  Host imap.example.com
+  User me@example.com
+  PassCmd &#34;pass Email/example.com&#34;
+  SSLType IMAPS
+
+  IMAPStore work-remote
+  Account work
+
+  MaildirStore work-local
+  SubFolders Verbatim
+  Path ~/.mail/work/
+  Inbox ~/.mail/work/Inbox
+
+  Channel work
+  Far :work-remote:
+  Near :work-local:
+  Create Both
+  Expunge Both
+  SyncState *</code></pre>
+</div>
+</li>
+<li>To get new version of isync on Debian stable (1.4.4, has Far &amp; Near keywords): <code class="verbatim">sudo apt install isync/bullseye-backports</code>.</li>
+<li>Create a folder to store e-mails: <code class="verbatim">mkdir ~/.mail/work</code>.</li>
+<li>Sync: <code class="verbatim">mbsync -V work</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-3">
+<h3 id="headline-8">
+Notmuch configuration
+</h3>
+<div id="outline-text-headline-8" class="outline-text-3">
+<div id="outline-container-headline-9" class="outline-4">
+<h4 id="headline-9">
+Notmuch itself
+</h4>
+<div id="outline-text-headline-9" class="outline-text-4">
+<ul>
+<li>Official guide: <a href="https://notmuchmail.org/getting-started/">Getting Started with Notmuch</a>.</li>
+<li>Basic configuration: <code class="verbatim">notmuch</code>.</li>
+<li>Indexing: <code class="verbatim">notmuch new</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-4">
+<h4 id="headline-10">
+Notmuch Emacs Interface
+</h4>
+<div id="outline-text-headline-10" class="outline-text-4">
+<ul>
+<li>Official guide: <a href="https://notmuchmail.org/notmuch-emacs/">Notmuch Emacs Interface</a>.</li>
+<li>Add a minimal configuration to <code class="verbatim">~/.emacs.d/init.el</code> (autoload, sorting, closing messages):</li>
+</ul>
+<div class="src src-lisp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl">  <span class="p">(</span><span class="nv">autoload</span> <span class="ss">&#39;notmuch</span> <span class="s">&#34;notmuch&#34;</span> <span class="s">&#34;notmuch mail&#34;</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">setq</span> <span class="nv">notmuch-search-oldest-first</span> <span class="no">nil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="p">(</span><span class="k">setq</span> <span class="nv">message-kill-buffer-on-exit</span> <span class="no">t</span><span class="p">)</span></span></span></code></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-3">
+<h3 id="headline-11">
+Sending email
+</h3>
+<div id="outline-text-headline-11" class="outline-text-3">
+<ul>
+<li>Could use <a href="https://www.gnu.org/software/emacs/manual/html_mono/smtpmail.html">Emacs SMTP Library</a> directly.</li>
+<li>Using msmtp for now, seems more popular and easy to configure.</li>
+<li><code class="verbatim">apt install msmtp</code></li>
+<li>
+<p>msmtp config in <code class="verbatim">~/.msmtprc</code>, based on <a href="https://wiki.archlinux.org/title/Msmtp">Arch wiki</a>:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># Set default values for all following accounts.
+</span></span><span class="line"><span class="cl">defaults
+</span></span><span class="line"><span class="cl">auth           on
+</span></span><span class="line"><span class="cl">tls            on
+</span></span><span class="line"><span class="cl">logfile        ~/.msmtp.log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># work
+</span></span><span class="line"><span class="cl">account        work
+</span></span><span class="line"><span class="cl">host           mail.example.com
+</span></span><span class="line"><span class="cl">port           587
+</span></span><span class="line"><span class="cl">from           me@example.com
+</span></span><span class="line"><span class="cl">user           me@example.com
+</span></span><span class="line"><span class="cl">passwordeval   &#34;pass Email/example.com&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Set a default account
+</span></span><span class="line"><span class="cl">account default : work</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p>Emacs config in <code class="verbatim">~/.emacs.d/init.el</code>:</p>
+<div class="src src-lisp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">;; msmtp</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">setq</span> <span class="nv">send-mail-function</span> <span class="ss">&#39;sendmail-send-it</span>
+</span></span><span class="line"><span class="cl"><span class="nv">sendmail-program</span> <span class="s">&#34;/usr/bin/msmtp&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mail-specify-envelope-from</span> <span class="no">t</span>
+</span></span><span class="line"><span class="cl"><span class="nv">message-sendmail-envelope-from</span> <span class="ss">&#39;header</span>
+</span></span><span class="line"><span class="cl"><span class="nv">mail-envelope-from</span> <span class="ss">&#39;header</span><span class="p">)</span></span></span></code></pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-3">
+<h3 id="headline-12">
+Signing
+</h3>
+<div id="outline-text-headline-12" class="outline-text-3">
+<ul>
+<li>
+<p>Configure GnuPg (gpgsm) as explained above:</p>
+<ul>
+<li>import certificate,</li>
+<li>add root certificate to trust list.</li>
+</ul>
+</li>
+<li>
+<p>Enable signing by default in <code class="verbatim">~/.emacs.d/init.el</code>:</p>
+<div class="src src-lisp">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-lisp" data-lang="lisp"><span class="line"><span class="cl"><span class="c1">;; smime</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="k">setq</span> <span class="nv">mml-secure-smime-sign-with-sender</span> <span class="no">t</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="nv">add-hook</span> <span class="ss">&#39;message-setup-hook</span> <span class="ss">&#39;mml-secure-message-sign-smime</span><span class="p">)</span></span></span></code></pre></div>
+</div>
+</li>
+</ul>
+<p>Note: the above would insert the MML secure tag (<code class="verbatim">&lt;#secure method=smime mode=sign&gt;</code>) at the beginning of message body.
+The message would be signed upon sending (see <a href="https://www.gnu.org/software/Emacs/manual/html_node/message/Signing-and-encryption.html">Emacs manual on signing and encrypyting commands</a>.</p>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-3">
+<h3 id="headline-13">
+Notmuch hooks
+</h3>
+<div id="outline-text-headline-13" class="outline-text-3">
+<ul>
+<li>I trigger updates manually from emacs-notmuch (&#34;G&#34; in Notmuch screen).</li>
+<li>I use the hooks to fetch and tag incoming e-mails.</li>
+<li>Hooks are described by <code class="verbatim">man notmuch-hooks</code> (<a href="https://man.archlinux.org/man/community/notmuch-runtime/notmuch-hooks.5.en">online version</a>).</li>
+<li>They must be saved without extension in <code class="verbatim">$DATABASEDIR/.notmuch/hooks/*</code> and made executable (<code class="verbatim">chmod +x</code>).</li>
+<li>
+<p><code class="verbatim">pre-new</code>, &#34;typically this hook is used for fetching or delivering new mail to be imported into the database&#34;:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">mbsync work</span></span></code></pre></div>
+</div>
+</li>
+<li>
+<p><code class="verbatim">post-new</code>, &#34;typically this hook is used to perform additional query-based tagging on the imported messages&#34;:</p>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">notmuch tag -unread -inbox +sent -- tag:inbox and from:me@example.com</span></span></code></pre></div>
+</div>
+</li>
+<li>I tried using <code class="verbatim">post-insert</code> to handle my sent messages but couldn&#39;t make it work, so I tag them in post-new instead.</li>
+<li>I plan to add separate tags for mailing lists: <a href="https://notmuchmail.org/initial_tagging/">Notmuch - initial tagging</a>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-3">
+<h3 id="headline-14">
+Mail footer signature
+</h3>
+<div id="outline-text-headline-14" class="outline-text-3">
+<ul>
+<li>
+<p>Emacs manual, <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Mail-Signature.html">Mail Signature</a>:</p>
+<ul>
+<li>create text file, <code class="verbatim">~/.signature</code></li>
+<li>insert always by default, or disable and use <code class="verbatim">C-c C-w</code> to insert manually.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-15" class="outline-2">
+<h2 id="headline-15">
+Link collection
+</h2>
+<div id="outline-text-headline-15" class="outline-text-2">
+<p>The following pages have been useful, and describe different setups:</p>
+<ul>
+<li><a href="https://skeptric.com/emacs-email/">https://skeptric.com/emacs-email/</a></li>
+<li><a href="https://frostyx.cz/posts/synchronize-your-2fa-gmail-with-mbsync">https://frostyx.cz/posts/synchronize-your-2fa-gmail-with-mbsync</a></li>
+<li><a href="https://systemcrafters.net/emacs-mail/">https://systemcrafters.net/emacs-mail/</a></li>
+<li><a href="http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/">http://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and-/</a></li>
+<li><a href="https://bostonenginerd.com/posts/notmuch-of-a-mail-setup-part-1-mbsync-msmtp-and-systemd/">https://bostonenginerd.com/posts/notmuch-of-a-mail-setup-part-1-mbsync-msmtp-and-systemd/</a></li>
+<li><a href="https://www.reddit.com/r/emacs/comments/4rl0a9/email_in_emacs_i_want_to_but_wow_its_overwhelming/">https://www.reddit.com/r/emacs/comments/4rl0a9/email_in_emacs_i_want_to_but_wow_its_overwhelming/</a></li>
+<li><a href="https://jonathanchu.is/posts/emacs-notmuch-isync-msmtp-setup/">https://jonathanchu.is/posts/emacs-notmuch-isync-msmtp-setup/</a></li>
+<li><a href="https://firminmartin.com/en/posts/2020/10/read_email_in_emacs_with_notmuch/">https://firminmartin.com/en/posts/2020/10/read_email_in_emacs_with_notmuch/</a></li>
+</ul>
+</div>
+</div>
+]]></content></item><item><title>From my font folder</title><link>https://mslw.github.io/posts/2022-06-17-fonts/</link><pubDate>Fri, 17 Jun 2022 17:30:00 +0200</pubDate><guid>https://mslw.github.io/posts/2022-06-17-fonts/</guid><description>I spend a large part of my workday staring at a text on a computer screen. Sometimes, I also need to produce some text that needs to be beamed onto a wall, plotted onto a large piece of paper, or printed on a bunch of A4s. I like when these things look nice.
 Polish type designer Łukasz Dziedzic said in an interview (in Polish, translation mine):
 Letters give us plenty of information, but they do so in a way which is completely unnoticeable.</description><content type="html"><![CDATA[
 <p>
