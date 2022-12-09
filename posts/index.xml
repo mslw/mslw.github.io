@@ -1,4 +1,39 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 20 Nov 2022 16:15:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>E-mail in Emacs with Notmuch</title><link>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</link><pubDate>Sun, 20 Nov 2022 16:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</guid><description>I switched to reading and writing my e-mail in Emacs with Notmuch. The first impressions are good – I like the simplicity brought by text interface, and the workflow focused on tagging, archiving, and searching.
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Dec 2022 23:45:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Circular pour-over</title><link>https://mslw.github.io/posts/2022-12-09-pourover/</link><pubDate>Fri, 09 Dec 2022 23:45:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-12-09-pourover/</guid><description>Two weeks ago, James Hoffman posted &amp;#34;A better 1 cup V60 Technique&amp;#34;, an update to his &amp;#34;Ultimate V60 technique&amp;#34; adjusted to smaller servings. I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I&amp;#39;ve been using for a long time; that is, the drip recipe from The Barn. Have we gone full circle?
+The Barn was pretty much my gateway into speciality coffee, back during my university years (around 2015, probably).</description><content type="html"><![CDATA[<p>
+Two weeks ago, James Hoffman posted &#34;<a href="https://www.youtube.com/watch?v=1oB1oDrDkHM">A better 1 cup V60 Technique</a>&#34;, an update to his &#34;<a href="https://www.youtube.com/watch?v=AI4ynXzkSQo">Ultimate V60 technique</a>&#34; adjusted to smaller servings.
+I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I&#39;ve been using for a long time; that is, the <a href="https://thebarn.de/pages/brewguide-drip">drip recipe</a> from The Barn.
+Have we gone full circle?</p>
+<p>
+The Barn was pretty much my gateway into speciality coffee, back during my university years (around 2015, probably).
+I believe the recipe from the link above is the same at the moment of writing as it was back then.
+Anyway, the recipe from The Barn goes as follows:</p>
+<ul>
+<li>16 g coffee to 250 ml water</li>
+<li>bloom: 30-40 grams, 30 seconds</li>
+<li>second pour: fill up to 100 grams</li>
+<li>three subsequent pours: 50 grams each, not letting the water level go too high or drop entirely</li>
+<li>target time of 2:30</li>
+</ul>
+<p>James&#39; 1 cup recipe differs in the following:</p>
+<ul>
+<li>dose ever so slightly smaller, 15 g (and finer ground suggested)</li>
+<li>bigger bloom: 50 grams, 45 seconds, with a solid but gentle swirl</li>
+<li>smaller second pour (but same total at this stage): fill up to 100 ml</li>
+<li>same three subsequent pours: 50 grams each; more emphasis on pace – 10 seconds pour (5 ml/s) and 10 seconds pause; very light swirl after last pour</li>
+<li>target time of around 3:00</li>
+</ul>
+<p>So basically the same procedure, except for the larger, longer bloom, and swirling.</p>
+<p>
+In contrast, James&#39; ultimate V60 technique had two pours, almost back to back with each other, after the bloom: a faster one to reach 60 % of target weight (pretty much topping the filter), and a slower one for the remaining 40 %.
+The base proportion was 30 g coffee to 500 ml water.
+Alternatives are, of course, countless.
+Coincidentally, almost in parallel to James&#39; 1 cup technique, Lance Hendrick posted his &#34;<a href="https://www.youtube.com/watch?v=BG5Tc8MR2_4">ultimate recipe</a>&#34;.
+Interestingly, he uses a coarser grind, does a much longer blooom (1-2 minutes, with triple the coffee weight in water), and pours the remaining water in one continuous pour.</p>
+<p>
+In the end, the recipe from The Barn sits very well with me.
+The process is easy to remember, and it&#39;s easy to pace the pulses just by looking at the water level.
+And most importantly, I like the pours I get.</p>
+]]></content></item><item><title>E-mail in Emacs with Notmuch</title><link>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</link><pubDate>Sun, 20 Nov 2022 16:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-11-20-emacs-notmuch/</guid><description>I switched to reading and writing my e-mail in Emacs with Notmuch. The first impressions are good – I like the simplicity brought by text interface, and the workflow focused on tagging, archiving, and searching.
 There is a ton of blog posts on configuring e-mail in Emacs already (I link several at the end). One thing that was important for me and not easy to find was S/MIME signing, so I will describe it in more detail, and be more concise about other aspects.</description><content type="html"><![CDATA[
 <p>
 I switched to reading and writing my e-mail in <a href="https://www.gnu.org/software/emacs/">Emacs</a> with <a href="https://notmuchmail.org/">Notmuch</a>.
