@@ -1,0 +1,38 @@
+#+title: Circular pour-over
+#+layout: post
+#+date: 2022-12-09T23:45:00+0100
+#+author: Michał Szczepanik
+#+tags[]: coffee food
+#+draft: false
+
+Two weeks ago, James Hoffman posted "[[https://www.youtube.com/watch?v=1oB1oDrDkHM][A better 1 cup V60 Technique]]", an update to his "[[https://www.youtube.com/watch?v=AI4ynXzkSQo][Ultimate V60 technique]]" adjusted to smaller servings.
+I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I've been using for a long time; that is, the [[https://thebarn.de/pages/brewguide-drip][drip recipe]] from The Barn.
+Have we gone full circle?
+
+The Barn was pretty much my gateway into speciality coffee, back during my university years (around 2015, probably).
+I believe the recipe from the link above is the same at the moment of writing as it was back then.
+Anyway, the recipe from The Barn goes as follows:
+- 16 g coffee to 250 ml water
+- bloom: 30-40 grams, 30 seconds
+- second pour: fill up to 100 grams
+- three subsequent pours: 50 grams each, not letting the water level go too high or drop entirely
+- target time of 2:30
+
+James' 1 cup recipe differs in the following:
+- dose ever so slightly smaller, 15 g (and finer ground suggested)
+- bigger bloom: 50 grams, 45 seconds, with a solid but gentle swirl
+- smaller second pour (but same total at this stage): fill up to 100 ml
+- same three subsequent pours: 50 grams each; more emphasis on pace -- 10 seconds pour (5 ml/s) and 10 seconds pause; very light swirl after last pour
+- target time of around 3:00
+
+So basically the same procedure, except for the larger, longer bloom, and swirling.
+
+In contrast, James' ultimate V60 technique had two pours, almost back to back with each other, after the bloom: a faster one to reach 60 % of target weight (pretty much topping the filter), and a slower one for the remaining 40 %.
+The base proportion was 30 g coffee to 500 ml water.
+Alternatives are, of course, countless.
+Coincidentally, almost in parallel to James' 1 cup technique, Lance Hendrick posted his "[[https://www.youtube.com/watch?v=BG5Tc8MR2_4][ultimate recipe]]".
+Interestingly, he uses a coarser grind, does a much longer blooom (1-2 minutes, with triple the coffee weight in water), and pours the remaining water in one continuous pour.
+
+In the end, the recipe from The Barn sits very well with me.
+The process is easy to remember, and it's easy to pace the pulses just by looking at the water level.
+And most importantly, I like the pours I get.
