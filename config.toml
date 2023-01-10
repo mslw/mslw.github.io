@@ -49,13 +49,13 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
   relatedPosts = false  # Add a related content section to all single posts page
 
   code_copy_button = true # Turn on/off the code-copy-button for code-fields
-  
+
   # Add custom css
   customCSS = ["fontawesome/css/all.css", "academicons/css/academicons.css"]
 
   # Social Icons
   # Check https://github.com/Track3/hermit#social-icons for more info.
-  
+
   [[params.social]]
     name = "github"
     url = "https://github.com/mslw"
@@ -64,6 +64,9 @@ enableEmoji = true  # Shorthand emojis in content files - https://gohugo.io/func
     name = "orcid"
     url = "https://orcid.org/0000-0002-4028-2087"
 
+  [[params.social]]
+    name = "mastodon"
+    url = "https://masto.ai/@doktorpanik"
 
 [menu]
 
