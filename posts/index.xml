@@ -1,4 +1,55 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 09 Dec 2022 23:45:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Circular pour-over</title><link>https://mslw.github.io/posts/2022-12-09-pourover/</link><pubDate>Fri, 09 Dec 2022 23:45:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-12-09-pourover/</guid><description>Two weeks ago, James Hoffman posted &amp;#34;A better 1 cup V60 Technique&amp;#34;, an update to his &amp;#34;Ultimate V60 technique&amp;#34; adjusted to smaller servings. I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I&amp;#39;ve been using for a long time; that is, the drip recipe from The Barn. Have we gone full circle?
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 26 Mar 2023 19:45:00 +0200</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Exploring film simulations</title><link>https://mslw.github.io/posts/2023-03-26-exploring-film-simulations/</link><pubDate>Sun, 26 Mar 2023 19:45:00 +0200</pubDate><guid>https://mslw.github.io/posts/2023-03-26-exploring-film-simulations/</guid><description>In the prime days of analog photography, some photographic fims earned a legendary status. FujiChrome Velvia and Astia from Fujifilm, or Kodachrome from Kodak became big names. As a kid discovering photography as a hobby, I may have only had Agfa Vista and Kodak Gold to choose from at the local photo lab, but I sure did read about the others.
+Now that we are into the era of smartphone photography, and digital cameras are often associated with vlogging, I think Fujifilm does an outstanding job marketing-wise by advertising &amp;#34;film simulation modes&amp;#34;: color profiles that are applied directly by the camera to jpeg images.</description><content type="html"><![CDATA[<p>
+In the prime days of analog photography, some photographic fims earned a legendary status.
+FujiChrome Velvia and Astia from Fujifilm, or Kodachrome from Kodak became big names.
+As a kid discovering photography as a hobby, I may have only had Agfa Vista and Kodak Gold to choose from at the local photo lab, but I sure did read about the others.</p>
+<p>
+Now that we are into the era of smartphone photography, and digital cameras are often associated with vlogging, I think Fujifilm does an outstanding job marketing-wise by advertising &#34;<a href="https://fujifilm-x.com/en-us/exposure-center/get-to-grips-with-film-simulation-modes/">film simulation modes</a>&#34;: color profiles that are applied directly by the camera to jpeg images.
+First, they (justifiably!) reached into their legacy as a film producer and named most of the modes after their famous films.
+I don&#39;t see any other brand making such obvious connections to their analog past.
+Second, they named these &#34;film simulation modes&#34;.
+Not &#34;filters&#34; (that&#39;s a word associated with cheap effects from phone apps), but &#34;simulations&#34;.
+Again, that&#39;s fitting – judging from promotional photos, the effects are well defined and yet balanced and subtle.</p>
+<p>
+This kind of marketing I can respect.
+And when I decided to pick up a camera after a long break, I almost went with Fujifilm.
+Except that there is currently a waiting list for the model I wanted (probably due to chip shortage), and I went with Sony instead.</p>
+<p>
+Which brings us to the next point.
+While Fuji might feature film simulation in their cameras, the whole idea of color grading, and more specifically film simulation exists independently.
+There are multiple collections of <a href="https://www.quelsolaar.com/technology/clut.html">Hald CLUTs</a> (color lookup tables) available online (some of them even paid).
+And while they can be used to impart various effects, some collections aim specifically to mimic the look and feel of classical films.</p>
+<p>
+Imaging resource takes a <a href="https://www.imaging-resource.com/news/2020/08/18/fujifilm-film-simulations-definitive-guide">deep dive</a> into Fujifilm&#39;s film simulations and how they work.
+The plots of color shifts may look complex at first, but they were extremely well in showing the essence of the color transformation.</p>
+<p>
+Ultimately, simulations are just that: simulations, and the end result will depend on the recipe used.
+I picked two sets of openly available CLUTs for myself: <a href="https://github.com/t3mujin/t3mujinpack">t3mujinpack</a> by <a href="https://blog.joaoalmeidaphotography.com">João Pedro Almeida</a>, and <a href="https://rawpedia.rawtherapee.com/Film_Simulation">RawTherapee Film Simulation Collection</a> (see the second link for a wiki page with details and explanations).
+I then picked two photos, and selected two films (aestethics of which I very much like) for comparison: Astia and Kodachrome.
+Kodachrome might just be <a href="https://casualphotophile.com/2017/10/04/kodachrome-retrospective-film-profile/">the most famous of them all</a>. It was characterized by high contrast and vivid, and yet at the same time relatively subdued colors.
+<a href="http://www.alexluyckx.com/blog/2021/09/17/classic-film-review-blog-fujichrome-astia-100f/">Astia</a> may not enjoy the same fame as Velvia (known for its almost pastel-like look), but it is more versatile and offers soft and slightly subdued color tones.</p>
+<p>
+I used <a href="https://www.darktable.org/">darktable</a> to process the raw images.
+For each image, I only used darktable&#39;s default processing pipeline (which includes, among others, application of camera&#39;s white balance, and a small exposure correction), followed by application of CLUT through the &#34;LUT 3D&#34; option.
+I then exported the images to jpeg, and used <a href="https://imagemagick.org/">imagemagick</a> to resize and put them together.
+The results are below.</p>
+<figure>
+<img src="/img/film-simulations/bridge.jpg" alt="/img/film-simulations/bridge.jpg" title="/img/film-simulations/bridge.jpg" /><figcaption>
+Astia and Kodachrome from two sources - bridge photo
+</figcaption>
+</figure>
+<figure>
+<img src="/img/film-simulations/tram.jpg" alt="/img/film-simulations/tram.jpg" title="/img/film-simulations/tram.jpg" /><figcaption>
+Astia and Kodachrome from two sources - tram photo
+</figcaption>
+</figure>
+<p>
+First, simulations do seem true to the character of the original: differences are stronger between film simulations than between packs.
+Second, the differences between packs are also clearly visible.
+Personally, I like the t3mujinpack versions better.
+I also lean slightly towards the Kodachrome look for these situations, but Astia also works excellently.
+Of course, that&#39;s subjective.</p>
+]]></content></item><item><title>Circular pour-over</title><link>https://mslw.github.io/posts/2022-12-09-pourover/</link><pubDate>Fri, 09 Dec 2022 23:45:00 +0100</pubDate><guid>https://mslw.github.io/posts/2022-12-09-pourover/</guid><description>Two weeks ago, James Hoffman posted &amp;#34;A better 1 cup V60 Technique&amp;#34;, an update to his &amp;#34;Ultimate V60 technique&amp;#34; adjusted to smaller servings. I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I&amp;#39;ve been using for a long time; that is, the drip recipe from The Barn. Have we gone full circle?
 The Barn was pretty much my gateway into speciality coffee, back during my university years (around 2015, probably).</description><content type="html"><![CDATA[<p>
 Two weeks ago, James Hoffman posted &#34;<a href="https://www.youtube.com/watch?v=1oB1oDrDkHM">A better 1 cup V60 Technique</a>&#34;, an update to his &#34;<a href="https://www.youtube.com/watch?v=AI4ynXzkSQo">Ultimate V60 technique</a>&#34; adjusted to smaller servings.
 I was pleasantly surprised that the 1 cup technique is more simialr (very similar, in fact) to the technique I&#39;ve been using for a long time; that is, the <a href="https://thebarn.de/pages/brewguide-drip">drip recipe</a> from The Barn.
