@@ -1,0 +1,22 @@
+#+title: Embed license info in PDF metadata
+
+- https://unix.stackexchange.com/questions/489230/where-is-metadata-for-pdf-files-can-i-insert-metadata-into-any-pdf-file
+- https://wiki.creativecommons.org/wiki/XMP
+- https://wiki.creativecommons.org/wiki/PDF
+- https://www.prepressure.com/pdf/basics/metadata
+
+Soft:
+- exempi
+- exiftool
+- pdftk
+- ghostscript
+
+
+- https://developer.adobe.com/xmp/docs/XMPNamespaces/dc/
+- https://exiftool.org/TagNames/XMP.html
+
+exiftool -XMP-dc:Creator+="Michał Szczepanik" -XMP-dc:Creator+="Stephan Heunis" -XMP-dc:Creator+="Christian Mönch" -XMP-dc:Creator+="Adina Wagner" -XMP-dc:Creator+="Alexander Q. Waite" -XMP-dc:Creator+="Laura Waite" -XMP-dc:Creator+="Michael Hanke" Poster.pdf
+exiftool -XMP-dc:Title="Distributed data management for large collaborative projects: DataLad ecosystem in Collaborative Research Center 1451" Poster.pdf
+exiftool -XMP-dc:Rights="This work is licensed under a Creative Commons Attribution 4.0 International License" -XMP-cc:License="https://creativecommons.org/licenses/by/4.0/" Poster.pdf
+
+pdfinfo [-meta] Poster.pdf
