@@ -1,0 +1,214 @@
+#+title: Publication identifiers are great!
+#+layout: post
+#+date: 2023-12-07T19:30:00+0100
+#+author: Michał Szczepanik
+#+tags[]: python, software, metadata
+#+draft: false
+
+Recently, I needed to generate a consistently formatted publication list based on a rather unstructured input.
+The idea was to take the growing list of publications from the consortium in which I am employed, and create a script able to regenerate and restructure it with as little manual labour as possible, while producing metadata reusable in other contexts.
+It took me on a deeper than intended delve into identifiers, APIs, and regular expressions, but what came out of it was pretty satisfying.
+
+* The good
+
+** There are identifiers, and they are great
+
+By far the most popular identifier in the world of scientific publishing is the Digital Object Identifier, or DOI. Pretty much every paper available online has one. It has a form of =10.nnnnnn/example=, and can be prefixed with https://doi.org/, forming a link that resolves to the article URL, whatever it may be. [fn:1]
+
+There are other identifiers, specific to particular databases. The two most relevant for my field of work are PubMed and PubMed Central IDs. They are recognizable, also have their corresponding URL format, and can be used as an alternative to the DOI when pointing to a specific article.
+
+For example, either of the following -- PMID: 29732258, PMCID: PMC5851565, DOI: 10.1002/aps3.1027 -- uniquely refers to this article:
+
+#+begin_quote
+Nelson, G., Sweeney, P., & Gilbert, E. (2018). Use of globally unique identifiers (GUIDs) to link herbarium specimen records to physical specimens. Applications in plant sciences, 6(2), e1027
+#+end_quote
+
+For many purposes, providing just one of the identifiers is both easier and more unambiguous than providing the citation alone.
+
+** There are APIs, and they are public
+
+Identifying and linking to content is just part of what these identifiers can do. There are APIs, which can translate these identifiers into structured publication metadata.
+
+Let's start with DOI. The DOIs are assigned by [[https://www.doi.org/the-community/existing-registration-agencies/][registration agencies]], two of which: Datacite and Crossref are the most relevant for my purposes (related to publications and data repositories)[fn:2]. While both offer their own APIs ([[https://www.crossref.org/documentation/retrieve-metadata/][Crossref docs]], [[https://support.datacite.org/docs/api][DataCite docs]]), there is one more thing, and it is beautiful: crosscite [[https://citation.crosscite.org/docs.html][content negotiation]].
+
+Just as "normal" requests to doi.org redirect to a publisher's landing page, requests with a specific header redirect to a respective API (in my example, either Crossref or DataCite), which then responds with publication metadata in one of several supported formats.
+
+In practice, it's very easy. Here I'm using =curl= to make the request, and requesting RIS as output format:
+
+#+begin_src
+❱ curl -L -H "Accept: application/x-research-info-systems" https://doi.org/10.1002/aps3.1027
+
+TY  - JOUR
+DO  - 10.1002/aps3.1027
+UR  - http://dx.doi.org/10.1002/aps3.1027
+TI  - Use of globally unique identifiers (<scp>GUID</scp>s) to link herbarium specimen records to physical specimens
+T2  - Applications in Plant Sciences
+AU  - Nelson, Gil
+AU  - Sweeney, Patrick
+AU  - Gilbert, Edward
+PY  - 2018
+DA  - 2018/02
+PB  - Wiley
+IS  - 2
+VL  - 6
+SN  - 2168-0450
+SN  - 2168-0450
+ER  -
+#+end_src
+
+While RIS is simple enough to show in this blog post (and also quite useful for many applications), I would normally go for some json flavour -- more on that later. For now let's just note that we can also ask for a formatted citation, picking one of many popular styles (line breaks added manually for readability):
+
+#+begin_src
+❱ curl -LH "Accept: text/x-bibliography; style=apa" https://doi.org/10.1002/aps3.1027
+
+Nelson, G., Sweeney, P., & Gilbert, E. (2018). Use of globally unique
+identifiers (<scp>GUID</scp>s) to link herbarium specimen records to physical
+specimens. Applications in Plant Sciences, 6(2). Portico.
+https://doi.org/10.1002/aps3.1027
+#+end_src
+
+For Pubmed and PubMed Central, [[https://www.ncbi.nlm.nih.gov/pmc/tools/developers/][the NCBI provides APIs]], too, and the [[https://api.ncbi.nlm.nih.gov/lit/ctxp/][literature citation exporter]] can do pretty much the same thing (only subset of lines shown - PubMed also adds its keywords, abstracts, several additional identifiers):
+
+#+begin_src
+❱ curl "https://api.ncbi.nlm.nih.gov/lit/ctxp/v1/pubmed/?format=ris&contenttype=html&id=29732258"
+
+TY  - JOUR
+DB  - PubMed
+AU  - Nelson, Gil
+AU  - Sweeney, Patrick
+AU  - Gilbert, Edward
+T1  - Use of globally unique identifiers (GUIDs) to link herbarium specimen records to physical specimens
+UR  - https://pubmed.ncbi.nlm.nih.gov/29732258
+DO  - 10.1002/aps3.1027
+...
+#+end_src
+
+What is especially nice is that these APIs are public. Crossref and Pubmed (probably DataCite too) ask you to identify yourself by including an e-mail in the header or query (with Crossref that should land you in a /polite/ pool), and they will probably block you for excessive requests, but there is no registration required.
+
+** There are metadata standards
+
+While the identifiers can lead us to publication metadata, it is important that it is structured. Luckily, there are several nice standards. In the examples above I used RIS because it prints rather concisely. In practice, I relied on the much richer [[https://citationstyles.org/][Citation Style Language (CSL)]] and its json representation (a.k.a. Citeproc json), which is supported both in content negotiation via doi.org and by PubMed literature citation exporter (see respective docs linked above for how to request it).
+
+With CSL, there is a =title= field, there is an =author= array (with at least =first= and =last= name for each author, and often an =ORCID=), there is =container-title=, there is =DOI=, and many more.
+
+The APIs seem to have their own flavours (or supersets) of the standard information. I did not dig deep to see how consistently these can be found, but the nice things I've seen include =license= (with its URL in case of CC) and even =is-preprint-of=, linking a bioRxiv preprint with its publication by means of a doi.
+
+** Without identifiers, you can do a bibliographic query
+
+When there is no identifier to work with, just a free-form citation text, reliably splitting it into authors, title, journal, etc. could be a nightmare. Luckily, Crossref REST API offers a =query.bibliographic= parameter in its [[https://api.crossref.org/swagger-ui/index.html#/Works/get_works][works endpoint]]. It can take a free-form citation and return structured metadata in crossref's format (which is close to CSL), as explained in this Crossref Labs post, [[https://www.crossref.org/labs/resolving-citations-we-dont-need-no-stinkin-parser/][Resolving Citations (we don’t need no stinkin’ parser)]].
+
+As free-form citations are, well, free-form, the results aren't guaranteed to be perfect -- they are returned with scores and you are advised to compare the top two or three. I ended up having to create a simple heuristic that looked at publication type and favoured a journal article over a preprint or commentary (these can have very similar citations) when the top scores were close. Still, Crossref did a really good job at turning unstructured citations into structured metadata, complete with identifiers.
+
+There is also a "manual" version, [[https://apps.crossref.org/SimpleTextQuery][Simple Text Query]].
+
+** Things are easy in Python
+
+Although there are API-specific libraries (e.g. [[https://pypi.org/project/habanero/][habanero]] for
+Crossref), the queries described above are so simple (URL
+base, a few query parameters and maybe some headers), there is little
+reason not to build the GET requests directly with [[https://pypi.org/project/requests/][requests]].
+
+Two general-purpose additions that may come useful are [[https://pypi.org/project/requests-cache/][requests-cache]] and [[https://pypi.org/project/requests-ratelimiter][requests-ratelimiter]], providing drop-in replacements for caching and throttling requests, respectively. The former is particularly useful to speed up re-runs and avoid spamming the APIs when working on the code.
+
+For example, this is a basic doi.org query with content negotiation:
+
+#+begin_src python
+  from pprint import pprint
+  from requests_cache import CachedSession
+
+  session = CachedSession(cache_name="query_cache")
+  doi = "10.1002/aps3.1027"
+
+  r = session.get(
+      url=f"https://doi.org/{doi}",
+      headers={
+          "Accept": "application/vnd.citationstyles.csl+json",
+      }
+  )
+  
+  if r.ok:
+      pprint(r.json())
+#+end_src
+
+Finally, if the output needs to be an html page, [[https://pypi.org/project/Jinja2/][Jinja]] templates may seem complex at first but are rather intuitive and easy to build.
+
+* The bad and the ugly
+
+The previous section described tools that are available for structured metadata. This section describes the challenges I faced in practice.
+
+Most of my input data was created for the purpose of administrative reporting, not (meta)data management. As such, it was composed of free-form citations (in a format that was similar, but not quite the same between entries, and very rarely included an identifier) accompanied by URLs of various kinds -- hardly any of which were doi.org URLs.
+
+** Parsing URL patterns to find DOI
+
+While I could find an odd DOI or PMID among citation texts, a bibliographic query seemed to be my best bet in most cases. However, it is not always unambiguous, so I looked more closely into the URLs.
+
+I am calling these "URLs of various kinds" because there were no set rules. Some linked to journal websites, some to PDFs, some to those fancy PDF readers on publisher websites. Taking our example publication, the following three URLs, differing only by the inclusion of the (e)pdf part, lead to publication website, publisher's interactive PDF reader, and a regular PDF respectively:
+
+#+begin_src
+  https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/aps3.1027
+  https://bsapubs.onlinelibrary.wiley.com/doi/epdf/10.1002/aps3.1027
+  https://bsapubs.onlinelibrary.wiley.com/doi/pdf/10.1002/aps3.1027
+#+end_src
+
+Luckily, these URLs contain the DOI in a pretty obvious fashion that is easy to match.
+
+However, the patterns differ between the publishers. Consider, for example the following URL (latest /Imaging Neuroscience/ editorial):
+
+#+begin_src 
+https://direct.mit.edu/imag/article/doi/10.1162/imag_e_00007/116804/Imaging-Neuroscience-opening-editorial
+#+end_src
+
+Its corresponding DOI is =10.1162/imag_e_00007=, and it is followed by some kind of internal identifier, and a title slug. It may seem obvious following the previous example, but how do we know that =116804= is part of the URL but not part of the DOI? After all, the DOI specification allows including slashes in the suffix, and e.g. Oxford University Press does use them (e.g. =10.1093/brain/awac278= for the latest editorial in /Brain/).
+
+The DOI syntax is part of the ISO 26324 standard, and you can find all
+details in the DOI handbook ([[https://doi.org/10.1000/182]]). In the most
+general terms, a DOI contains a prefix and a suffix. The prefix contains
+only numeric values and full stops (one or more!), but the suffix has very little character restrictions.
+
+In the end, I came up with 13 fairly similar regular expressions adjusted to specific publishers, based on the URLs I found in my sample. They aren't perfect, but I wanted to be cautious and preferred to keep them potentially too narrow rather than too broad. This allowed me to find a DOI for about half of my input data - not bad!
+
+This is an example of what I came up with:
+
+#+begin_src
+biorxiv\.org/content/(10\.\d{4,6}/\d{4}\.\d{2}\.\d{2}\.\d{6})
+onlinelibrary\.wiley\.com/doi(?:/e?pdf|/epub|/full)?/(10\.\d+/[a-z]+\.\d+)
+#+end_src
+
+On that note, thank you to bioRxiv for clearly explaining their doi patterns in [[https://www.biorxiv.org/content/about-biorxiv][their about page]] (suffix, since Dec 2019, has date stamp followed by a six digit identifier).
+
+The PubMed and PubMed Central URLs are very transparent, and contain the (numeric) identifier.
+
+** Finding no identifiers
+
+That being said, not all publishers use DOI for their content URLs, preferring to use their own identifiers. Hard to blame them, as the doi.org URLs are meant to work around that, but it made my task harder. Oxford University Press URLs use some internal format, and Elsevier has their own PII (Publication Item Identifier) used in ScienceDirect (there were a lot ScienceDirect URLs in my input data).
+
+Admittedly, Elsevier also provides an API, where you can [[https://dev.elsevier.com/sciencedirect.html#/Article_Retrieval][retrieve article metadata]] or content by the PII, but unlike the others mentioned it is not public. Registration in Elsevier Developer portal is required to obtain an API key -- fair enough, but given the ability to perform bibliographic search, I decided not to bother.
+
+** The nitty-gritty
+
+Looking back, the most of my problems came down to dealing with unstructured input, and would disappear if including a DOI or PubMed ID was required for reportting. However, even in the domain of structured metadata there were some issues that required solving.
+
+Preprints are one example. While it has become customary to report them with things like bioRxiv in place of the journal title, Crossref reports them with the =container-title= field empty. Instead, to find "bioRxiv", =institution[0].name= needs to be looked up. For further practical info, =type= is set to "posted-content", and =subtype= to "preprint"; as a bonus, =relation.is-preprint-of= can be found for manuscripts which got published. It's a little thing, but an adds a conditional statement or two to the workflow.
+
+Inclusion of HTML tags in titles is another. I suppose it's journal specific, but some titles reported by Crossref's API contain markup like =<i>= or =<sub>= -- also seen in our examples above. This means that the input needs to be de-htmlized (e.g. =html.fromstring(title).text_content()=, using =lxml= library) or the markup interpretation needs to be allowed (marked with ={ ... | safe }=) in Jinja.
+
+Crossref's native REST API response format is well documented and is
+pretty similar to CSL, but there are some differences (e.g. title
+being a single-element array). I did not find a way to request a
+bibliographic query result as CSL, so even though it wouldn't be too
+complicated to create a translator, I decided to just take the DOI
+from the response and do another query via doi.org. And speaking of bibliographic queries, the heuristic I came up for picking the best queries (compare their scores, look up types) sounds simple, but was also a little bit involved.
+
+Finally, there was a fairly typical requirement to emphasize authors from our consortium in the generated document. This meant that using pre-formatted citations in a given style, or a citation formatter like citeproc, was not practical. Instead, I did a lookup in a set of (last) names, which involves the need to worry about alternate spellings.
+
+* In the end
+
+This was quite a journey, but in the end it was possible to generate a uniformly presented publication list (in which all items include a doi.org URL) in a fully automated way. As a by-product of using only the metadata from API queries, it was possible to eliminate some typos. That list can be re-generated on demand, and new entries can be added simply by adding a DOI or PMID to an appropriate section of a text file.
+
+Code for the project can be found at https://github.com/sfb1451/publication-parser
+
+Identifiers are great, structured metadata is great, and we need more of them.
+
+[fn:1] Tal Yarkoni wrote a great post about the DOI and its cultural meaning in academia, [[https://www.talyarkoni.org/blog/2015/03/05/now-i-am-become-doi-destroyer-of-gates/][Now I am become DOI, destroyer of gatekeeping worlds]].
+
+[fn:2] For a distinction between Crossref and DataCite application domains, see [[https://support.datacite.org/docs/datacite-or-crossref][DataCite or Crossref]] in DataCite documentation.
