@@ -1,11 +1,11 @@
 #+title: Publication identifiers are great!
 #+layout: post
-#+date: 2023-12-07T19:30:00+0100
+#+date: 2023-12-08T20:15:00+0100
 #+author: Michał Szczepanik
 #+tags[]: python, software, metadata
 #+draft: false
 
-Recently, I needed to generate a consistently formatted publication list based on a rather unstructured input.
+Recently, I needed to generate a consistently formatted publication list from a rather unstructured input.
 The idea was to take the growing list of publications from the consortium in which I am employed, and create a script able to regenerate and restructure it with as little manual labour as possible, while producing metadata reusable in other contexts.
 It took me on a deeper than intended delve into identifiers, APIs, and regular expressions, but what came out of it was pretty satisfying.
 
@@ -33,7 +33,7 @@ Let's start with DOI. The DOIs are assigned by [[https://www.doi.org/the-communi
 
 Just as "normal" requests to doi.org redirect to a publisher's landing page, requests with a specific header redirect to a respective API (in my example, either Crossref or DataCite), which then responds with publication metadata in one of several supported formats.
 
-In practice, it's very easy. Here I'm using =curl= to make the request, and requesting RIS as output format:
+In practice, it's very easy. Here I'm using =curl= to make the request, and requesting RIS as the output format:
 
 #+begin_src
 ❱ curl -L -H "Accept: application/x-research-info-systems" https://doi.org/10.1002/aps3.1027
@@ -209,6 +209,6 @@ Code for the project can be found at https://github.com/sfb1451/publication-pars
 
 Identifiers are great, structured metadata is great, and we need more of them.
 
-[fn:1] Tal Yarkoni wrote a great post about the DOI and its cultural meaning in academia, [[https://www.talyarkoni.org/blog/2015/03/05/now-i-am-become-doi-destroyer-of-gates/][Now I am become DOI, destroyer of gatekeeping worlds]].
+[fn:1] Tal Yarkoni wrote a great post about the DOI and its kind-of /cultural/ meaning in academia: [[https://www.talyarkoni.org/blog/2015/03/05/now-i-am-become-doi-destroyer-of-gates/][Now I am become DOI, destroyer of gatekeeping worlds]].
 
 [fn:2] For a distinction between Crossref and DataCite application domains, see [[https://support.datacite.org/docs/datacite-or-crossref][DataCite or Crossref]] in DataCite documentation.
