@@ -1,0 +1,32 @@
+#+title: Culinary discoveries of 2023
+#+layout: post
+#+date: 2024-01-02T19:15:00+0100
+#+author: Michał Szczepanik
+#+tags[]: food
+#+draft: false
+
+It's time for yearly summaries, so why not make one like this?
+
+* Dish of the year: mapo tofu
+
+#+begin_quote
+Tofu is not a meat substitute, it's an ingredient on its own and it's a delicious ingredient -- J. Kenji López-Alt
+#+end_quote
+
+The dish I enjoyed making and eating the most this year was mapo tofu.
+More speciically, my version of [[https://www.youtube.com/watch?v=dElALuJ9Xo8][Kenji's version of his mom's mapo tofu]] (which in turn is a japanese variation on the traditional Sichuan dish).
+
+Chasing authenticity in home cooking sure is interesting, but Kenji's openness about his version being just a version (as well as how he eyeballs most ingredients) is liberating.
+I like more and more the recipes which have "you can do this or do that instead" added to many steps.
+For my version, I skip mirin and sake (and chili oil at the end) for simplicity, but instead add some chili bean paste early in the cooking.
+
+I don't usually like hot foods (especially those where burning sensation overwhelms anything else), but I like aromatic and just slightly hot.
+With the right amount of the hot bean sauce (and specifically [[https://yeos-europe.com/products_hotbeansauce.html][this one]] suggested by the shopkeeper of my local Asian supermarket where I also get my tofu -- very grateful for both) I can make it just right.
+I'm not sure if it's the same thing as [[https://en.wikipedia.org/wiki/Doubanjiang][doubanjiang]], but it seems very similar -- and good enough to be labelled as my ingredient of the year.
+
+* Alcoholic beverage of the year: bourbon renewal
+
+Particularly fitting in autumn, bourbon renewal (2 oz bourbon, 1 oz lemon juice, 0.5 oz each of crème de cassis and simple syrup, dash of bitters) instantly became my favourite cocktail.
+Here's the [[https://jeffreymorgenthaler.com/bourbon-renewal/][original recipe by Jeffrey Morgenthaler]] and [[https://www.youtube.com/watch?v=8WVlMjEGma4][a video by Anders Erickson]].
+The crème de cassis (cassis liquor) is a slightly unusual ingredient for me, but it's findable online, and I also found an almost-local store which sells it in small bottles.
+Cheers!
