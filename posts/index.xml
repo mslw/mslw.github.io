@@ -1,4 +1,42 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 08 Dec 2023 20:15:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Publication identifiers are great!</title><link>https://mslw.github.io/posts/2023-12-08-publication-identifiers-are-great/</link><pubDate>Fri, 08 Dec 2023 20:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2023-12-08-publication-identifiers-are-great/</guid><description>Recently, I needed to generate a consistently formatted publication list from a rather unstructured input. The idea was to take the growing list of publications from the consortium in which I am employed, and create a script able to regenerate and restructure it with as little manual labour as possible, while producing metadata reusable in other contexts. It took me on a deeper than intended delve into identifiers, APIs, and regular expressions, but what came out of it was pretty satisfying.</description><content type="html"><![CDATA[
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 02 Jan 2024 19:15:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Culinary discoveries of 2023</title><link>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</link><pubDate>Tue, 02 Jan 2024 19:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</guid><description>It&amp;#39;s time for yearly summaries, so why not make one like this?
+Dish of the year: mapo tofu Tofu is not a meat substitute, it&amp;#39;s an ingredient on its own and it&amp;#39;s a delicious ingredient – J. Kenji López-Alt
+The dish I enjoyed making and eating the most this year was mapo tofu. More speciically, my version of Kenji&amp;#39;s version of his mom&amp;#39;s mapo tofu (which in turn is a japanese variation on the traditional Sichuan dish).</description><content type="html"><![CDATA[
+<p>
+It&#39;s time for yearly summaries, so why not make one like this?</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Dish of the year: mapo tofu
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<blockquote>
+<p>Tofu is not a meat substitute, it&#39;s an ingredient on its own and it&#39;s a delicious ingredient – J. Kenji López-Alt</p>
+</blockquote>
+<p>
+The dish I enjoyed making and eating the most this year was mapo tofu.
+More speciically, my version of <a href="https://www.youtube.com/watch?v=dElALuJ9Xo8">Kenji&#39;s version of his mom&#39;s mapo tofu</a> (which in turn is a japanese variation on the traditional Sichuan dish).</p>
+<p>
+Chasing authenticity in home cooking sure is interesting, but Kenji&#39;s openness about his version being just a version (as well as how he eyeballs most ingredients) is liberating.
+I like more and more the recipes which have &#34;you can do this or do that instead&#34; added to many steps.
+For my version, I skip mirin and sake (and chili oil at the end) for simplicity, but instead add some chili bean paste early in the cooking.</p>
+<p>
+I don&#39;t usually like hot foods (especially those where burning sensation overwhelms anything else), but I like aromatic and just slightly hot.
+With the right amount of the hot bean sauce (and specifically <a href="https://yeos-europe.com/products_hotbeansauce.html">this one</a> suggested by the shopkeeper of my local Asian supermarket where I also get my tofu – very grateful for both) I can make it just right.
+I&#39;m not sure if it&#39;s the same thing as <a href="https://en.wikipedia.org/wiki/Doubanjiang">doubanjiang</a>, but it seems very similar – and good enough to be labelled as my ingredient of the year.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Alcoholic beverage of the year: bourbon renewal
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>
+Particularly fitting in autumn, bourbon renewal (2 oz bourbon, 1 oz lemon juice, 0.5 oz each of crème de cassis and simple syrup, dash of bitters) instantly became my favourite cocktail.
+Here&#39;s the <a href="https://jeffreymorgenthaler.com/bourbon-renewal/">original recipe by Jeffrey Morgenthaler</a> and <a href="https://www.youtube.com/watch?v=8WVlMjEGma4">a video by Anders Erickson</a>.
+The crème de cassis (cassis liquor) is a slightly unusual ingredient for me, but it&#39;s findable online, and I also found an almost-local store which sells it in small bottles.
+Cheers!</p>
+</div>
+</div>
+]]></content></item><item><title>Publication identifiers are great!</title><link>https://mslw.github.io/posts/2023-12-08-publication-identifiers-are-great/</link><pubDate>Fri, 08 Dec 2023 20:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2023-12-08-publication-identifiers-are-great/</guid><description>Recently, I needed to generate a consistently formatted publication list from a rather unstructured input. The idea was to take the growing list of publications from the consortium in which I am employed, and create a script able to regenerate and restructure it with as little manual labour as possible, while producing metadata reusable in other contexts. It took me on a deeper than intended delve into identifiers, APIs, and regular expressions, but what came out of it was pretty satisfying.</description><content type="html"><![CDATA[
 <p>
 Recently, I needed to generate a consistently formatted publication list from a rather unstructured input.
 The idea was to take the growing list of publications from the consortium in which I am employed, and create a script able to regenerate and restructure it with as little manual labour as possible, while producing metadata reusable in other contexts.
