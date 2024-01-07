@@ -11,10 +11,10 @@ Okay, but how?
 My goal here us to add the authors and a Creative Commons license statement as PDF metadata.
 My starting point for a poster is usually Inkscape or Scribus, and I couldn't find such an export option in either of those.
 I need another software to edit the produced PDF file.
-I am looking to use only free software which is readily available on Debian and/or Fedora (so no [[https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html][Adobe Acrobat]]).
+I am looking to use only free software which is readily available on Debian and/or Fedora (so no Adobe Acrobat).
 
-Creative commons has an (old?) [[https://wiki.creativecommons.org/][wiki]], and its [[https://wiki.creativecommons.org/wiki/PDF][PDF page]] points out two mechanisms of storing metadata in PDF:
-/document information dictionary/ and /metadata stream/ -- as described in [[https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf][PDF 1.7 stanndard]] section 10.2.
+Creative commons has an (old?) wiki, and its [[https://wiki.creativecommons.org/wiki/PDF][PDF page]] points out two mechanisms of storing metadata in PDF:
+/document information dictionary/ and /metadata stream/ -- as described in [[https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf][PDF 1.7 standard]] section 10.2.
 
 The former is more simplistic. [[https://unix.stackexchange.com/a/490458][This unix stackexchange post]] describes how to add metadata with Ghostscript.
 That wouldn't do it for me. First, Ghostscript will re-process the entire document. Second, there is no standard key for license.
@@ -23,7 +23,7 @@ The XMP metadata stream is more flexible, thanks to the ability to use namespace
 Adobe Acrobat's [[https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html][PDF properties and metadata]] help page also describes XMP.
 CC wiki's [[https://wiki.creativecommons.org/wiki/XMP][XMP page]] says that "Creative Commons is recommending XMP as the preferred format for embedded metadata,
 given its support for numerous file formats and the balkanized state of embedded metadata standards".
-However, CC wiki's [[https://wiki.creativecommons.org/wiki/PDF][PDF page]] gives a rather obscure example (using a C library), so I needed a better tool.
+However, CC wiki's PDF page gives a rather obscure example (using a C library), so I needed a better tool.
 
 Searching the Internet, I found [[https://exiftool.org/][exiftool]].
 Despite its name, it works with a large variety of file and metadata formats.
@@ -44,6 +44,9 @@ Given a PDF file, =document.pdf=, I add several authors (=dc:Creator=), a title 
       -XMP-cc:License="https://creativecommons.org/licenses/by/4.0/" \
       document.pdf
 #+end_src
+
+Note that I am using =dc:Rights= to add a typical license statement, and =cc:License= to add a link to the license.
+ExifTool expects =cc:License= to be a string, so it's probably the best I can do.
 
 Exiftool can read the metadata it added:
 
