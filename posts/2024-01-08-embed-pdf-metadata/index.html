@@ -1,0 +1,151 @@
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="ie=edge">
+<meta name=theme-color content="#494f5c">
+<meta name=msapplication-TileColor content="#494f5c">
+<meta itemprop=name content="Embed license info in PDF metadata">
+<meta itemprop=description content="Just embed the license in metadata, he said as I was preparing a poster PDF for an online conference. Okay, but how?
+ My goal here is to add the authors and a Creative Commons license statement as PDF metadata. My starting point for a poster is usually Inkscape or Scribus, and I couldn't find such an export option in either of those. I need another software to edit the produced PDF file."><meta itemprop=datePublished content="2024-01-08T22:00:00+01:00">
+<meta itemprop=dateModified content="2024-01-08T22:00:00+01:00">
+<meta itemprop=wordCount content="634">
+<meta itemprop=keywords content="tips-tricks,software,"><meta property="og:title" content="Embed license info in PDF metadata">
+<meta property="og:description" content="Just embed the license in metadata, he said as I was preparing a poster PDF for an online conference. Okay, but how?
+ My goal here is to add the authors and a Creative Commons license statement as PDF metadata. My starting point for a poster is usually Inkscape or Scribus, and I couldn't find such an export option in either of those. I need another software to edit the produced PDF file.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mslw.github.io/posts/2024-01-08-embed-pdf-metadata/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2024-01-08T22:00:00+01:00">
+<meta property="article:modified_time" content="2024-01-08T22:00:00+01:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Embed license info in PDF metadata">
+<meta name=twitter:description content="Just embed the license in metadata, he said as I was preparing a poster PDF for an online conference. Okay, but how?
+ My goal here is to add the authors and a Creative Commons license statement as PDF metadata. My starting point for a poster is usually Inkscape or Scribus, and I couldn't find such an export option in either of those. I need another software to edit the produced PDF file.">
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/site.webmanifest>
+<link rel=mask-icon href=/safari-pinned-tab.svg color>
+<link rel="shortcut icon" href=/favicon.ico>
+<title>Embed license info in PDF metadata</title><link rel=stylesheet href=https://mslw.github.io/css/style.min.037b6ee8f8c1baab6a3d0a9da11c3ff18a7552471f16c59fd98538d5ce99208b.css integrity="sha256-A3tu6PjBuqtqPQqdoRw/8Yp1UkcfFsWf2YU41c6ZIIs=" crossorigin=anonymous>
+<link rel=stylesheet href=https://mslw.github.io/fontawesome/css/all.css>
+<link rel=stylesheet href=https://mslw.github.io/academicons/css/academicons.css>
+</head><body id=page>
+<header id=site-header class="animated slideInUp">
+<div class="hdr-wrapper section-inner">
+<div class=hdr-left>
+<div class=site-branding>
+<a href=https://mslw.github.io/>Michał Szczepanik</a>
+</div><nav class="site-nav hide-in-mobile">
+<a href=https://mslw.github.io/posts/>Posts</a>
+<a href=https://mslw.github.io/about>About</a>
+</nav></div><div class="hdr-right hdr-icons">
+<span class="hdr-social hide-in-mobile"><a href=https://github.com/mslw target=_blank rel="noopener me" title=Github><i class="fab fa-github"></i></a><a href=https://orcid.org/0000-0002-4028-2087 target=_blank rel="noopener me" title=Orcid><i class="fab fa-orcid"></i></a><a href=https://masto.ai/@doktorpanik target=_blank rel="noopener me" title=Mastodon><i class="fab fa-mastodon"></i></a></span><button id=menu-btn class=hdr-btn title=Menu><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div></div></header><div id=mobile-menu class="animated fast">
+<ul>
+<li><a href=https://mslw.github.io/posts/>Posts</a></li><li><a href=https://mslw.github.io/about>About</a></li></ul></div><main class="site-main section-inner animated fadeIn faster">
+<article class=thin>
+<header class=post-header>
+<div class=post-meta><span>Jan 8, 2024</span></div><h1>Embed license info in PDF metadata</h1></header><div class=content>
+<p>
+<em>Just embed the license in metadata</em>, he said as I was preparing a poster PDF for an online conference. Okay, but how?</p><p>
+My goal here is to add the authors and a Creative Commons license statement as PDF metadata.
+My starting point for a poster is usually Inkscape or Scribus, and I couldn't find such an export option in either of those.
+I need another software to edit the produced PDF file.
+I am looking to use only free software which is readily available on Debian and/or Fedora (so no Adobe Acrobat).</p><p>
+Creative commons has an (old?) wiki, and its <a href=https://wiki.creativecommons.org/wiki/PDF>PDF page</a> points out two mechanisms of storing metadata in PDF:
+<em>document information dictionary</em> and <em>metadata stream</em> – as described in <a href=https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf>PDF 1.7 standard</a> section 10.2.</p><p>
+The former is more simplistic. <a href=https://unix.stackexchange.com/a/490458>This unix stackexchange post</a> describes how to add metadata with Ghostscript.
+That wouldn't do it for me. First, Ghostscript will re-process the entire document. Second, there is no standard property name for license.</p><p>
+The XMP metadata stream is more flexible, thanks to namespaces, including <a href=https://www.dublincore.org/specifications/dublin-core/dcmi-terms/>Dublin Core</a> (which <a href=https://developer.adobe.com/xmp/docs/XMPNamespaces/dc/>Adobe also uses</a>).
+Adobe Acrobat's <a href=https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html>PDF properties and metadata</a> help page also describes XMP.
+CC wiki's <a href=https://wiki.creativecommons.org/wiki/XMP>XMP page</a> says that "Creative Commons is recommending XMP as the preferred format for embedded metadata,
+given its support for numerous file formats and the balkanized state of embedded metadata standards".
+This leads me to believe that XMP is indeed the preferred way.
+However, CC wiki's PDF page gives a rather obscure example (using a C library), so I needed a better tool.</p><p>
+Searching the Internet, I found <a href=https://exiftool.org/>ExifTool</a>.
+Despite its name, it works with a large variety of file and metadata formats.
+ExifTool <a href=https://exiftool.org/TagNames/PDF.html>works with PDF</a> and <a href=https://exiftool.org/TagNames/XMP.html>can insert XMP tags</a> with built-in support for many namespaces,
+including Dublin Core (DC) and Creative Commons (CC).
+It is available on Debian as <code class=verbatim>libimage-exiftool-perl</code> and on Fedora as <code class=verbatim>perl-Image-ExifTool</code>.
+Whether it's the best tool for the job, I honestly don't know.</p><p>
+Reading the documentation is always helpful to get an idea of what's going on, but here's an example.</p><p>
+Given a PDF file, <code class=verbatim>document.pdf</code>, I add several authors (<code class=verbatim>dc:Creator</code>), a title (<code class=verbatim>dc:Title</code>), and license information
+(<code class=verbatim>dc:Rights</code> and <code class=verbatim>cc:License</code>):</p><div class="src src-bash">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>  exiftool <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      -XMP-dc:Creator+<span class=o>=</span><span class=s2>&#34;John Doe&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      -XMP-dc:Creator+<span class=o>=</span><span class=s2>&#34;Jane Doe&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      -XMP-dc:Title<span class=o>=</span><span class=s2>&#34;Lorem ipsum&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      -XMP-dc:Rights<span class=o>=</span><span class=s2>&#34;This work is licensed under a Creative Commons Attribution 4.0 International License&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      -XMP-cc:License<span class=o>=</span><span class=s2>&#34;https://creativecommons.org/licenses/by/4.0/&#34;</span> <span class=se>\
+</span></span></span><span class=line><span class=cl><span class=se></span>      document.pdf</span></span></code></pre></div></div><p>
+Note that I am using <code class=verbatim>dc:Rights</code> to add a typical license statement, and <code class=verbatim>cc:License</code> to add a link to the license.
+ExifTool expects <code class=verbatim>cc:License</code> to be a string, so it's probably the best I can do.</p><p>
+As a first test of whether that worked, ExifTool can read the metadata it added (subset of output shown):</p><div class="src src-bash">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>  exiftool document.pdf</span></span></code></pre></div></div><div class="src src-text">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-text data-lang=text><span class=line><span class=cl>ExifTool Version Number         : 12.57
+</span></span><span class=line><span class=cl>File Name                       : document.pdf
+</span></span><span class=line><span class=cl>...
+</span></span><span class=line><span class=cl>XMP Toolkit                     : Image::ExifTool 12.57
+</span></span><span class=line><span class=cl>License                         : https://creativecommons.org/licenses/by/4.0/
+</span></span><span class=line><span class=cl>Creator                         : John Doe, Jane Doe
+</span></span><span class=line><span class=cl>Rights                          : This work is licensed under a Creative Commons Attribution 4.0 International License
+</span></span><span class=line><span class=cl>Title                           : Lorem ipsum
+</span></span><span class=line><span class=cl>Producer                        : pdfTeX-1.40.24
+</span></span><span class=line><span class=cl>Author                          :
+</span></span><span class=line><span class=cl>Subject                         :
+</span></span><span class=line><span class=cl>...</span></span></code></pre></div></div><p>
+Pdfinfo can read the metadata too, but we need to provide the <code class=verbatim>-meta</code> flag.
+It prints raw XML, so we can see exactly what was added by ExifTool – it looks like a reasonable XML document:</p><div class="src src-bash">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>  pdfinfo -meta document.pdf</span></span></code></pre></div></div><div class="src src-xml">
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl>  <span class=cp>&lt;?xpacket begin=&#39;﻿&#39; id=&#39;W5M0MpCehiHzreSzNTczkc9d&#39;?&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;x:xmpmeta</span> <span class=na>xmlns:x=</span><span class=s>&#39;adobe:ns:meta/&#39;</span> <span class=na>x:xmptk=</span><span class=s>&#39;Image::ExifTool 12.57&#39;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;rdf:RDF</span> <span class=na>xmlns:rdf=</span><span class=s>&#39;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#39;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;rdf:Description</span> <span class=na>rdf:about=</span><span class=s>&#39;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=na>xmlns:cc=</span><span class=s>&#39;http://creativecommons.org/ns#&#39;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;cc:license</span> <span class=na>rdf:resource=</span><span class=s>&#39;https://creativecommons.org/licenses/by/4.0/&#39;</span><span class=nt>/&gt;</span>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;/rdf:Description&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;rdf:Description</span> <span class=na>rdf:about=</span><span class=s>&#39;&#39;</span>
+</span></span><span class=line><span class=cl>    <span class=na>xmlns:dc=</span><span class=s>&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class=nt>&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dc:creator&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;rdf:Seq&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;rdf:li&gt;</span>John Doe<span class=nt>&lt;/rdf:li&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;rdf:li&gt;</span>Jane Doe<span class=nt>&lt;/rdf:li&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;/rdf:Seq&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dc:creator&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dc:rights&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;rdf:Alt&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;rdf:li</span> <span class=na>xml:lang=</span><span class=s>&#39;x-default&#39;</span><span class=nt>&gt;</span>This work is licensed under a Creative Commons Attribution 4.0 International License<span class=nt>&lt;/rdf:li&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;/rdf:Alt&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dc:rights&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;dc:title&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;rdf:Alt&gt;</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&lt;rdf:li</span> <span class=na>xml:lang=</span><span class=s>&#39;x-default&#39;</span><span class=nt>&gt;</span>Lorem ipsum<span class=nt>&lt;/rdf:li&gt;</span>
+</span></span><span class=line><span class=cl>     <span class=nt>&lt;/rdf:Alt&gt;</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dc:title&gt;</span>
+</span></span><span class=line><span class=cl>   <span class=nt>&lt;/rdf:Description&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/rdf:RDF&gt;</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&lt;/x:xmpmeta&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=c>&lt;!-- note: skipping several empty lines --&gt;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=cp>&lt;?xpacket end=&#39;w&#39;?&gt;</span></span></span></code></pre></div></div><p>
+Evince (GNOME document viever) picks up the creators as authors, alhough, sadly, none of the rights / license information.
+Strangely, I cound not find any of these metadata in Okular (KDE document viewer).</p><p>
+<img src=/img/embed-pdf-metadata/evince-properties.png alt=/img/embed-pdf-metadata/evince-properties.png title=/img/embed-pdf-metadata/evince-properties.png></p><p>
+So, mission accomplished… kind of.</p></div><hr class=post-end>
+<footer class=post-info>
+<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-feather"><path d="M20.24 12.24a6 6 0 00-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>Michał Szczepanik</p><p>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg><span class=tag><a href=https://mslw.github.io/tags/tips-tricks>tips-tricks</a></span><span class=tag><a href=https://mslw.github.io/tags/software>software</a></span>
+</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6A2 2 0 004 4v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>634 Words</p><p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2024-01-08 21:00 +0000</p></footer></article><div class="post-nav thin">
+<a class=prev-post href=https://mslw.github.io/posts/2024-01-02-culinary-discoveries/>
+<span class=post-nav-label>Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span><br><span>Culinary discoveries of 2023</span>
+</a>
+</div><div id=comments class=thin>
+</div></main><footer id=site-footer class="section-inner thin animated fadeIn faster">
+<p>&copy; 2024 <a href=https://mslw.github.io/>Michał Szczepanik</a> &#183; <a href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank rel=noopener>CC BY-NC 4.0</a></p><p>
+Made with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> &#183; Theme <a href=https://github.com/Track3/hermit target=_blank rel=noopener>Hermit</a> &#183; <a href=https://mslw.github.io/posts/index.xml target=_blank title=rss><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 019 9"/><path d="M4 4a16 16 0 0116 16"/><circle cx="5" cy="19" r="1"/></svg></a>
+</p></footer><script src=https://mslw.github.io/js/bundle.min.8256b8724b9578bbdf6d6f04c894255bc760e78e8a2d60ec0a91ea993acd3b77.js integrity="sha256-gla4ckuVeLvfbW8EyJQlW8dg546KLWDsCpHqmTrNO3c=" crossorigin=anonymous></script>
+</body></html>

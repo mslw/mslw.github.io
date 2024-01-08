@@ -1,4 +1,117 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 02 Jan 2024 19:15:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Culinary discoveries of 2023</title><link>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</link><pubDate>Tue, 02 Jan 2024 19:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</guid><description>It&amp;#39;s time for yearly summaries, so why not make one like this?
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Michał Szczepanik</title><link>https://mslw.github.io/posts/</link><description>Recent content in Posts on Michał Szczepanik</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 08 Jan 2024 22:00:00 +0100</lastBuildDate><atom:link href="https://mslw.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Embed license info in PDF metadata</title><link>https://mslw.github.io/posts/2024-01-08-embed-pdf-metadata/</link><pubDate>Mon, 08 Jan 2024 22:00:00 +0100</pubDate><guid>https://mslw.github.io/posts/2024-01-08-embed-pdf-metadata/</guid><description>Just embed the license in metadata, he said as I was preparing a poster PDF for an online conference. Okay, but how?
+My goal here is to add the authors and a Creative Commons license statement as PDF metadata. My starting point for a poster is usually Inkscape or Scribus, and I couldn&amp;#39;t find such an export option in either of those. I need another software to edit the produced PDF file.</description><content type="html"><![CDATA[<p>
+<em>Just embed the license in metadata</em>, he said as I was preparing a poster PDF for an online conference. Okay, but how?</p>
+<p>
+My goal here is to add the authors and a Creative Commons license statement as PDF metadata.
+My starting point for a poster is usually Inkscape or Scribus, and I couldn&#39;t find such an export option in either of those.
+I need another software to edit the produced PDF file.
+I am looking to use only free software which is readily available on Debian and/or Fedora (so no Adobe Acrobat).</p>
+<p>
+Creative commons has an (old?) wiki, and its <a href="https://wiki.creativecommons.org/wiki/PDF">PDF page</a> points out two mechanisms of storing metadata in PDF:
+<em>document information dictionary</em> and <em>metadata stream</em> – as described in <a href="https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf">PDF 1.7 standard</a> section 10.2.</p>
+<p>
+The former is more simplistic. <a href="https://unix.stackexchange.com/a/490458">This unix stackexchange post</a> describes how to add metadata with Ghostscript.
+That wouldn&#39;t do it for me. First, Ghostscript will re-process the entire document. Second, there is no standard property name for license.</p>
+<p>
+The XMP metadata stream is more flexible, thanks to namespaces, including <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">Dublin Core</a> (which <a href="https://developer.adobe.com/xmp/docs/XMPNamespaces/dc/">Adobe also uses</a>).
+Adobe Acrobat&#39;s <a href="https://helpx.adobe.com/acrobat/using/pdf-properties-metadata.html">PDF properties and metadata</a> help page also describes XMP.
+CC wiki&#39;s <a href="https://wiki.creativecommons.org/wiki/XMP">XMP page</a> says that &#34;Creative Commons is recommending XMP as the preferred format for embedded metadata,
+given its support for numerous file formats and the balkanized state of embedded metadata standards&#34;.
+This leads me to believe that XMP is indeed the preferred way.
+However, CC wiki&#39;s PDF page gives a rather obscure example (using a C library), so I needed a better tool.</p>
+<p>
+Searching the Internet, I found <a href="https://exiftool.org/">ExifTool</a>.
+Despite its name, it works with a large variety of file and metadata formats.
+ExifTool <a href="https://exiftool.org/TagNames/PDF.html">works with PDF</a> and <a href="https://exiftool.org/TagNames/XMP.html">can insert XMP tags</a> with built-in support for many namespaces,
+including Dublin Core (DC) and Creative Commons (CC).
+It is available on Debian as <code class="verbatim">libimage-exiftool-perl</code> and on Fedora as <code class="verbatim">perl-Image-ExifTool</code>.
+Whether it&#39;s the best tool for the job, I honestly don&#39;t know.</p>
+<p>
+Reading the documentation is always helpful to get an idea of what&#39;s going on, but here&#39;s an example.</p>
+<p>
+Given a PDF file, <code class="verbatim">document.pdf</code>, I add several authors (<code class="verbatim">dc:Creator</code>), a title (<code class="verbatim">dc:Title</code>), and license information
+(<code class="verbatim">dc:Rights</code> and <code class="verbatim">cc:License</code>):</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  exiftool <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      -XMP-dc:Creator+<span class="o">=</span><span class="s2">&#34;John Doe&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      -XMP-dc:Creator+<span class="o">=</span><span class="s2">&#34;Jane Doe&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      -XMP-dc:Title<span class="o">=</span><span class="s2">&#34;Lorem ipsum&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      -XMP-dc:Rights<span class="o">=</span><span class="s2">&#34;This work is licensed under a Creative Commons Attribution 4.0 International License&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      -XMP-cc:License<span class="o">=</span><span class="s2">&#34;https://creativecommons.org/licenses/by/4.0/&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>      document.pdf</span></span></code></pre></div>
+</div>
+<p>
+Note that I am using <code class="verbatim">dc:Rights</code> to add a typical license statement, and <code class="verbatim">cc:License</code> to add a link to the license.
+ExifTool expects <code class="verbatim">cc:License</code> to be a string, so it&#39;s probably the best I can do.</p>
+<p>
+As a first test of whether that worked, ExifTool can read the metadata it added (subset of output shown):</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  exiftool document.pdf</span></span></code></pre></div>
+</div>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">ExifTool Version Number         : 12.57
+</span></span><span class="line"><span class="cl">File Name                       : document.pdf
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">XMP Toolkit                     : Image::ExifTool 12.57
+</span></span><span class="line"><span class="cl">License                         : https://creativecommons.org/licenses/by/4.0/
+</span></span><span class="line"><span class="cl">Creator                         : John Doe, Jane Doe
+</span></span><span class="line"><span class="cl">Rights                          : This work is licensed under a Creative Commons Attribution 4.0 International License
+</span></span><span class="line"><span class="cl">Title                           : Lorem ipsum
+</span></span><span class="line"><span class="cl">Producer                        : pdfTeX-1.40.24
+</span></span><span class="line"><span class="cl">Author                          :
+</span></span><span class="line"><span class="cl">Subject                         :
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></div>
+</div>
+<p>
+Pdfinfo can read the metadata too, but we need to provide the <code class="verbatim">-meta</code> flag.
+It prints raw XML, so we can see exactly what was added by ExifTool – it looks like a reasonable XML document:</p>
+<div class="src src-bash">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">  pdfinfo -meta document.pdf</span></span></code></pre></div>
+</div>
+<div class="src src-xml">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl">  <span class="cp">&lt;?xpacket begin=&#39;﻿&#39; id=&#39;W5M0MpCehiHzreSzNTczkc9d&#39;?&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;x:xmpmeta</span> <span class="na">xmlns:x=</span><span class="s">&#39;adobe:ns:meta/&#39;</span> <span class="na">x:xmptk=</span><span class="s">&#39;Image::ExifTool 12.57&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;rdf:RDF</span> <span class="na">xmlns:rdf=</span><span class="s">&#39;http://www.w3.org/1999/02/22-rdf-syntax-ns#&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:cc=</span><span class="s">&#39;http://creativecommons.org/ns#&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;cc:license</span> <span class="na">rdf:resource=</span><span class="s">&#39;https://creativecommons.org/licenses/by/4.0/&#39;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/rdf:Description&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;rdf:Description</span> <span class="na">rdf:about=</span><span class="s">&#39;&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="na">xmlns:dc=</span><span class="s">&#39;http://purl.org/dc/elements/1.1/&#39;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dc:creator&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;rdf:Seq&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;rdf:li&gt;</span>John Doe<span class="nt">&lt;/rdf:li&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;rdf:li&gt;</span>Jane Doe<span class="nt">&lt;/rdf:li&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;/rdf:Seq&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dc:creator&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dc:rights&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;rdf:Alt&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;rdf:li</span> <span class="na">xml:lang=</span><span class="s">&#39;x-default&#39;</span><span class="nt">&gt;</span>This work is licensed under a Creative Commons Attribution 4.0 International License<span class="nt">&lt;/rdf:li&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;/rdf:Alt&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dc:rights&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dc:title&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;rdf:Alt&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&lt;rdf:li</span> <span class="na">xml:lang=</span><span class="s">&#39;x-default&#39;</span><span class="nt">&gt;</span>Lorem ipsum<span class="nt">&lt;/rdf:li&gt;</span>
+</span></span><span class="line"><span class="cl">     <span class="nt">&lt;/rdf:Alt&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dc:title&gt;</span>
+</span></span><span class="line"><span class="cl">   <span class="nt">&lt;/rdf:Description&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/rdf:RDF&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&lt;/x:xmpmeta&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c">&lt;!-- note: skipping several empty lines --&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cp">&lt;?xpacket end=&#39;w&#39;?&gt;</span></span></span></code></pre></div>
+</div>
+<p>
+Evince (GNOME document viever) picks up the creators as authors, alhough, sadly, none of the rights / license information.
+Strangely, I cound not find any of these metadata in Okular (KDE document viewer).</p>
+<p>
+<img src="/img/embed-pdf-metadata/evince-properties.png" alt="/img/embed-pdf-metadata/evince-properties.png" title="/img/embed-pdf-metadata/evince-properties.png" /></p>
+<p>
+So, mission accomplished… kind of.</p>
+]]></content></item><item><title>Culinary discoveries of 2023</title><link>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</link><pubDate>Tue, 02 Jan 2024 19:15:00 +0100</pubDate><guid>https://mslw.github.io/posts/2024-01-02-culinary-discoveries/</guid><description>It&amp;#39;s time for yearly summaries, so why not make one like this?
 Dish of the year: mapo tofu Tofu is not a meat substitute, it&amp;#39;s an ingredient on its own and it&amp;#39;s a delicious ingredient – J. Kenji López-Alt
 The dish I enjoyed making and eating the most this year was mapo tofu. More speciically, my version of Kenji&amp;#39;s version of his mom&amp;#39;s mapo tofu (which in turn is a japanese variation on the traditional Sichuan dish).</description><content type="html"><![CDATA[
 <p>
