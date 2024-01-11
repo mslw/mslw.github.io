@@ -1,0 +1,115 @@
+#+title: On the creative process
+#+layout: post
+#+date: 2024-01-12T00:10:00+0100
+#+author: Michał Szczepanik
+#+tags[]: metal randomthoughts
+#+draft: false
+
+Around the time when I was finishing my PhD thesis, I got into watching metal documentaries.
+I know, there's a fine line between inspiration searching and procrastination.
+
+At that time, I developed an idea (which I still hold on to) that the creative process and group dynamic
+involved in recording a metal album closely parallel scientific work -- or any team work, more than likely.
+Collaborative writing, respectful disagreement about ideas, working to deadlines,
+shared ambition to deliver the best thing possible... it's all there.
+
+Here's three "making of" movies which I highly recommend, together with quotes to illustrate my point.
+
+* Meshuggah - Making of Koloss
+
+Watch: https://www.youtube.com/watch?v=zi_nnpTf87c
+
+The oldest, and in a way the most raw (and real) of the three.
+Already the introduction goes straight to the point (0:21 timestamp):
+
+#+begin_quote
+The only thing we strive for is to create something that sounds fresh.
+A step into something new. Something we haven't done in the past.
+That's basically how the writing process begins.
+
+At first there's hardly anything, then nothing... Then some more, and then nothing again.
+And in the end there's just an inferno.
+And that's how we roll.
+So, talking about the writing process and how much time it took etc...
+It's the same story each time.
+
+(...)
+
+You both have budget constraints and a time frame to work with.
+So, you can never fully do the things you want.
+I mean, in your head.
+In the end it will be awesome, and you're pleased, but it's not really what you aimed for.
+At least with Meshuggah.
+#+end_quote
+
+Back in 2012, Meshuggah knew what it's like to work remotely, and
+experienced the tensions between synchronous and asynchronous collaboration --
+something many researchers discovered for themselves only after 2019 (4:02 timestamp):
+
+#+begin_quote
+The way we work now is basically everybody at their own personal workstation.
+Some of us write at home.
+And then we play back the ideas to each other, or send it online.
+That's a work flow we have utilized for quite a while now.
+
+The idea this time was to write and rehearse everything in the studio together.
+And to get it all in place.
+
+(...)
+
+We actually managed to do that.
+
+At least for the first song.
+Then we went back to our original way of doing things. Unfortunately.
+
+(...)
+
+Everybody liked that first song.
+"Holy shit, this is great, this is the way to go"...
+
+I remember going: "Hey, this is fun, how about continuing with the next song?"
+But in an instant everybody scattered, staring projects of their own.
+And that led to the retreat towards our old way of doing things.
+#+end_quote
+
+* The Making of Hushed and Grim (Mastodon)
+
+Watch: https://www.youtube.com/watch?v=9Rgi5C0JbRs
+
+This is where the idea behind this post started, some two years ago.
+My thesis deadline coincided with the promotion period leading up to the release of /Hushed and Grim/.
+Excerpts from the movie were coming out as short, 1--3 minute videos, now gathered in [[https://www.youtube.com/playlist?list=PLMpG-PjHShWkmX3EbLCBePtcAZPRkrA3J][this playlist]] together with the full thing.
+I have not, in fact, watched the full movie yet (I somehow missed its release), but from scrolling to find the quotes which I remembered
+from the teasers, I can already see that it is a wild ride.
+Definitely to be seen in full.
+
+Here, they could just as well be talking about writing a research paper, or working on a thesis (08:22 timestamp):
+
+#+begin_quote
+And then we bring it to each other, and we start saying, "Hey, do you like this? Cool! What do you think of these two together?".
+
+And then you've got three other guys, that [their] opinions are just as valid as yours,
+and maybe they don't like something that you love, and so there will be some compromises.
+#+end_quote
+
+And while it's less relevant to my analogy, this quote goes to show that there is a lot of earnestness in the movie (50:10 timestamp):
+
+#+begin_quote
+I guess those feelings of loss, you know, they show up and it's sort
+of always been a thing for us, that's sort of where we as a band put
+those kind of things, you know, those big losses in your life, and
+everyone goes through it.
+#+end_quote
+
+* Lamb of God - Making of Omens
+
+Watch: https://www.youtube.com/watch?v=jKh5NaqzRBU
+
+The latest of the three, and what prompted me to actually write this post.
+The movie feels a bit overproduced compared to the others, with guests visiting the studio, band members making trips,
+or that short perfectly focused shot of drumsticks showing a Vic Firth logo at 32:33
+(okay, Meshuggah documentary also does that, 3:30 timestamp, but there it comes explicitly as part of Thomas Haake's kit tour).
+At the same time, the production quality means that it watches like a really good extended music video.
+And the last 20 minutes is, in fact, an extended music video.
+
+I did not write down any particular quotes from this one, but it's good, too.
