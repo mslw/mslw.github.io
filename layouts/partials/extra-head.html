@@ -1,0 +1,10 @@
+{{- if eq .Type "posts"}}
+<meta http-equiv="refresh" content="0; URL='https://mszczepanik.eu{{ .RelPermalink }}'" />
+<link rel="canonical" href="https://mszczepanik.eu{{ .RelPermalink }}" />
+{{- else if eq .RelPermalink "/"}}
+<meta http-equiv="refresh" content="0; URL='https://mszczepanik.eu'" />
+<link rel="canonical" href="https://mszczepanik.eu" />
+{{- else if eq .RelPermalink "/about/"}}
+<meta http-equiv="refresh" content="0; URL='https://mszczepanik.eu/work/'" />
+<link rel="canonical" href="https://mszczepanik.eu/work/" />
+{{- end -}}
